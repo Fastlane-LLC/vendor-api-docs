@@ -76,7 +76,7 @@
 }
 ```
 
-The routes in the section are scoped specifically to claims. Our Carrier API provides a couple ways to search and fetch claim information on top of the ability to create claims.
+The routes in the section are scoped specifically to claims. Our Vendor API provides a couple ways to search and fetch claim information on top of the ability to create claims.
 
 The Claim object itself contains the following keys:
 
