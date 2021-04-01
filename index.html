@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>LossExpress Carrier API</title>
+    <title>LossExpress Vendor API</title>
 
     <style media="screen">
       .highlight table td { padding: 5px; }
@@ -446,13 +446,13 @@
       <div class="dark-box"></div>
       <div class="content">
         <h1 id='introduction'>Introduction</h1>
-<p>Welcome to the LossExpress Carrier API! This API is designed for use by insurance carriers interested in triggering processing events within LossExpress and viewing the results of those events.</p>
+<p>Welcome to the LossExpress Vendor API! This API is designed for use by varying third-party vendors that wish to trigger processing events within LossExpress and view the results of those events, on behalf of insurance carriers.</p>
 
 <p>When going through the integration process with your organization’s systems and LossExpress, it’s important to keep in mind the idea at the core of the LossExpress product and underlying APIs: we act simply as a conduit of information, from carriers to lenders.</p>
 
-<p>As a result, we have done our best when building out this API to give the power to make decisions to the carrier (where that power belongs), not ourselves.</p>
+<p>As a result, we have done our best when building out this API to give the power to make decisions to the carrier (where that power belongs), not ourselves, and recommend that our vendors do their best to leave decisioning to the carriers whenever possible.</p>
 <h1 id='authentication'>Authentication</h1>
-<p>Our Carrier API utilizes a standard OAuth 2.0 Client Credentials flow, where the external server authenticates itself using a provided client ID and client secret and is provided an access token that will be used on every request.</p>
+<p>Our Vendor API utilizes a standard OAuth 2.0 Client Credentials flow, where the external server authenticates itself using a provided client ID and client secret and is provided an access token that will be used on every request.</p>
 
 <p>Once a token has been received, every request is expected to have a header that looks like the following:</p>
 
@@ -1054,7 +1054,7 @@ would appear as <code>undefined</code> when parsed.</p>
   </span><span class="nl">"vin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1N4AL3AP8JC231503"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<p>The routes in the section are scoped specifically to claims. Our Carrier API provides a couple ways to search and fetch claim information on top of the ability to create claims.</p>
+<p>The routes in the section are scoped specifically to claims. Our Vendor API provides a couple ways to search and fetch claim information on top of the ability to create claims.</p>
 
 <p>The Claim object itself contains the following keys:</p>
 
@@ -1694,7 +1694,7 @@ would appear as <code>undefined</code> when parsed.</p>
 </tr>
 </tbody></table>
 <h1 id='errors'>Errors</h1>
-<p>Our Carrier API uses the following error codes:</p>
+<p>Our Vendor API uses the following error codes:</p>
 
 <table><thead>
 <tr>
