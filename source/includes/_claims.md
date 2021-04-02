@@ -164,7 +164,7 @@ accountNumber | The customer's account number for the loan associated with the c
 adjusterName	| The primary adjuster for the claim | Y
 adjusterEmailAddress | The email address associated with the primary adjuster for the claim | Y
 adjusterPhoneNumber | The phone number associated with the primary adjuster for the claim | Y
-causeOfLoss | The cause of loss listed on the claim. These causes can be one of the following: "Single-Vehicle Collision", "Multi-Vehicle Collision", "Wind/Hail", "Fire", "Flood", "Vandalism", "Theft", "Other" | Y
+causeOfLoss | The cause of loss listed on the claim. These causes can be one of the following: "Single-Vehicle Collision", "Multi-Vehicle Collision", "Wind/Hail", "Fire", "Flood", "Vandalism", "Theft", "Other" | N
 claimNumber | The claim number as noted by the carrier | Y
 dateOfLoss | The date the loss occurred | N
 deductible | The current deductible for the payoff | N
@@ -225,6 +225,7 @@ dateOfLoss | The date the loss occurred | N
 deductible | The current deductible for the payoff | N
 financeType | Either "Retail" or "Lease" | N
 insurerType | Either "First Party" or "Third Party" | N
+lenderId | The LossExpress UUID for the lender | N
 lenderName | The lender's name | N
 odometer | The mileage on the vehicle associated with the claim | N
 ownersName | The vehicle owner's name | N

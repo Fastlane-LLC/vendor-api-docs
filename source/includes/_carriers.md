@@ -44,3 +44,7 @@ businessName | The name the carrier places on documentation related to claims | 
   ]
 }
 ```
+
+### HTTP Request
+
+`GET https://exapi.lossexpress.com/carriers`
