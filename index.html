@@ -378,6 +378,17 @@
               </ul>
           </li>
           <li>
+            <a href="#carriers" class="toc-h1 toc-link" data-title="Carriers">Carriers</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#create-carrier" class="toc-h2 toc-link" data-title="Create Carrier">Create Carrier</a>
+                  </li>
+                  <li>
+                    <a href="#view-carriers" class="toc-h2 toc-link" data-title="View Carriers">View Carriers</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
             <a href="#claims" class="toc-h1 toc-link" data-title="Claims">Claims</a>
               <ul class="toc-list-h2">
                   <li>
@@ -451,6 +462,10 @@
 <p>When going through the integration process with your organization’s systems and LossExpress, it’s important to keep in mind the idea at the core of the LossExpress product and underlying APIs: we act simply as a conduit of information, from carriers to lenders.</p>
 
 <p>As a result, we have done our best when building out this API to give the power to make decisions to the carrier (where that power belongs), not ourselves, and recommend that our vendors do their best to leave decisioning to the carriers whenever possible.</p>
+
+<aside class="notice">
+Not all Vendors may have access to all routes or activity types within our Vendor API. Please consult initial onboarding material for a full detailing of any limitations that are in place for your Vendor account.
+</aside>
 <h1 id='authentication'>Authentication</h1>
 <p>Our Vendor API utilizes a standard OAuth 2.0 Client Credentials flow, where the external server authenticates itself using a provided client ID and client secret and is provided an access token that will be used on every request.</p>
 
@@ -978,7 +993,52 @@ would appear as <code>undefined</code> when parsed.</p>
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This activity type is added to the feed whenever a settlement counter is either accepted or disputed by the carrier. <code>documentUrl</code> will contain a link to the settlment breakdown passed to the lender with the new settlement amount.</p>
-<h1 id='claims'>Claims</h1>
+<h1 id='carriers'>Carriers</h1>
+<p>In order to create a claim using the LossExpress API, all vendors must pass in a LossExpress UUID associated with that carrier in our system. You can  manage carriers in our system using the routes in this section.</p>
+<h2 id='create-carrier'>Create Carrier</h2>
+<blockquote>
+<p>Example Response:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"carrierId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"150ae9da-9222-4ca5-43fe-fe1dc650fa0f"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This route allows vendors to create a carrier in our system and associate it with their account.</p>
+
+<aside class="notice">
+Carriers with the same business name are treated as the same entity in our system to prevent duplication and to allow better service tracking.
+</aside>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>POST https://exapi.lossexpress.com/carriers</code></p>
+<h3 id='request-body'>Request Body</h3>
+<p>This route accepts a JSON payload of an object comprising of:</p>
+
+<table><thead>
+<tr>
+<th>Body Parameter</th>
+<th>Description</th>
+<th>Required?</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>businessName</td>
+<td>The name the carrier places on documentation related to claims</td>
+<td>Y</td>
+</tr>
+</tbody></table>
+<h2 id='view-carriers'>View Carriers</h2>
+<blockquote>
+<p>Example Response:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"carriers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"carrierId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"150ae9da-9222-4ca5-43fe-fe1dc650fa0f"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"carrierName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LossExpress Test Carrier"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h1 id='claims'>Claims</h1>
 <blockquote>
 <p>Example Claim Object</p>
 </blockquote>
@@ -988,6 +1048,7 @@ would appear as <code>undefined</code> when parsed.</p>
   </span><span class="nl">"adjusterEmailAddress"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mike@lossexpress.com"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"adjusterPhoneNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+13332225555"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"causeOfLoss"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fire"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"carrierId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"150ae9da-9222-4ca5-43fe-fe1dc650fa0f"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"claimId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c30ae9da-9222-4de5-81fe-fe1ac590fa0f"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"claimNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EXAMPLE3"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-08T22:03:09.598Z"</span><span class="p">,</span><span class="w">
@@ -1079,6 +1140,10 @@ would appear as <code>undefined</code> when parsed.</p>
 <tr>
 <td>adjusterPhoneNumber</td>
 <td>The phone number associated with the primary adjuster for the claim</td>
+</tr>
+<tr>
+<td>carrierId</td>
+<td>The LossExpress UUID associated with the carrier that the claim should be filed under</td>
 </tr>
 <tr>
 <td>causeOfLoss</td>
@@ -1211,7 +1276,7 @@ would appear as <code>undefined</code> when parsed.</p>
   </span><span class="nl">"claimId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c30ae9da-9222-4de5-81fe-fe1ac590fa0f"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<p>This route creates a claim in LossExpress, which can be used to generate requests. Please note that our billing may currently or in the future consider all claims in our system, so be sure to only add claims that will eventually be worked on by us to avoid excess charges.</p>
+<p>This route creates a claim in LossExpress, which can be used to generate requests.</p>
 <h3 id='http-request-2'>HTTP Request</h3>
 <p><code>POST https://exapi.lossexpress.com/claims</code></p>
 <h3 id='request-body'>Request Body</h3>
@@ -1227,7 +1292,7 @@ would appear as <code>undefined</code> when parsed.</p>
 <tr>
 <td>accountNumber</td>
 <td>The customer&#39;s account number for the loan associated with the claim</td>
-<td>Y</td>
+<td>N</td>
 </tr>
 <tr>
 <td>adjusterName</td>
@@ -1257,12 +1322,12 @@ would appear as <code>undefined</code> when parsed.</p>
 <tr>
 <td>dateOfLoss</td>
 <td>The date the loss occurred</td>
-<td>Y</td>
+<td>N</td>
 </tr>
 <tr>
 <td>deductible</td>
 <td>The current deductible for the payoff</td>
-<td>Y</td>
+<td>N</td>
 </tr>
 <tr>
 <td>financeType</td>
@@ -1272,47 +1337,52 @@ would appear as <code>undefined</code> when parsed.</p>
 <tr>
 <td>insurerType</td>
 <td>Either &quot;First Party&quot; or &quot;Third Party&quot;</td>
-<td>Y</td>
+<td>N</td>
 </tr>
 <tr>
 <td>lenderName</td>
 <td>The lender&#39;s name</td>
-<td>Y</td>
+<td>Y (if lenderId not passed)</td>
+</tr>
+<tr>
+<td>lenderId</td>
+<td>The LossExpress ID for the lender</td>
+<td>Y (if lenderName not passed)</td>
 </tr>
 <tr>
 <td>odometer</td>
 <td>The mileage on the vehicle associated with the claim</td>
-<td>Y</td>
+<td>N</td>
 </tr>
 <tr>
 <td>ownersName</td>
 <td>The vehicle owner&#39;s name</td>
-<td>Y</td>
+<td>N</td>
 </tr>
 <tr>
 <td>ownersPhoneNumber</td>
 <td>The vehicle owner&#39;s phone number</td>
-<td>Y</td>
+<td>N</td>
 </tr>
 <tr>
 <td>ownersRetained</td>
 <td>Whether the owner is retaining the vehicle (boolean)</td>
-<td>Y</td>
+<td>N</td>
 </tr>
 <tr>
 <td>ownersStreetAddress</td>
 <td>The full address of the vehicle owner</td>
-<td>Y</td>
+<td>N</td>
 </tr>
 <tr>
 <td>settlementAmount</td>
 <td>The settlement amount for the claim</td>
-<td>Y</td>
+<td>N</td>
 </tr>
 <tr>
 <td>titleRemittanceAddress</td>
 <td>The full address that the vehicle title should be sent to</td>
-<td>Y</td>
+<td>N</td>
 </tr>
 <tr>
 <td>vehicleLocation</td>
@@ -1325,6 +1395,10 @@ would appear as <code>undefined</code> when parsed.</p>
 <td>Y</td>
 </tr>
 </tbody></table>
+
+<aside class="warning">
+Although many fields are not required when creating a claim, please note that nearly all fields are required when requesting information through LossExpress.
+</aside>
 <h2 id='update-claim'>Update Claim</h2>
 <blockquote>
 <p>Update Claim response body:</p>
