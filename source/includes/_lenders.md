@@ -52,6 +52,7 @@ If a lender is not found in our database, simply pass the lender name in place o
 
 Parameter | Description
 --------- | -----------
+integratedPayoffOnly | `true` if only lenders with payoff integrations with LossExpress should be returned
 name | Name being queried against in LossExpress. Must be at least 3 characters long, and must be properly encoded
 
 
