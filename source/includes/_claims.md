@@ -9,6 +9,7 @@
   "adjusterEmailAddress": "mike@lossexpress.com",
   "adjusterPhoneNumber": "+13332225555",
   "causeOfLoss": "Fire",
+  "carrierId": "150ae9da-9222-4ca5-43fe-fe1dc650fa0f",
   "claimId": "c30ae9da-9222-4de5-81fe-fe1ac590fa0f",
   "claimNumber": "EXAMPLE3",
   "createdAt": "2021-01-08T22:03:09.598Z",
@@ -86,6 +87,7 @@ accountNumber | The customer's account number for the loan associated with the c
 adjusterName | The primary adjuster for the claim
 adjusterEmailAddress | The email address associated with the primary adjuster for the claim
 adjusterPhoneNumber | The phone number associated with the primary adjuster for the claim
+carrierId | The LossExpress UUID associated with the carrier that the claim should be filed under
 causeOfLoss | The cause of loss listed on the claim. These causes can be one of the following: "Single-Vehicle Collision", "Multi-Vehicle Collision", "Wind/Hail", "Fire", "Flood", "Vandalism", "Theft", "Other"
 claimId | The LossExpress UUID associated with the claim
 claimNumber | The claim number as noted by the carrier
@@ -146,7 +148,7 @@ claimId | The LossExpress UUID associated with the claim
 }
 ```
 
-This route creates a claim in LossExpress, which can be used to generate requests. Please note that our billing may currently or in the future consider all claims in our system, so be sure to only add claims that will eventually be worked on by us to avoid excess charges.
+This route creates a claim in LossExpress, which can be used to generate requests.
 
 ### HTTP Request
 
@@ -158,26 +160,31 @@ This route accepts a JSON payload of an object comprising of:
 
 Body Parameter | Description | Required?
 -------------- | ----------- | ---------
-accountNumber | The customer's account number for the loan associated with the claim | Y
+accountNumber | The customer's account number for the loan associated with the claim | N
 adjusterName	| The primary adjuster for the claim | Y
 adjusterEmailAddress | The email address associated with the primary adjuster for the claim | Y
 adjusterPhoneNumber | The phone number associated with the primary adjuster for the claim | Y
 causeOfLoss | The cause of loss listed on the claim. These causes can be one of the following: "Single-Vehicle Collision", "Multi-Vehicle Collision", "Wind/Hail", "Fire", "Flood", "Vandalism", "Theft", "Other" | Y
 claimNumber | The claim number as noted by the carrier | Y
-dateOfLoss | The date the loss occurred | Y
-deductible | The current deductible for the payoff | Y
+dateOfLoss | The date the loss occurred | N
+deductible | The current deductible for the payoff | N
 financeType | Either "Retail" or "Lease" | Y
-insurerType | Either "First Party" or "Third Party" | Y
-lenderName | The lender's name | Y
-odometer | The mileage on the vehicle associated with the claim | Y
-ownersName | The vehicle owner's name | Y
-ownersPhoneNumber | The vehicle owner's phone number | Y
-ownersRetained | Whether the owner is retaining the vehicle (boolean) | Y
-ownersStreetAddress | The full address of the vehicle owner | Y
-settlementAmount | The settlement amount for the claim | Y
-titleRemittanceAddress | The full address that the vehicle title should be sent to | Y
+insurerType | Either "First Party" or "Third Party" | N
+lenderName | The lender's name | Y (if lenderId not passed)
+lenderId | The LossExpress ID for the lender | Y (if lenderName not passed)
+odometer | The mileage on the vehicle associated with the claim | N
+ownersName | The vehicle owner's name | N
+ownersPhoneNumber | The vehicle owner's phone number | N
+ownersRetained | Whether the owner is retaining the vehicle (boolean) | N
+ownersStreetAddress | The full address of the vehicle owner | N
+settlementAmount | The settlement amount for the claim | N
+titleRemittanceAddress | The full address that the vehicle title should be sent to | N
 vehicleLocation | The full address where the vehicle is located, if different from the titleRemittanceAddress | N
 vin | The Vehicle Identification Number for the vehicle on the claim | Y
+
+<aside class="warning">
+Although many fields are not required when creating a claim, please note that nearly all fields are required when requesting information through LossExpress.
+</aside>
 
 ## Update Claim
 

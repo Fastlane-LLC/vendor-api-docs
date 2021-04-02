@@ -3,6 +3,7 @@ title: LossExpress Vendor API
 
 includes:
   - activity_feed
+  - carriers
   - claims
   - direct_messages
   - documents
@@ -23,6 +24,10 @@ Welcome to the LossExpress Vendor API! This API is designed for use by varying t
 When going through the integration process with your organization’s systems and LossExpress, it’s important to keep in mind the idea at the core of the LossExpress product and underlying APIs: we act simply as a conduit of information, from carriers to lenders.
 
 As a result, we have done our best when building out this API to give the power to make decisions to the carrier (where that power belongs), not ourselves, and recommend that our vendors do their best to leave decisioning to the carriers whenever possible.
+
+<aside class="notice">
+Not all Vendors may have access to all routes or activity types within our Vendor API. Please consult initial onboarding material for a full detailing of any limitations that are in place for your Vendor account.
+</aside>
 
 # Authentication
 
