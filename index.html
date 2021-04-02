@@ -1038,7 +1038,9 @@ Carriers with the same business name are treated as the same entity in our syste
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h1 id='claims'>Claims</h1>
+</span></code></pre></div><h3 id='http-request-2'>HTTP Request</h3>
+<p><code>GET https://exapi.lossexpress.com/carriers</code></p>
+<h1 id='claims'>Claims</h1>
 <blockquote>
 <p>Example Claim Object</p>
 </blockquote>
@@ -1312,7 +1314,7 @@ Carriers with the same business name are treated as the same entity in our syste
 <tr>
 <td>causeOfLoss</td>
 <td>The cause of loss listed on the claim. These causes can be one of the following: &quot;Single-Vehicle Collision&quot;, &quot;Multi-Vehicle Collision&quot;, &quot;Wind/Hail&quot;, &quot;Fire&quot;, &quot;Flood&quot;, &quot;Vandalism&quot;, &quot;Theft&quot;, &quot;Other&quot;</td>
-<td>Y</td>
+<td>N</td>
 </tr>
 <tr>
 <td>claimNumber</td>
@@ -1481,6 +1483,11 @@ Although many fields are not required when creating a claim, please note that ne
 <tr>
 <td>insurerType</td>
 <td>Either &quot;First Party&quot; or &quot;Third Party&quot;</td>
+<td>N</td>
+</tr>
+<tr>
+<td>lenderId</td>
+<td>The LossExpress UUID for the lender</td>
 <td>N</td>
 </tr>
 <tr>
