@@ -422,6 +422,14 @@
               </ul>
           </li>
           <li>
+            <a href="#lenders" class="toc-h1 toc-link" data-title="Lenders">Lenders</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#search-lenders" class="toc-h2 toc-link" data-title="Search Lenders">Search Lenders</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
             <a href="#letter-of-guarantee-requests" class="toc-h1 toc-link" data-title="Letter of Guarantee Requests">Letter of Guarantee Requests</a>
               <ul class="toc-list-h2">
                   <li>
@@ -1612,7 +1620,82 @@ Although many fields are not required when creating a claim, please note that ne
 <td>Y</td>
 </tr>
 </tbody></table>
-<h1 id='documents'>Documents</h1><h2 id='add-document-to-claim'>Add Document to Claim</h2><h1 id='letter-of-guarantee-requests'>Letter of Guarantee Requests</h1><h2 id='create-letter-of-guarantee-request'>Create Letter of Guarantee Request</h2>
+<h1 id='documents'>Documents</h1><h2 id='add-document-to-claim'>Add Document to Claim</h2><h1 id='lenders'>Lenders</h1>
+<blockquote>
+<p>Example Lender Object</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"lenderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c30ae9da-9222-4de5-81fe-fe1ac590fa0f"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"lenderName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Test Lender"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"aliases"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"Test Lender Bank"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"Bank of Test Lender"</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"integratedPayoff"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>The route in this section is meant to be used for providing a robust search solution for the end users of our vendor partners. We do not currently provide an index containing all of our lenders, as that information is frequently updated and added to.</p>
+
+<p>The Lender object itself contains the following keys:</p>
+
+<table><thead>
+<tr>
+<th>Object Key</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>aliases</td>
+<td>An array of strings containing common aliases that have been indexed in LossExpress for this lender</td>
+</tr>
+<tr>
+<td>integratedPayoff</td>
+<td><code>true</code> when a lender can return a payoff via integration; <code>false</code> for lenders that are not fully integrated with LossExpress for payoff information</td>
+</tr>
+<tr>
+<td>lenderId</td>
+<td>The LossExpress UUID for the lender</td>
+</tr>
+<tr>
+<td>lenderName</td>
+<td>The name of the lender in LossExpress</td>
+</tr>
+</tbody></table>
+<h2 id='search-lenders'>Search Lenders</h2>
+<blockquote>
+<p>Example Search Response:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"lenders"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="err">...lender</span><span class="w"> </span><span class="err">objects</span><span class="p">,</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"requestUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://exapi.lossexpress.com/lenders?name=Test%20Lender"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This route allows for searching LossExpress&#39;s lender database for matches. We recommend showing a full list of the lenders returned for selection by the end user, while also allowing users to move forward with the text they&#39;ve entered, in case there is no exact match.</p>
+
+<p>Lenders with aliases that match the text provided are also returned in this query. We recommend displaying information to the user notifying them that the text they&#39;ve entered is an alias for another lender in this situation.</p>
+
+<p>If a lender is not found in our database, simply pass the lender name in place of a <code>lenderId</code> when creating a claim in LossExpress, and our team will add the lender to the database for future requests, if possible.</p>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>GET https://exapi.lossexpress.com/lenders</code></p>
+<h3 id='query-parameters'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>integratedPayoffOnly</td>
+<td><code>true</code> if only lenders with payoff integrations with LossExpress should be returned</td>
+</tr>
+<tr>
+<td>name</td>
+<td>Name being queried against in LossExpress. Must be at least 3 characters long, and must be properly encoded</td>
+</tr>
+</tbody></table>
+<h1 id='letter-of-guarantee-requests'>Letter of Guarantee Requests</h1><h2 id='create-letter-of-guarantee-request'>Create Letter of Guarantee Request</h2>
 <blockquote>
 <p>Create Letter of Guarantee Request Example Response Body:</p>
 </blockquote>
