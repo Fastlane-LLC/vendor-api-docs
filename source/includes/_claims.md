@@ -164,6 +164,7 @@ accountNumber | The customer's account number for the loan associated with the c
 adjusterName	| The primary adjuster for the claim | Y
 adjusterEmailAddress | The email address associated with the primary adjuster for the claim | Y
 adjusterPhoneNumber | The phone number associated with the primary adjuster for the claim | Y
+carrierId | The GUID of the carrier associated with the claim | Y
 causeOfLoss | The cause of loss listed on the claim. These causes can be one of the following: "Single-Vehicle Collision", "Multi-Vehicle Collision", "Wind/Hail", "Fire", "Flood", "Vandalism", "Theft", "Other" | N
 claimNumber | The claim number as noted by the carrier | Y
 dateOfLoss | The date the loss occurred | N
