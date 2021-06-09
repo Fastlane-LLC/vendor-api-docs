@@ -41,6 +41,8 @@ Once a token has been received, every request is expected to have a header that 
 ## HTTP Request
 `POST https://exapi.lossexpress.com/oauth/token`
 
+This route is for generating OAuth tokens that can be used for all other requests.
+
 ### Request Body
 
 This route accepts a JSON payload of an object comprising of:
