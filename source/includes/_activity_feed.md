@@ -13,7 +13,7 @@ claimId | The LossExpress UUID given to the claim the Activity occurred on
 type | A string containing one of the available Activity Types
 claimNumber | The claim number entered for the claim the Activity occurred on
 data | An object containing relevant information for the Activity
-hash | A SHA256 hash uniquely identifying the activity type
+activityId | A GUID uniquely identifying the activity
 
 ## Fetch Activities
 > This route returns a paginated set of results that looks like this:
@@ -50,7 +50,11 @@ createdAfter | 30 minutes earlier | Allows for filtering activities to only thos
 pageSize | 100 | Sets the size of pages in paginated results. Maximum is currently 500.
 pageNumber | 0 | Sets the zero-indexed page number in paginated results.
 claimId | | Filters the activities to only contain activities for the specific LossExpress Claim ID.
-hash | | Show activity types starting from when the hash's activity and moving into the future
+activityId | | Show activity types starting from when the hash's activity and moving into the future.
+
+### Note
+
+You can only supply `activityId` or `createdBefore` in a request, not both.
 
 # Activity Types
 
