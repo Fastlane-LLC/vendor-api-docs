@@ -480,8 +480,26 @@ Not all Vendors may have access to all routes or activity types within our Vendo
 <p>Once a token has been received, every request is expected to have a header that looks like the following:</p>
 
 <p><code>Authorization: Bearer exampletokenbutreplacewithyourown</code></p>
-<h3 id='http-request'>HTTP Request</h3>
+<h2 id='http-request'>HTTP Request</h2>
 <p><code>POST https://exapi.lossexpress.com/oauth/token</code></p>
+<h3 id='request-body'>Request Body</h3>
+<p>This route accepts a JSON payload of an object comprising of:</p>
+
+<table><thead>
+<tr>
+<th>Body Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>clientId</td>
+<td>Your unique identifier in Loss Express systems</td>
+</tr>
+<tr>
+<td>secret</td>
+<td>An OAuth secret provided by Loss Express</td>
+</tr>
+</tbody></table>
 
 <aside class="notice">
 You must replace <code>exampletokenbutreplacewithyourown</code> with the access token provided.
@@ -518,8 +536,8 @@ You must replace <code>exampletokenbutreplacewithyourown</code> with the access 
 <td>An object containing relevant information for the Activity</td>
 </tr>
 <tr>
-<td>hash</td>
-<td>A SHA256 hash uniquely identifying the activity type</td>
+<td>activityId</td>
+<td>A GUID uniquely identifying the activity</td>
 </tr>
 </tbody></table>
 <h2 id='fetch-activities'>Fetch Activities</h2>
@@ -585,11 +603,13 @@ You must replace <code>exampletokenbutreplacewithyourown</code> with the access 
 <td>Filters the activities to only contain activities for the specific LossExpress Claim ID.</td>
 </tr>
 <tr>
-<td>hash</td>
+<td>activityId</td>
 <td></td>
-<td>Show activity types starting from when the hash&#39;s activity and moving into the future</td>
+<td>Show activity types starting from the activity and moving into the future.</td>
 </tr>
 </tbody></table>
+<h3 id='note'>Note</h3>
+<p>You can only supply <code>activityId</code> or <code>createdBefore</code> in a request, not both.</p>
 <h1 id='activity-types'>Activity Types</h1><h2 id='list-of-types'>List of Types</h2>
 <p>Below is a list of Activity Types that will be available within the Activity Feed:</p>
 
@@ -661,7 +681,7 @@ You must replace <code>exampletokenbutreplacewithyourown</code> with the access 
 <p>account-number-viewed example object</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"activityId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fed62fa0-c048-46b5-b994-6e3e69fb0f37"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-08T22:03:09.598Z"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"claimId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c30ae9da-9222-4de5-81fe-fe1ac590fa0f"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"account-number-viewed"</span><span class="p">,</span><span class="w">
@@ -677,7 +697,7 @@ You must replace <code>exampletokenbutreplacewithyourown</code> with the access 
 <p>call-made example object</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"activityId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fed62fa0-c048-46b5-b994-6e3e69fb0f37"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-08T22:03:09.598Z"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"claimId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c30ae9da-9222-4de5-81fe-fe1ac590fa0f"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"call-made"</span><span class="p">,</span><span class="w">
@@ -693,7 +713,7 @@ You must replace <code>exampletokenbutreplacewithyourown</code> with the access 
 <p>claim-created example object</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"activityId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fed62fa0-c048-46b5-b994-6e3e69fb0f37"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-08T22:03:09.598Z"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"claimId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c30ae9da-9222-4de5-81fe-fe1ac590fa0f"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"claim-created"</span><span class="p">,</span><span class="w">
@@ -739,7 +759,7 @@ would appear as <code>undefined</code> when parsed.</p>
 <p>claim-updated example object</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"activityId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fed62fa0-c048-46b5-b994-6e3e69fb0f37"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-08T22:03:09.598Z"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"claimId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c30ae9da-9222-4de5-81fe-fe1ac590fa0f"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"claim-updated"</span><span class="p">,</span><span class="w">
@@ -770,7 +790,7 @@ would appear as <code>undefined</code> when parsed.</p>
 <p>direct-message-added example object (sent by LossExpress)</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"activityId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fed62fa0-c048-46b5-b994-6e3e69fb0f37"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-08T22:03:09.598Z"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"claimId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c30ae9da-9222-4de5-81fe-fe1ac590fa0f"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"direct-message-added"</span><span class="p">,</span><span class="w">
@@ -784,7 +804,7 @@ would appear as <code>undefined</code> when parsed.</p>
 <p>direct-message-added example object (sent by carrier user)</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"activityId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fed62fa0-c048-46b5-b994-6e3e69fb0f37"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-08T22:03:09.598Z"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"claimId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c30ae9da-9222-4de5-81fe-fe1ac590fa0f"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"direct-message-added"</span><span class="p">,</span><span class="w">
@@ -802,7 +822,7 @@ would appear as <code>undefined</code> when parsed.</p>
 <p>document-added example object</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"activityId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fed62fa0-c048-46b5-b994-6e3e69fb0f37"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-08T22:03:09.598Z"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"claimId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c30ae9da-9222-4de5-81fe-fe1ac590fa0f"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"document-added"</span><span class="p">,</span><span class="w">
@@ -821,7 +841,7 @@ would appear as <code>undefined</code> when parsed.</p>
 <p>document-sent-to-lender example object</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"activityId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fed62fa0-c048-46b5-b994-6e3e69fb0f37"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-08T22:03:09.598Z"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"claimId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c30ae9da-9222-4de5-81fe-fe1ac590fa0f"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"document-sent-to-lender"</span><span class="p">,</span><span class="w">
@@ -837,7 +857,7 @@ would appear as <code>undefined</code> when parsed.</p>
 <p>letter-of-guarantee-added example object</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"activityId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fed62fa0-c048-46b5-b994-6e3e69fb0f37"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-08T22:03:09.598Z"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"claimId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c30ae9da-9222-4de5-81fe-fe1ac590fa0f"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"letter-of-guarantee-added"</span><span class="p">,</span><span class="w">
@@ -855,7 +875,7 @@ would appear as <code>undefined</code> when parsed.</p>
 <p>letter-of-guarantee-request-created example object</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"activityId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fed62fa0-c048-46b5-b994-6e3e69fb0f37"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-08T22:03:09.598Z"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"claimId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c30ae9da-9222-4de5-81fe-fe1ac590fa0f"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"letter-of-guarantee-request-created"</span><span class="p">,</span><span class="w">
@@ -875,7 +895,7 @@ would appear as <code>undefined</code> when parsed.</p>
 <p>payment-sent example object</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"activityId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fed62fa0-c048-46b5-b994-6e3e69fb0f37"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-08T22:03:09.598Z"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"claimId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c30ae9da-9222-4de5-81fe-fe1ac590fa0f"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"payment-sent"</span><span class="p">,</span><span class="w">
@@ -903,7 +923,7 @@ would appear as <code>undefined</code> when parsed.</p>
 <p>payoff-data-added example object</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"activityId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fed62fa0-c048-46b5-b994-6e3e69fb0f37"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-08T22:03:09.598Z"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"claimId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c30ae9da-9222-4de5-81fe-fe1ac590fa0f"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"payoff-data-added"</span><span class="p">,</span><span class="w">
@@ -943,7 +963,7 @@ would appear as <code>undefined</code> when parsed.</p>
 <p>payoff-request-created example object</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"activityId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fed62fa0-c048-46b5-b994-6e3e69fb0f37"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-08T22:03:09.598Z"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"claimId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c30ae9da-9222-4de5-81fe-fe1ac590fa0f"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"payoff-request-created"</span><span class="p">,</span><span class="w">
@@ -957,7 +977,7 @@ would appear as <code>undefined</code> when parsed.</p>
 <p>settlement-counter-added example object</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"activityId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fed62fa0-c048-46b5-b994-6e3e69fb0f37"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-08T22:03:09.598Z"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"claimId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c30ae9da-9222-4de5-81fe-fe1ac590fa0f"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"settlement-counter-added"</span><span class="p">,</span><span class="w">
@@ -974,7 +994,7 @@ would appear as <code>undefined</code> when parsed.</p>
 <p>settlement-counter-updated example object (dispute)</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"activityId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fed62fa0-c048-46b5-b994-6e3e69fb0f37"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-08T22:03:09.598Z"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"claimId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c30ae9da-9222-4de5-81fe-fe1ac590fa0f"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"settlement-counter-updated"</span><span class="p">,</span><span class="w">
@@ -989,7 +1009,7 @@ would appear as <code>undefined</code> when parsed.</p>
 <p>settlement-counter-updated example object (accepted)</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"activityId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fed62fa0-c048-46b5-b994-6e3e69fb0f37"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-08T22:03:09.598Z"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"claimId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c30ae9da-9222-4de5-81fe-fe1ac590fa0f"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"settlement-counter-updated"</span><span class="p">,</span><span class="w">
@@ -1620,7 +1640,36 @@ Although many fields are not required when creating a claim, please note that ne
 <td>Y</td>
 </tr>
 </tbody></table>
-<h1 id='documents'>Documents</h1><h2 id='add-document-to-claim'>Add Document to Claim</h2><h1 id='lenders'>Lenders</h1>
+<h1 id='documents'>Documents</h1><h2 id='add-document-to-claim'>Add Document to Claim</h2>
+<blockquote>
+<p>Example Response Body:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"documentUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://exapi.lossexpress.com/documents/c30ae9da-9222-4de5-81fe-fe1ac590fa0f"</span><span class="p">,</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This route allows for adding documents to claims</p>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>POST https://exapi.lossexpress.com/claims/documents/{claimId}</code></p>
+<h3 id='request-body'>Request Body</h3>
+<p>This route accepts a JSON payload of an object comprising of:</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>document</td>
+<td>A base64-encoded file string. Acceptable formats: <code>pdf</code>, <code>jpeg</code>, <code>jpg</code>, <code>tiff</code>, <code>gif</code>, <code>png</code></td>
+</tr>
+<tr>
+<td>description</td>
+<td>A brief description of the document (eg, Settlement Breakdown)</td>
+</tr>
+</tbody></table>
+<h1 id='lenders'>Lenders</h1>
 <blockquote>
 <p>Example Lender Object</p>
 </blockquote>
