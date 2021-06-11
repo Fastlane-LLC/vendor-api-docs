@@ -35,6 +35,6 @@ This route accepts a JSON payload of an object comprising of:
 
 Body Parameter | Description | Required?
 -------------- | ----------- | ---------
-dispute | True if it should be disputed, false otherwise (boolean) | Y if dispute
+dispute | True if it should be disputed, false otherwise (boolean) | Y
 settlementBreakdown | | Y if not dispute
 reasonForDispute | Message containing the reason for dispute | Y if dispute
