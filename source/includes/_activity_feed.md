@@ -73,9 +73,15 @@ document-added | A document is added to a claim
 document-sent-to-lender | A document is sent to a lender
 letter-of-guarantee-added | A letter of guarantee is added to a claim
 letter-of-guarantee-request-created | A letter of guarantee request is created on a claim
+letter-of-guarantee-request-cancelled | A letter of guarantee request on a claim has been cancelled
+order-created | A new order has been added to a claim
+order-cancelled | An order on a claim has been cancelled
+order-fulfilled | An order on a claim has been successfully fulfilled
+order-updated | An order on a claim has been updated
 payment-sent | Payment has been sent for a claim
 payoff-data-added | Payoff information is added to a claim
 payoff-request-created | A payoff request is created on a claim
+payoff-request-cancelled | A payoff request on a claim has been cancelled
 settlement-counter-added | A lender adds a counter to the proposed settlement amount
 settlement-counter-updated | The settlement counter is either accepted or disputed by the carrier
 
@@ -320,6 +326,97 @@ Note that although we _typically_ request letters of guarantee whenever we reach
 
 <aside class="warning"><code>estimatedResponseTime</code> may not exist on every activity for this type, and is merely an estimate based on _prior_ letter of guarantee request response times for that lender.</aside>
 
+## letter-of-guarantee-request-cancelled
+
+> letter-of-guarantee-request-cancelled example object
+```json
+{
+  "activityId": "fed62fa0-c048-46b5-b994-6e3e69fb0f37",
+  "createdAt": "2021-01-08T22:03:09.598Z",
+  "claimId": "c30ae9da-9222-4de5-81fe-fe1ac590fa0f",
+  "type": "letter-of-guarantee-request-cancelled",
+  "claimNumber": "EXAMPLE3",
+  "data": {}
+}
+```
+
+This activity type is added to the feed whenever a letter of guarantee request is cancelled for a claim.
+
+## order-created
+
+> order-created example object
+```json
+{
+  "activityId": "fed62fa0-c048-46b5-b994-6e3e69fb0f37",
+  "createdAt": "2021-01-08T22:03:09.598Z",
+  "claimId": "c30ae9da-9222-4de5-81fe-fe1ac590fa0f",
+  "type": "order-created",
+  "claimNumber": "EXAMPLE3",
+  "data": {
+    "orderId": "24907dea-2bd2-4547-bae6-8305b4256256",
+    "orderType": "Copy of Title"
+  }
+}
+```
+
+This activity type is added to the feed whenever an order is created for a claim.
+
+## order-cancelled
+
+> order-cancelled example object
+```json
+{
+  "activityId": "fed62fa0-c048-46b5-b994-6e3e69fb0f37",
+  "createdAt": "2021-01-08T22:03:09.598Z",
+  "claimId": "c30ae9da-9222-4de5-81fe-fe1ac590fa0f",
+  "type": "order-cancelled",
+  "claimNumber": "EXAMPLE3",
+  "data": {
+    "orderId": "24907dea-2bd2-4547-bae6-8305b4256256"
+  }
+}
+```
+
+This activity type is added to the feed whenever an order is cancelled for a claim.
+
+## order-fulfilled
+
+> order-fulfilled example object
+```json
+{
+  "activityId": "fed62fa0-c048-46b5-b994-6e3e69fb0f37",
+  "createdAt": "2021-01-08T22:03:09.598Z",
+  "claimId": "c30ae9da-9222-4de5-81fe-fe1ac590fa0f",
+  "type": "order-fulfilled",
+  "claimNumber": "EXAMPLE3",
+  "data": {
+    "orderId": "24907dea-2bd2-4547-bae6-8305b4256256",
+    "orderType": "Copy of Title",
+    "documentUrl": "https://exapi.lossexpress.com/documents/555ae9da-9222-4de5-81fe-fe1ac590fa0f"
+  }
+}
+```
+
+This activity type is added to the feed whenever an order is fulfilled for a claim. If the order utilizes a document, it can be accessed via the <code>documentUrl</code>.
+
+## order-updated
+
+> order-updated example object
+```json
+{
+  "activityId": "fed62fa0-c048-46b5-b994-6e3e69fb0f37",
+  "createdAt": "2021-01-08T22:03:09.598Z",
+  "claimId": "c30ae9da-9222-4de5-81fe-fe1ac590fa0f",
+  "type": "order-updated",
+  "claimNumber": "EXAMPLE3",
+  "data": {
+    "orderId": "24907dea-2bd2-4547-bae6-8305b4256256",
+    "nextFollowupDate": "2021-08-31"
+  }
+}
+```
+
+This activity type is added to the feed whenever an order is updated for a claim.
 ## payment-sent
 
 > payment-sent example object
@@ -410,7 +507,21 @@ This activity type is added to the feed whenever payoff data is added to a claim
 ```
 
 This activity type is added to the feed whenever a payoff request is created on a particular claim.
+## payoff-request-cancelled
 
+> payoff-request-cancelled example object
+```json
+{
+  "activityId": "fed62fa0-c048-46b5-b994-6e3e69fb0f37",
+  "createdAt": "2021-01-08T22:03:09.598Z",
+  "claimId": "c30ae9da-9222-4de5-81fe-fe1ac590fa0f",
+  "type": "payoff-request-cancelled",
+  "claimNumber": "EXAMPLE3",
+  "data": {}
+}
+```
+
+This activity type is added to the feed whenever a payoff request is cancelled on a particular claim.
 ## settlement-counter-added
 
 > settlement-counter-added example object
