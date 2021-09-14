@@ -369,6 +369,21 @@
                     <a href="#letter-of-guarantee-request-created" class="toc-h2 toc-link" data-title="letter-of-guarantee-request-created">letter-of-guarantee-request-created</a>
                   </li>
                   <li>
+                    <a href="#letter-of-guarantee-request-cancelled" class="toc-h2 toc-link" data-title="letter-of-guarantee-request-cancelled">letter-of-guarantee-request-cancelled</a>
+                  </li>
+                  <li>
+                    <a href="#order-created" class="toc-h2 toc-link" data-title="order-created">order-created</a>
+                  </li>
+                  <li>
+                    <a href="#order-cancelled" class="toc-h2 toc-link" data-title="order-cancelled">order-cancelled</a>
+                  </li>
+                  <li>
+                    <a href="#order-fulfilled" class="toc-h2 toc-link" data-title="order-fulfilled">order-fulfilled</a>
+                  </li>
+                  <li>
+                    <a href="#order-updated" class="toc-h2 toc-link" data-title="order-updated">order-updated</a>
+                  </li>
+                  <li>
                     <a href="#payment-sent" class="toc-h2 toc-link" data-title="payment-sent">payment-sent</a>
                   </li>
                   <li>
@@ -376,6 +391,9 @@
                   </li>
                   <li>
                     <a href="#payoff-request-created" class="toc-h2 toc-link" data-title="payoff-request-created">payoff-request-created</a>
+                  </li>
+                  <li>
+                    <a href="#payoff-request-cancelled" class="toc-h2 toc-link" data-title="payoff-request-cancelled">payoff-request-cancelled</a>
                   </li>
                   <li>
                     <a href="#settlement-counter-added" class="toc-h2 toc-link" data-title="settlement-counter-added">settlement-counter-added</a>
@@ -445,6 +463,20 @@
                   </li>
                   <li>
                     <a href="#cancel-letter-of-guarantee-request" class="toc-h2 toc-link" data-title="Cancel Letter of Guarantee Request">Cancel Letter of Guarantee Request</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#orders" class="toc-h1 toc-link" data-title="Orders">Orders</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#fetch-order-types" class="toc-h2 toc-link" data-title="Fetch Order Types">Fetch Order Types</a>
+                  </li>
+                  <li>
+                    <a href="#create-order-s-request" class="toc-h2 toc-link" data-title="Create Order(s) Request">Create Order(s) Request</a>
+                  </li>
+                  <li>
+                    <a href="#cancel-order-s-request" class="toc-h2 toc-link" data-title="Cancel Order(s) Request">Cancel Order(s) Request</a>
                   </li>
               </ul>
           </li>
@@ -710,6 +742,26 @@ You must replace <code>exampletokenbutreplacewithyourown</code> with the access 
 <td>A letter of guarantee request is created on a claim</td>
 </tr>
 <tr>
+<td>letter-of-guarantee-request-cancelled</td>
+<td>A letter of guarantee request on a claim has been cancelled</td>
+</tr>
+<tr>
+<td>order-created</td>
+<td>A new order has been added to a claim</td>
+</tr>
+<tr>
+<td>order-cancelled</td>
+<td>An order on a claim has been cancelled</td>
+</tr>
+<tr>
+<td>order-fulfilled</td>
+<td>An order on a claim has been successfully fulfilled</td>
+</tr>
+<tr>
+<td>order-updated</td>
+<td>An order on a claim has been updated</td>
+</tr>
+<tr>
 <td>payment-sent</td>
 <td>Payment has been sent for a claim</td>
 </tr>
@@ -720,6 +772,10 @@ You must replace <code>exampletokenbutreplacewithyourown</code> with the access 
 <tr>
 <td>payoff-request-created</td>
 <td>A payoff request is created on a claim</td>
+</tr>
+<tr>
+<td>payoff-request-cancelled</td>
+<td>A payoff request on a claim has been cancelled</td>
 </tr>
 <tr>
 <td>settlement-counter-added</td>
@@ -944,6 +1000,98 @@ would appear as <code>undefined</code> when parsed.</p>
 <p>Note that although we <em>typically</em> request letters of guarantee whenever we reach out to a lender, we do not follow-up on the status of letters of guarantee nor can we absolutely guarantee that a letter of guarantee will be added to a claim unless a letter of guarantee request is created on a claim.</p>
 
 <aside class="warning"><code>estimatedResponseTime</code> may not exist on every activity for this type, and is merely an estimate based on _prior_ letter of guarantee request response times for that lender.</aside>
+<h2 id='letter-of-guarantee-request-cancelled'>letter-of-guarantee-request-cancelled</h2>
+<blockquote>
+<p>letter-of-guarantee-request-cancelled example object
+<code>json
+{
+  &quot;activityId&quot;: &quot;fed62fa0-c048-46b5-b994-6e3e69fb0f37&quot;,
+  &quot;createdAt&quot;: &quot;2021-01-08T22:03:09.598Z&quot;,
+  &quot;claimId&quot;: &quot;c30ae9da-9222-4de5-81fe-fe1ac590fa0f&quot;,
+  &quot;type&quot;: &quot;letter-of-guarantee-request-cancelled&quot;,
+  &quot;claimNumber&quot;: &quot;EXAMPLE3&quot;,
+  &quot;data&quot;: {}
+}
+</code></p>
+</blockquote>
+
+<p>This activity type is added to the feed whenever a letter of guarantee request is cancelled for a claim.</p>
+<h2 id='order-created'>order-created</h2>
+<blockquote>
+<p>order-created example object
+<code>json
+{
+  &quot;activityId&quot;: &quot;fed62fa0-c048-46b5-b994-6e3e69fb0f37&quot;,
+  &quot;createdAt&quot;: &quot;2021-01-08T22:03:09.598Z&quot;,
+  &quot;claimId&quot;: &quot;c30ae9da-9222-4de5-81fe-fe1ac590fa0f&quot;,
+  &quot;type&quot;: &quot;order-created&quot;,
+  &quot;claimNumber&quot;: &quot;EXAMPLE3&quot;,
+  &quot;data&quot;: {
+    &quot;orderId&quot;: &quot;24907dea-2bd2-4547-bae6-8305b4256256&quot;,
+    &quot;orderType&quot;: &quot;Copy of Title&quot;
+  }
+}
+</code></p>
+</blockquote>
+
+<p>This activity type is added to the feed whenever an order is created for a claim.</p>
+<h2 id='order-cancelled'>order-cancelled</h2>
+<blockquote>
+<p>order-cancelled example object
+<code>json
+{
+  &quot;activityId&quot;: &quot;fed62fa0-c048-46b5-b994-6e3e69fb0f37&quot;,
+  &quot;createdAt&quot;: &quot;2021-01-08T22:03:09.598Z&quot;,
+  &quot;claimId&quot;: &quot;c30ae9da-9222-4de5-81fe-fe1ac590fa0f&quot;,
+  &quot;type&quot;: &quot;order-cancelled&quot;,
+  &quot;claimNumber&quot;: &quot;EXAMPLE3&quot;,
+  &quot;data&quot;: {
+    &quot;orderId&quot;: &quot;24907dea-2bd2-4547-bae6-8305b4256256&quot;
+  }
+}
+</code></p>
+</blockquote>
+
+<p>This activity type is added to the feed whenever an order is cancelled for a claim.</p>
+<h2 id='order-fulfilled'>order-fulfilled</h2>
+<blockquote>
+<p>order-fulfilled example object
+<code>json
+{
+  &quot;activityId&quot;: &quot;fed62fa0-c048-46b5-b994-6e3e69fb0f37&quot;,
+  &quot;createdAt&quot;: &quot;2021-01-08T22:03:09.598Z&quot;,
+  &quot;claimId&quot;: &quot;c30ae9da-9222-4de5-81fe-fe1ac590fa0f&quot;,
+  &quot;type&quot;: &quot;order-fulfilled&quot;,
+  &quot;claimNumber&quot;: &quot;EXAMPLE3&quot;,
+  &quot;data&quot;: {
+    &quot;orderId&quot;: &quot;24907dea-2bd2-4547-bae6-8305b4256256&quot;,
+    &quot;orderType&quot;: &quot;Copy of Title&quot;,
+    &quot;documentUrl&quot;: &quot;https://exapi.lossexpress.com/documents/555ae9da-9222-4de5-81fe-fe1ac590fa0f&quot;
+  }
+}
+</code></p>
+</blockquote>
+
+<p>This activity type is added to the feed whenever an order is fulfilled for a claim. If the order utilizes a document, it can be accessed via the <code>documentUrl</code>.</p>
+<h2 id='order-updated'>order-updated</h2>
+<blockquote>
+<p>order-updated example object
+<code>json
+{
+  &quot;activityId&quot;: &quot;fed62fa0-c048-46b5-b994-6e3e69fb0f37&quot;,
+  &quot;createdAt&quot;: &quot;2021-01-08T22:03:09.598Z&quot;,
+  &quot;claimId&quot;: &quot;c30ae9da-9222-4de5-81fe-fe1ac590fa0f&quot;,
+  &quot;type&quot;: &quot;order-updated&quot;,
+  &quot;claimNumber&quot;: &quot;EXAMPLE3&quot;,
+  &quot;data&quot;: {
+    &quot;orderId&quot;: &quot;24907dea-2bd2-4547-bae6-8305b4256256&quot;,
+    &quot;nextFollowupDate&quot;: &quot;2021-08-31&quot;
+  }
+}
+</code></p>
+</blockquote>
+
+<p>This activity type is added to the feed whenever an order is updated for a claim.</p>
 <h2 id='payment-sent'>payment-sent</h2>
 <blockquote>
 <p>payment-sent example object</p>
@@ -1026,6 +1174,22 @@ would appear as <code>undefined</code> when parsed.</p>
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This activity type is added to the feed whenever a payoff request is created on a particular claim.</p>
+<h2 id='payoff-request-cancelled'>payoff-request-cancelled</h2>
+<blockquote>
+<p>payoff-request-cancelled example object
+<code>json
+{
+  &quot;activityId&quot;: &quot;fed62fa0-c048-46b5-b994-6e3e69fb0f37&quot;,
+  &quot;createdAt&quot;: &quot;2021-01-08T22:03:09.598Z&quot;,
+  &quot;claimId&quot;: &quot;c30ae9da-9222-4de5-81fe-fe1ac590fa0f&quot;,
+  &quot;type&quot;: &quot;payoff-request-cancelled&quot;,
+  &quot;claimNumber&quot;: &quot;EXAMPLE3&quot;,
+  &quot;data&quot;: {}
+}
+</code></p>
+</blockquote>
+
+<p>This activity type is added to the feed whenever a payoff request is cancelled on a particular claim.</p>
 <h2 id='settlement-counter-added'>settlement-counter-added</h2>
 <blockquote>
 <p>settlement-counter-added example object</p>
@@ -1863,6 +2027,112 @@ Although many fields are not required when creating a claim, please note that ne
 <tr>
 <td>claimId</td>
 <td>The LossExpress UUID associated with the claim</td>
+</tr>
+</tbody></table>
+<h1 id='orders'>Orders</h1><h2 id='fetch-order-types'>Fetch Order Types</h2>
+<blockquote>
+<p>Fetch Order Types Request Example Response Body 
+<code>json
+{
+  &quot;orderTypes&quot;: [&quot;...array of current order types&quot;],
+  &quot;success&quot;: true
+}
+</code></p>
+</blockquote>
+
+<p>This route returns an array of strings, which consist of the current types of orders that can be requested on a claim.</p>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>GET https://exapi.lossexpress.com/claims/order-types</code></p>
+<h2 id='create-order-s-request'>Create Order(s) Request</h2>
+<blockquote>
+<p>Create Order(s) Request Example Response Body:
+<code>json
+{
+  &quot;claimId&quot;: &quot;c30ae9da-9222-4de5-81fe-fe1ac590fa0f&quot;,
+  &quot;orders&quot;: [
+    {
+      &quot;orderId&quot;: &quot;3e8c38f3-f4ef-4414-88da-1793d25ef6f0&quot;, 
+      &quot;type&quot;: &quot;Repo Affidavit&quot;
+    }, 
+    {
+      &quot;orderId&quot;: &quot;77462941-7b6c-4bd0-9749-588c32654864&quot;,
+      &quot;type&quot;: &quot;Copy of Title&quot;
+    }
+  ],
+  &quot;success&quot;: true
+}
+</code></p>
+</blockquote>
+
+<p>This route will create a new order on a claim. </p>
+<h3 id='http-request-2'>HTTP Request</h3>
+<p><code>POST https://exapi.lossexpress.com/claims/{claimId}/orders</code></p>
+<h3 id='url-parameters'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>claimId</td>
+<td>The LossExpress UUID associated with the claim</td>
+</tr>
+</tbody></table>
+<h3 id='request-body'>Request Body</h3>
+<p>This route accepts a JSON payload of an object comprising of:</p>
+
+<table><thead>
+<tr>
+<th>Body Parameter</th>
+<th>Description</th>
+<th>Required?</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>types</td>
+<td>An array containing strings with types of orders to be created</td>
+<td>Y</td>
+</tr>
+</tbody></table>
+<h2 id='cancel-order-s-request'>Cancel Order(s) Request</h2>
+<blockquote>
+<p>Cancel Order(s) Request Example Response Body:
+<code>json
+{
+  &quot;claimId&quot;: &quot;c30ae9da-9222-4de5-81fe-fe1ac590fa0f&quot;,
+  &quot;success&quot;: true
+}
+</code></p>
+</blockquote>
+<h3 id='http-request-3'>HTTP Request</h3>
+<p><code>DELETE https://exapi.lossexpress.com/claims/{claimId}/cancel-orders</code></p>
+<h3 id='url-parameters-2'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>claimId</td>
+<td>The LossExpress UUID associated with the claim</td>
+</tr>
+</tbody></table>
+<h3 id='request-body-2'>Request Body</h3>
+<p>This route accepts a JSON payload of an object comprising of:</p>
+
+<table><thead>
+<tr>
+<th>Body Parameter</th>
+<th>Description</th>
+<th>Required?</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>orderIds</td>
+<td>An array containing orderIds of orders to be cancelled</td>
+<td>Y</td>
 </tr>
 </tbody></table>
 <h1 id='payments'>Payments</h1><h2 id='acknowledge-payment-sent'>Acknowledge Payment Sent</h2>
