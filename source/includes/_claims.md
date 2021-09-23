@@ -23,6 +23,7 @@
       "type": "settlement breakdown & valuation report"
     }
   ],
+  "externalId": "COO-30022",
   "financeType": "Retail",
   "insurerType": "First Party",
   "lenderName": "Test Lender",
@@ -95,6 +96,7 @@ createdAt | The timestamp the claim was created in the system
 dateOfLoss | The date the loss occurred
 deductible | The current deductible for the payoff
 documents | An array of Document objects
+externalId | A string that can contain any identifier desired; not used by LossExpress, but passed on all claim activities for easier handling. There are no unique checks on this field.
 financeType | Either "Retail" or "Lease"
 insurerType | Either "First Party" or "Third Party"
 lenderName | The lender's name
@@ -169,6 +171,7 @@ causeOfLoss | The cause of loss listed on the claim. These causes can be one of 
 claimNumber | The claim number as noted by the carrier | Y
 dateOfLoss | The date the loss occurred | N
 deductible | The current deductible for the payoff | N
+externalId | A string that can contain any identifier desired; not used by LossExpress, but passed on all claim activities for easier handling. There are no unique checks on this field. | N
 financeType | Either "Retail" or "Lease" | Y
 insurerType | Either "First Party" or "Third Party" | N
 lenderName | The lender's name | Y (if lenderId not passed)
@@ -224,6 +227,7 @@ causeOfLoss | The cause of loss listed on the claim. These causes can be one of 
 claimNumber | The claim number as noted by the carrier | N
 dateOfLoss | The date the loss occurred | N
 deductible | The current deductible for the payoff | N
+externalId | A string that can contain any identifier desired; not used by LossExpress, but passed on all claim activities for easier handling. There are no unique checks on this field. | N
 financeType | Either "Retail" or "Lease" | N
 insurerType | Either "First Party" or "Third Party" | N
 lenderId | The LossExpress UUID for the lender | N

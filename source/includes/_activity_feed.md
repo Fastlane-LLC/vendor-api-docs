@@ -96,6 +96,7 @@ settlement-counter-updated | The settlement counter is either accepted or disput
   "claimId": "c30ae9da-9222-4de5-81fe-fe1ac590fa0f",
   "type": "account-number-viewed",
   "claimNumber": "EXAMPLE1",
+  "externalId": "COO-30022",
   "data": {
     "viewedByLossExpress": true
   }
@@ -116,6 +117,7 @@ This activity type will appear in the feed whenever an account number is viewed 
   "claimId": "c30ae9da-9222-4de5-81fe-fe1ac590fa0f",
   "type": "call-made",
   "claimNumber": "EXAMPLE2",
+  "externalId": "COO-30022",
   "data": {
     "callLength": 30 // in minutes
   }
@@ -135,6 +137,7 @@ This activity type will appear in the feed whenever a call was made on behalf of
   "claimId": "c30ae9da-9222-4de5-81fe-fe1ac590fa0f",
   "type": "claim-created",
   "claimNumber": "EXAMPLE3",
+  "externalId": "COO-30022",
   "data": {
     "accountNumber": "TEST-AN",
     "adjusterName": "Mike Mclaren",
@@ -184,6 +187,7 @@ If desired, we do give carriers the ability to not have account numbers added to
   "claimId": "c30ae9da-9222-4de5-81fe-fe1ac590fa0f",
   "type": "claim-updated",
   "claimNumber": "EXAMPLE3",
+  "externalId": "COO-30022",
   "data": {
     "update": { // contains the updated information
       "accountNumber": "TEST-AN1"
@@ -216,6 +220,7 @@ Note that this activity type could be triggered by actions made by LossExpress. 
   "claimId": "c30ae9da-9222-4de5-81fe-fe1ac590fa0f",
   "type": "direct-message-added",
   "claimNumber": "EXAMPLE3",
+  "externalId": "COO-30022",
   "data": {
     "sentByLossExpress": true,
     "message": "Settlement amount appears to differ from documents. Please update.",
@@ -231,6 +236,7 @@ Note that this activity type could be triggered by actions made by LossExpress. 
   "claimId": "c30ae9da-9222-4de5-81fe-fe1ac590fa0f",
   "type": "direct-message-added",
   "claimNumber": "EXAMPLE3",
+  "externalId": "COO-30022",
   "data": {
     "sentByLossExpress": false,
     "message": "The LoG looks to have the wrong settlement amount, please get an LoG with the proper amount. Thanks!",
@@ -252,6 +258,7 @@ This activity type will appear in the feed whenever a direct message is added to
   "claimId": "c30ae9da-9222-4de5-81fe-fe1ac590fa0f",
   "type": "document-added",
   "claimNumber": "EXAMPLE3",
+  "externalId": "COO-30022",
   "data": {
     "type": "settlement breakdown",
     "documentUrl": "https://exapi.lossexpress.com/documents/555ae9da-9222-4de5-81fe-fe1ac590fa0f"
@@ -274,6 +281,7 @@ This activity type will appear in the feed whenever a document has been added to
   "claimId": "c30ae9da-9222-4de5-81fe-fe1ac590fa0f",
   "type": "document-sent-to-lender",
   "claimNumber": "EXAMPLE3",
+  "externalId": "COO-30022",
   "data": {
     "documentUrl": "https://exapi.lossexpress.com/documents/555ae9da-9222-4de5-81fe-fe1ac590fa0f"
   }
@@ -293,6 +301,7 @@ This activity type is added to the feed whenever a document is sent by LossExpre
   "claimId": "c30ae9da-9222-4de5-81fe-fe1ac590fa0f",
   "type": "letter-of-guarantee-added",
   "claimNumber": "EXAMPLE3",
+  "externalId": "COO-30022",
   "data": {
     "documentUrl": "https://exapi.lossexpress.com/documents/555ae9da-9222-4de5-81fe-fe1ac590fa0f"
   }
@@ -314,6 +323,7 @@ This activity type is added to the feed whenever a letter of guarantee is added 
   "claimId": "c30ae9da-9222-4de5-81fe-fe1ac590fa0f",
   "type": "letter-of-guarantee-request-created",
   "claimNumber": "EXAMPLE3",
+  "externalId": "COO-30022",
   "data": {
     "estimatedResponseTime": "2021-01-20T22:03:09.598Z"
   }
@@ -336,6 +346,7 @@ Note that although we _typically_ request letters of guarantee whenever we reach
   "claimId": "c30ae9da-9222-4de5-81fe-fe1ac590fa0f",
   "type": "letter-of-guarantee-request-cancelled",
   "claimNumber": "EXAMPLE3",
+  "externalId": "COO-30022",
   "data": {}
 }
 ```
@@ -352,6 +363,7 @@ This activity type is added to the feed whenever a letter of guarantee request i
   "claimId": "c30ae9da-9222-4de5-81fe-fe1ac590fa0f",
   "type": "order-created",
   "claimNumber": "EXAMPLE3",
+  "externalId": "COO-30022",
   "data": {
     "orderId": "24907dea-2bd2-4547-bae6-8305b4256256",
     "orderType": "Copy of Title"
@@ -371,6 +383,7 @@ This activity type is added to the feed whenever an order is created for a claim
   "claimId": "c30ae9da-9222-4de5-81fe-fe1ac590fa0f",
   "type": "order-cancelled",
   "claimNumber": "EXAMPLE3",
+  "externalId": "COO-30022",
   "data": {
     "orderId": "24907dea-2bd2-4547-bae6-8305b4256256"
   }
@@ -409,6 +422,7 @@ This activity type is added to the feed whenever an order is fulfilled for a cla
   "claimId": "c30ae9da-9222-4de5-81fe-fe1ac590fa0f",
   "type": "order-updated",
   "claimNumber": "EXAMPLE3",
+  "externalId": "COO-30022",
   "data": {
     "orderId": "24907dea-2bd2-4547-bae6-8305b4256256",
     "nextFollowupDate": "2021-08-31"
@@ -428,6 +442,7 @@ This activity type is added to the feed whenever an order is updated for a claim
   "claimId": "c30ae9da-9222-4de5-81fe-fe1ac590fa0f",
   "type": "payment-sent",
   "claimNumber": "EXAMPLE3",
+  "externalId": "COO-30022",
   "data": {
     "checkAmount": 20000,
     "sentAt": "2021-01-08T22:03:09.598Z",
@@ -459,6 +474,7 @@ This activity type is added to the feed whenever acknowledgement that payment ha
   "claimId": "c30ae9da-9222-4de5-81fe-fe1ac590fa0f",
   "type": "payoff-data-added",
   "claimNumber": "EXAMPLE3",
+  "externalId": "COO-30022",
   "data": {
     "payoffAmount": 10222.33,
     "perDiem": 2.3,
@@ -502,6 +518,7 @@ This activity type is added to the feed whenever payoff data is added to a claim
   "claimId": "c30ae9da-9222-4de5-81fe-fe1ac590fa0f",
   "type": "payoff-request-created",
   "claimNumber": "EXAMPLE3",
+  "externalId": "COO-30022",
   "data": {}
 }
 ```
@@ -517,6 +534,7 @@ This activity type is added to the feed whenever a payoff request is created on 
   "claimId": "c30ae9da-9222-4de5-81fe-fe1ac590fa0f",
   "type": "payoff-request-cancelled",
   "claimNumber": "EXAMPLE3",
+  "externalId": "COO-30022",
   "data": {}
 }
 ```
@@ -553,6 +571,7 @@ This activity type is added to the feed whenever a settlement counter is added t
   "claimId": "c30ae9da-9222-4de5-81fe-fe1ac590fa0f",
   "type": "settlement-counter-updated",
   "claimNumber": "EXAMPLE3",
+  "externalId": "COO-30022",
   "data": {
     "disputed": true,
     "reasonForDispute": "Vehicle is not missing any options, verified in person."
@@ -569,6 +588,7 @@ This activity type is added to the feed whenever a settlement counter is added t
   "claimId": "c30ae9da-9222-4de5-81fe-fe1ac590fa0f",
   "type": "settlement-counter-updated",
   "claimNumber": "EXAMPLE3",
+  "externalId": "COO-30022",
   "data": {
     "disputed": false,
     "documentUrl": "https://exapi.lossexpress.com/documents/555ae9da-9222-4de5-81fe-fe1ac590fa0f"
