@@ -464,6 +464,9 @@
                   <li>
                     <a href="#cancel-letter-of-guarantee-request" class="toc-h2 toc-link" data-title="Cancel Letter of Guarantee Request">Cancel Letter of Guarantee Request</a>
                   </li>
+                  <li>
+                    <a href="#refresh-letter-of-guarantee-request" class="toc-h2 toc-link" data-title="Refresh Letter of Guarantee Request">Refresh Letter of Guarantee Request</a>
+                  </li>
               </ul>
           </li>
           <li>
@@ -474,6 +477,9 @@
                   </li>
                   <li>
                     <a href="#cancel-payoff-request" class="toc-h2 toc-link" data-title="Cancel Payoff Request">Cancel Payoff Request</a>
+                  </li>
+                  <li>
+                    <a href="#refresh-payoff-request" class="toc-h2 toc-link" data-title="Refresh Payoff Request">Refresh Payoff Request</a>
                   </li>
               </ul>
           </li>
@@ -2040,6 +2046,42 @@ Although many fields are not required when creating a claim, please note that ne
 <td>The LossExpress UUID associated with the claim</td>
 </tr>
 </tbody></table>
+<h2 id='refresh-letter-of-guarantee-request'>Refresh Letter of Guarantee Request</h2>
+<blockquote>
+<p>Refresh Letter of Guarantee Request Example Response Body:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"claimId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c30ae9da-9222-4de5-81fe-fe1ac590fa0f"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"turnAroundTimeEstimate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-08T22:03:09.598Z"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>This route will throw a <code>400: BAD REQUEST</code> if it fails due to lack of information on a claim.</p>
+</blockquote>
+
+<aside class="notice">
+This route is not currently available, but will be available in a future release of LossExpress xAPI.
+</aside>
+
+<p>This route will refresh an existing letter of guarantee request on a claim, notifying our system that vital information has changed and additional work may be required. The letter of guarantee request can be added at any time, but will fail when:</p>
+
+<ul>
+<li>IF documents with type <code>settlement breakdown</code> and <code>valuation report</code> are not available (or a document with type <code>settlement breakdown &amp; valuation report</code>)</li>
+</ul>
+<h3 id='http-request-3'>HTTP Request</h3>
+<p><code>POST https://exapi.lossexpress.com/claims/{claimId}/letter-of-guarantee-request/refresh</code></p>
+<h3 id='url-parameters-3'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>claimId</td>
+<td>The LossExpress UUID associated with the claim</td>
+</tr>
+</tbody></table>
 <h1 id='payoff-requests'>Payoff Requests</h1><h2 id='create-payoff-request'>Create Payoff Request</h2>
 <blockquote>
 <p>Create Payoff Request Example Response Body:</p>
@@ -2090,6 +2132,41 @@ Although many fields are not required when creating a claim, please note that ne
 <h3 id='http-request-2'>HTTP Request</h3>
 <p><code>DELETE https://exapi.lossexpress.com/claims/{claimId}/payoff-request</code></p>
 <h3 id='url-parameters-2'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>claimId</td>
+<td>The LossExpress UUID associated with the claim</td>
+</tr>
+</tbody></table>
+<h2 id='refresh-payoff-request'>Refresh Payoff Request</h2>
+<blockquote>
+<p>Refresh Payoff Request Example Response Body:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"claimId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c30ae9da-9222-4de5-81fe-fe1ac590fa0f"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>This route will throw a <code>400: BAD REQUEST</code> if the payoff request fails due to missing information on the claim.</p>
+</blockquote>
+
+<aside class="notice">
+This route is not currently available, but will be available in a future release of LossExpress xAPI.
+</aside>
+
+<p>This route will refresh a payoff request on a claim, notifying our system that vital information has changed and additional work may be required. The request will fail when:</p>
+
+<ul>
+<li>IF documents with type <code>settlement breakdown</code> and <code>valuation report</code> are not available (or a document with type <code>settlement breakdown &amp; valuation report</code>)</li>
+</ul>
+<h3 id='http-request-3'>HTTP Request</h3>
+<p><code>POST https://exapi.lossexpress.com/claims/{claimId}/payoff-request/refresh</code></p>
+<h3 id='url-parameters-3'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
