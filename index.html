@@ -467,6 +467,17 @@
               </ul>
           </li>
           <li>
+            <a href="#payoff-requests" class="toc-h1 toc-link" data-title="Payoff Requests">Payoff Requests</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#create-payoff-request" class="toc-h2 toc-link" data-title="Create Payoff Request">Create Payoff Request</a>
+                  </li>
+                  <li>
+                    <a href="#cancel-payoff-request" class="toc-h2 toc-link" data-title="Cancel Payoff Request">Cancel Payoff Request</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
             <a href="#orders" class="toc-h1 toc-link" data-title="Orders">Orders</a>
               <ul class="toc-list-h2">
                   <li>
@@ -2017,6 +2028,67 @@ Although many fields are not required when creating a claim, please note that ne
 <p>This route will not return an error if a letter of guarantee request has been previously cancelled or completed.</p>
 <h3 id='http-request-2'>HTTP Request</h3>
 <p><code>DELETE https://exapi.lossexpress.com/claims/{claimId}/letter-of-guarantee-request</code></p>
+<h3 id='url-parameters-2'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>claimId</td>
+<td>The LossExpress UUID associated with the claim</td>
+</tr>
+</tbody></table>
+<h1 id='payoff-requests'>Payoff Requests</h1><h2 id='create-payoff-request'>Create Payoff Request</h2>
+<blockquote>
+<p>Create Payoff Request Example Response Body:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"claimId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c30ae9da-9222-4de5-81fe-fe1ac590fa0f"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>This route will throw a <code>400: BAD REQUEST</code> if the payoff request fails due to missing information on the claim.</p>
+</blockquote>
+
+<p>This route will create a payoff request on a claim. The request will fail when:</p>
+
+<ul>
+<li>IF documents with type <code>settlement breakdown</code> and <code>valuation report</code> are not available (or a document with type <code>settlement breakdown &amp; valuation report</code>)</li>
+</ul>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>POST https://exapi.lossexpress.com/claims/{claimId}/payoff-request</code></p>
+<h3 id='url-parameters'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>claimId</td>
+<td>The LossExpress UUID associated with the claim</td>
+</tr>
+</tbody></table>
+<h2 id='cancel-payoff-request'>Cancel Payoff Request</h2>
+<blockquote>
+<p>Cancel Payoff Request Example Response Body:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"claimId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c30ae9da-9222-4de5-81fe-fe1ac590fa0f"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>This route will throw a <code>404: NOT FOUND</code> if a Payoff request is not available on the claim.</p>
+</blockquote>
+
+<p>This route will cancel a payoff request on a claim. This route will return an error if a payoff request has not been added on a claim yet.</p>
+
+<p>This route will not return an error if a payoff request has been previously cancelled or completed.</p>
+<h3 id='http-request-2'>HTTP Request</h3>
+<p><code>DELETE https://exapi.lossexpress.com/claims/{claimId}/payoff-request</code></p>
 <h3 id='url-parameters-2'>URL Parameters</h3>
 <table><thead>
 <tr>
