@@ -6,7 +6,7 @@
 
 ```json
 {
-  "documentUrl": "https://exapi.lossexpress.com/documents/c30ae9da-9222-4de5-81fe-fe1ac590fa0f",
+  "documentUrl": "https://xapi.lossexpress.com/documents/c30ae9da-9222-4de5-81fe-fe1ac590fa0f",
 }
 ```
 
@@ -14,7 +14,7 @@ This route allows for adding documents to claims
 
 ### HTTP Request
 
-`POST https://exapi.lossexpress.com/claims/documents/{claimId}`
+`POST https://xapi.lossexpress.com/claims/documents/{claimId}`
 
 ### Request Body
 

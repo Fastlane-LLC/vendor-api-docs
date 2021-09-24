@@ -34,7 +34,7 @@ lenderName | The name of the lender in LossExpress
   "lenders": [
     ...lender objects,
   ],
-  "requestUrl": "https://exapi.lossexpress.com/lenders?name=Test%20Lender"
+  "requestUrl": "https://xapi.lossexpress.com/lenders?name=Test%20Lender"
 }
 ```
 
@@ -46,7 +46,7 @@ If a lender is not found in our database, simply pass the lender name in place o
 
 ### HTTP Request
 
-`GET https://exapi.lossexpress.com/lenders`
+`GET https://xapi.lossexpress.com/lenders`
 
 ### Query Parameters
 

@@ -19,7 +19,7 @@ This route will create a letter of guarantee request on a claim. The letter of g
 
 ### HTTP Request
 
-`POST https://exapi.lossexpress.com/claims/{claimId}/letter-of-guarantee-request`
+`POST https://xapi.lossexpress.com/claims/{claimId}/letter-of-guarantee-request`
 
 ### URL Parameters
 
@@ -46,7 +46,7 @@ This route will not return an error if a letter of guarantee request has been pr
 
 ### HTTP Request
 
-`DELETE https://exapi.lossexpress.com/claims/{claimId}/letter-of-guarantee-request`
+`DELETE https://xapi.lossexpress.com/claims/{claimId}/letter-of-guarantee-request`
 
 ### URL Parameters
 
@@ -77,7 +77,7 @@ This route will refresh an existing letter of guarantee request on a claim, noti
 
 ### HTTP Request
 
-`POST https://exapi.lossexpress.com/claims/{claimId}/letter-of-guarantee-request/refresh`
+`POST https://xapi.lossexpress.com/claims/{claimId}/letter-of-guarantee-request/refresh`
 
 ### URL Parameters
 

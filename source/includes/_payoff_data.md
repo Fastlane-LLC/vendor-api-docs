@@ -18,7 +18,7 @@ This route will create a payoff request on a claim. The request will fail when:
 
 ### HTTP Request
 
-`POST https://exapi.lossexpress.com/claims/{claimId}/payoff-request`
+`POST https://xapi.lossexpress.com/claims/{claimId}/payoff-request`
 
 ### URL Parameters
 
@@ -45,7 +45,7 @@ This route will not return an error if a payoff request has been previously canc
 
 ### HTTP Request
 
-`DELETE https://exapi.lossexpress.com/claims/{claimId}/payoff-request`
+`DELETE https://xapi.lossexpress.com/claims/{claimId}/payoff-request`
 
 ### URL Parameters
 
@@ -75,7 +75,7 @@ This route will refresh a payoff request on a claim, notifying our system that v
 
 ### HTTP Request
 
-`POST https://exapi.lossexpress.com/claims/{claimId}/payoff-request/refresh`
+`POST https://xapi.lossexpress.com/claims/{claimId}/payoff-request/refresh`
 
 ### URL Parameters
 

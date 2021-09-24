@@ -13,7 +13,7 @@ This route returns an array of strings, which consist of the current types of or
 
 ### HTTP Request
 
-`GET https://exapi.lossexpress.com/claims/order-types`
+`GET https://xapi.lossexpress.com/claims/order-types`
 
 ## Create Order(s) Request
 
@@ -39,7 +39,7 @@ This route will create a new order on a claim.
 
 ### HTTP Request
 
-`POST https://exapi.lossexpress.com/claims/{claimId}/orders`
+`POST https://xapi.lossexpress.com/claims/{claimId}/orders`
 
 ### URL Parameters
 
@@ -68,7 +68,7 @@ types | An array containing strings with types of orders to be created | Y
 
 ### HTTP Request
 
-`DELETE https://exapi.lossexpress.com/claims/{claimId}/cancel-orders`
+`DELETE https://xapi.lossexpress.com/claims/{claimId}/cancel-orders`
 
 ### URL Parameters
 

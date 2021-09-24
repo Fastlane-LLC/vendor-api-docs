@@ -60,7 +60,7 @@ Once a token has been received, every request is expected to have a header that 
 `Authorization: Bearer exampletokenbutreplacewithyourown`
 
 ## HTTP Request
-`POST https://exapi.lossexpress.com/oauth/token`
+`POST https://xapi.lossexpress.com/oauth/token`
 
 This route is for generating OAuth tokens that can be used for all other requests.
 

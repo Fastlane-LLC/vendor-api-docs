@@ -21,7 +21,7 @@ This route will throw an error if there are no settlement counters.
 
 ### HTTP Request
 
-`POST https://exapi.lossexpress.com/claims/{claimId}/settlement-counter`
+`POST https://xapi.lossexpress.com/claims/{claimId}/settlement-counter`
 
 ### URL Parameters
 

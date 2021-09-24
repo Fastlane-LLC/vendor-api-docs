@@ -19,7 +19,7 @@
     {
       "createdAt": "2021-01-08T22:03:09.598Z",
       "updatedAt": "2021-01-08T22:03:09.598Z",
-      "documentUrl": "https://exapi.lossexpress.com/documents/555ae9da-9222-4de5-81fe-fe1ac590fa0f",
+      "documentUrl": "https://xapi.lossexpress.com/documents/555ae9da-9222-4de5-81fe-fe1ac590fa0f",
       "type": "settlement breakdown & valuation report"
     }
   ],
@@ -31,7 +31,7 @@
   "letterOfGuaranteeRequest": {
     "createdAt": "2021-01-08T22:03:09.598Z",
     "updatedAt": "2021-01-08T22:03:09.598Z",
-    "documentUrl": "https://exapi.lossexpress.com/documents/555ae9da-9222-4de5-81fe-fe1ac590fa0f",
+    "documentUrl": "https://xapi.lossexpress.com/documents/555ae9da-9222-4de5-81fe-fe1ac590fa0f",
   },
   "odometer": 39993,
   "ownersName": "Test Owner",
@@ -122,7 +122,7 @@ vin | The Vehicle Identification Number for the vehicle on the claim
 ```json
 {
   "claim": ...claim object,
-  "requestUrl": "https://exapi.lossexpress.com/claims/c30ae9da-9222-4de5-81fe-fe1ac590fa0f"
+  "requestUrl": "https://xapi.lossexpress.com/claims/c30ae9da-9222-4de5-81fe-fe1ac590fa0f"
 }
 ```
 
@@ -130,7 +130,7 @@ This route allows for access to a claim's data in one location.
 
 ### HTTP Request
 
-`GET https://exapi.lossexpress.com/claims/{claimId}`
+`GET https://xapi.lossexpress.com/claims/{claimId}`
 
 ### URL Parameters
 
@@ -154,7 +154,7 @@ This route creates a claim in LossExpress, which can be used to generate request
 
 ### HTTP Request
 
-`POST https://exapi.lossexpress.com/claims`
+`POST https://xapi.lossexpress.com/claims`
 
 ### Request Body
 
@@ -205,7 +205,7 @@ This route allows for updating a claim. It is recommended that you only pass in 
 
 ### HTTP Request
 
-`PUT https://exapi.lossexpress.com/claims/{claimId}`
+`PUT https://xapi.lossexpress.com/claims/{claimId}`
 
 ### URL Parameters
 
@@ -259,7 +259,7 @@ This route allows for searching our claims database for records. This route can 
 
 ### HTTP Request
 
-`GET https://exapi.lossexpress.com/claims`
+`GET https://xapi.lossexpress.com/claims`
 
 ### Query Parameters
 

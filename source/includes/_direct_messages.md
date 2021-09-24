@@ -15,7 +15,7 @@ This route allows for sending a direct message to our Claim Specialists.
 
 ### HTTP Request
 
-`POST https://exapi.lossexpress.com/claims/{claimId}/direct-messages`
+`POST https://xapi.lossexpress.com/claims/{claimId}/direct-messages`
 
 ### URL Parameters
 

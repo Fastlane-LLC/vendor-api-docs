@@ -20,7 +20,7 @@ Carriers with the same business name are treated as the same entity in our syste
 
 ### HTTP Request
 
-`POST https://exapi.lossexpress.com/carriers`
+`POST https://xapi.lossexpress.com/carriers`
 
 ### Request Body
 
@@ -47,4 +47,4 @@ businessName | The name the carrier places on documentation related to claims | 
 
 ### HTTP Request
 
-`GET https://exapi.lossexpress.com/carriers`
+`GET https://xapi.lossexpress.com/carriers`

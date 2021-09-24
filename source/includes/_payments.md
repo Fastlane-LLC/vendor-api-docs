@@ -6,7 +6,7 @@ We offer support for carriers to give us acknowledgement that payment has been s
 
 ### HTTP Request
 
-`POST https://exapi.lossexpress.com/claims/{claimId}/payoff-sent`
+`POST https://xapi.lossexpress.com/claims/{claimId}/payoff-sent`
 
 ### Request Body
 

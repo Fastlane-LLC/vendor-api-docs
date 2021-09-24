@@ -20,7 +20,7 @@ activityId | A GUID uniquely identifying the activity
 
 ```json
 {
-  "requestUrl": "https://exapi.lossexpress.com/activities?createdBefore=2021-01-08T22:03:09.598Z",
+  "requestUrl": "https://xapi.lossexpress.com/activities?createdBefore=2021-01-08T22:03:09.598Z",
   "results": [
     ...array of activity objects
   ],
@@ -38,7 +38,7 @@ This route will allow you to view Activities.
 
 ### HTTP Request
 
-`GET https://exapi.lossexpress.com/activities`
+`GET https://xapi.lossexpress.com/activities`
 
 ### Query Parameters
 
@@ -261,7 +261,7 @@ This activity type will appear in the feed whenever a direct message is added to
   "externalId": "COO-30022",
   "data": {
     "type": "settlement breakdown",
-    "documentUrl": "https://exapi.lossexpress.com/documents/555ae9da-9222-4de5-81fe-fe1ac590fa0f"
+    "documentUrl": "https://xapi.lossexpress.com/documents/555ae9da-9222-4de5-81fe-fe1ac590fa0f"
   }
 }
 ```
@@ -283,7 +283,7 @@ This activity type will appear in the feed whenever a document has been added to
   "claimNumber": "EXAMPLE3",
   "externalId": "COO-30022",
   "data": {
-    "documentUrl": "https://exapi.lossexpress.com/documents/555ae9da-9222-4de5-81fe-fe1ac590fa0f"
+    "documentUrl": "https://xapi.lossexpress.com/documents/555ae9da-9222-4de5-81fe-fe1ac590fa0f"
   }
 }
 ```
@@ -303,7 +303,7 @@ This activity type is added to the feed whenever a document is sent by LossExpre
   "claimNumber": "EXAMPLE3",
   "externalId": "COO-30022",
   "data": {
-    "documentUrl": "https://exapi.lossexpress.com/documents/555ae9da-9222-4de5-81fe-fe1ac590fa0f"
+    "documentUrl": "https://xapi.lossexpress.com/documents/555ae9da-9222-4de5-81fe-fe1ac590fa0f"
   }
 }
 ```
@@ -405,7 +405,7 @@ This activity type is added to the feed whenever an order is cancelled for a cla
   "data": {
     "orderId": "24907dea-2bd2-4547-bae6-8305b4256256",
     "orderType": "Copy of Title",
-    "documentUrl": "https://exapi.lossexpress.com/documents/555ae9da-9222-4de5-81fe-fe1ac590fa0f"
+    "documentUrl": "https://xapi.lossexpress.com/documents/555ae9da-9222-4de5-81fe-fe1ac590fa0f"
   }
 }
 ```
@@ -553,7 +553,7 @@ This activity type is added to the feed whenever a payoff request is cancelled o
   "claimNumber": "EXAMPLE3",
   "data": {
     "description": "missing options",
-    "documentUrl": "https://exapi.lossexpress.com/documents/555ae9da-9222-4de5-81fe-fe1ac590fa0f"
+    "documentUrl": "https://xapi.lossexpress.com/documents/555ae9da-9222-4de5-81fe-fe1ac590fa0f"
   }
 }
 ```
@@ -591,7 +591,7 @@ This activity type is added to the feed whenever a settlement counter is added t
   "externalId": "COO-30022",
   "data": {
     "disputed": false,
-    "documentUrl": "https://exapi.lossexpress.com/documents/555ae9da-9222-4de5-81fe-fe1ac590fa0f"
+    "documentUrl": "https://xapi.lossexpress.com/documents/555ae9da-9222-4de5-81fe-fe1ac590fa0f"
   }
 }
 ```
