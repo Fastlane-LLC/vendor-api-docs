@@ -1,5 +1,61 @@
 # Errors
 
+> 400 Bad Request Example Error Response:
+
+```json
+{
+  "statusCode": 400,
+  "error": "Bad Request",
+  "message": "vin is required",
+  "validation": {
+    "errors": [
+      {
+        "key": [
+          "vin"
+        ],
+        "path": [
+          "vin"
+        ],
+        "message": "vin is required",
+        "type": "any",
+        "constraint": "required",
+        "label": "vin"
+      }
+    ]
+  }
+}
+```
+
+> 401 Auth Token Example Error Response:
+
+```json
+{
+  "statusCode": 401,
+  "error": "Unauthorized",
+  "message": "The provided token has expired."
+}
+```
+
+> 403 Forbidden Example Error Response:
+
+```json
+{
+  "statusCode": 403,
+  "error": "Forbidden",
+  "message": "This claim is not available during testing."
+}
+```
+
+> 500 Internal Server Error Example Error Response:
+
+```json
+{
+  "statusCode": 500,
+  "error": "Internal Server Error",
+  "message": "An internal server error occurred"
+}
+```
+
 Our Vendor API uses the following error codes:
 
 Error Code | Meaning

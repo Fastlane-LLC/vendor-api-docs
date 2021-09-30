@@ -13,6 +13,16 @@
 
 > This route will throw a `404: NOT FOUND` if there are no settlement counters present on the claim.
 
+> Example Error Response:
+
+```json
+{
+  "statusCode": 404,
+  "error": "Not Found",
+  "message": "A settlement counter does not exist for this claim."
+}
+```
+
 This route allows for either accepting or disputing a settlement counter presented by a lender.
 
 To accept a counter, you must send a new settlement breakdown document. To dispute a counter, you must set `dispute` to true and provide a `reasonForDispute`.

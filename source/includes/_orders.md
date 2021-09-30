@@ -1,7 +1,9 @@
 # Orders
 
 ## Fetch Order Types
+
 > Fetch Order Types Request Example Response Body 
+
 ```json
 {
   "orderTypes": ["...array of current order types"],
@@ -18,6 +20,7 @@ This route returns an array of strings, which consist of the current types of or
 ## Create Order(s) Request
 
 > Create Order(s) Request Example Response Body:
+
 ```json
 {
   "claimId": "c30ae9da-9222-4de5-81fe-fe1ac590fa0f",
@@ -59,6 +62,7 @@ types | An array containing strings with types of orders to be created | Y
 ## Cancel Order(s) Request
 
 > Cancel Order(s) Request Example Response Body:
+
 ```json
 {
   "claimId": "c30ae9da-9222-4de5-81fe-fe1ac590fa0f",
