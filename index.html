@@ -2030,8 +2030,15 @@ Although many fields are not required when creating a claim, please note that ne
 </span></code></pre></div>
 <blockquote>
 <p>This route will throw a <code>400: BAD REQUEST</code> if it fails due to lack of information on a claim.</p>
-</blockquote>
 
+<p>Create Letter of Guarantee Request Example Error Response:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"statusCode"</span><span class="p">:</span><span class="w"> </span><span class="mi">400</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"error"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bad Request"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Claim is missing one or more required documents: 'settlement breakdown' &amp; 'valuation report'"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
 <p>This route will create a letter of guarantee request on a claim. The letter of guarantee request can be added at any time, but will fail when:</p>
 
 <ul>
@@ -2062,8 +2069,15 @@ Although many fields are not required when creating a claim, please note that ne
 </span></code></pre></div>
 <blockquote>
 <p>This route will throw a <code>404: NOT FOUND</code> if a Letter of Guarantee request is not available on the claim.</p>
-</blockquote>
 
+<p>Cancel Letter of Guarantee Request Example Error Response:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"statusCode"</span><span class="p">:</span><span class="w"> </span><span class="mi">404</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"error"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Not Found"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Letter of Guarantee does not exist for this claim."</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
 <p>This route will cancel a letter of guarantee request on a claim. This route will return an error if a letter of guarantee request has not been added on a claim yet.</p>
 
 <p>This route will not return an error if a letter of guarantee request has been previously cancelled or completed.</p>
@@ -2092,8 +2106,22 @@ Although many fields are not required when creating a claim, please note that ne
 </span></code></pre></div>
 <blockquote>
 <p>This route will throw a <code>400: BAD REQUEST</code> if it fails due to lack of information on a claim.</p>
-</blockquote>
 
+<p>This route will throw a <code>404: NOT FOUND</code> if a Letter of Guarantee request is not available on the claim.</p>
+
+<p>Refresh Letter of Guarantee Request Example Error Responses:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"statusCode"</span><span class="p">:</span><span class="w"> </span><span class="mi">404</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"error"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Not Found"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Letter of Guarantee does not exist for this claim."</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"statusCode"</span><span class="p">:</span><span class="w"> </span><span class="mi">400</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"error"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bad Request"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Claim is missing one or more required documents: 'settlement breakdown' &amp; 'valuation report'"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
 <aside class="notice">
 This route is not currently available, but will be available in a future release of LossExpress xAPI.
 </aside>
@@ -2102,6 +2130,7 @@ This route is not currently available, but will be available in a future release
 
 <ul>
 <li>IF documents with type <code>settlement breakdown</code> and <code>valuation report</code> are not available (or a document with type <code>settlement breakdown &amp; valuation report</code>)</li>
+<li>IF a letter of guarantee request does not exist on a claim</li>
 </ul>
 <h3 id='http-request-3'>HTTP Request</h3>
 <p><code>POST https://xapi.lossexpress.com/claims/{claimId}/letter-of-guarantee-request/refresh</code></p>
@@ -2127,8 +2156,15 @@ This route is not currently available, but will be available in a future release
 </span></code></pre></div>
 <blockquote>
 <p>This route will throw a <code>400: BAD REQUEST</code> if the payoff request fails due to missing information on the claim.</p>
-</blockquote>
 
+<p>Create Payoff Request Example Error Response:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"statusCode"</span><span class="p">:</span><span class="w"> </span><span class="mi">400</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"error"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bad Request"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Claim is missing one or more required documents: 'settlement breakdown' &amp; 'valuation report'"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
 <p>This route will create a payoff request on a claim. The request will fail when:</p>
 
 <ul>
@@ -2159,8 +2195,15 @@ This route is not currently available, but will be available in a future release
 </span></code></pre></div>
 <blockquote>
 <p>This route will throw a <code>404: NOT FOUND</code> if a Payoff request is not available on the claim.</p>
-</blockquote>
 
+<p>Cancel Payoff Request Example Error Response:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"statusCode"</span><span class="p">:</span><span class="w"> </span><span class="mi">404</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"error"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Not Found"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"A payoff request does not exist for this claim."</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
 <p>This route will cancel a payoff request on a claim. This route will return an error if a payoff request has not been added on a claim yet.</p>
 
 <p>This route will not return an error if a payoff request has been previously cancelled or completed.</p>
@@ -2188,8 +2231,22 @@ This route is not currently available, but will be available in a future release
 </span></code></pre></div>
 <blockquote>
 <p>This route will throw a <code>400: BAD REQUEST</code> if the payoff request fails due to missing information on the claim.</p>
-</blockquote>
 
+<p>This route will throw a <code>404: NOT FOUND</code> if a payoff request is not available on the claim.</p>
+
+<p>Refresh Payoff Request Example Error Responses:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"statusCode"</span><span class="p">:</span><span class="w"> </span><span class="mi">404</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"error"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Not Found"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"A payoff request does not exist for this claim."</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"statusCode"</span><span class="p">:</span><span class="w"> </span><span class="mi">400</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"error"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bad Request"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Claim is missing one or more required documents: 'settlement breakdown' &amp; 'valuation report'"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
 <aside class="notice">
 This route is not currently available, but will be available in a future release of LossExpress xAPI.
 </aside>
@@ -2198,6 +2255,7 @@ This route is not currently available, but will be available in a future release
 
 <ul>
 <li>IF documents with type <code>settlement breakdown</code> and <code>valuation report</code> are not available (or a document with type <code>settlement breakdown &amp; valuation report</code>)</li>
+<li>IF a payoff request does not exist on the claim</li>
 </ul>
 <h3 id='http-request-3'>HTTP Request</h3>
 <p><code>POST https://xapi.lossexpress.com/claims/{claimId}/payoff-request/refresh</code></p>
@@ -2215,39 +2273,35 @@ This route is not currently available, but will be available in a future release
 </tbody></table>
 <h1 id='orders'>Orders</h1><h2 id='fetch-order-types'>Fetch Order Types</h2>
 <blockquote>
-<p>Fetch Order Types Request Example Response Body 
-<code>json
-{
-  &quot;orderTypes&quot;: [&quot;...array of current order types&quot;],
-  &quot;success&quot;: true
-}
-</code></p>
+<p>Fetch Order Types Request Example Response Body </p>
 </blockquote>
-
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"orderTypes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"...array of current order types"</span><span class="p">],</span><span class="w">
+  </span><span class="nl">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
 <p>This route returns an array of strings, which consist of the current types of orders that can be requested on a claim.</p>
 <h3 id='http-request'>HTTP Request</h3>
 <p><code>GET https://xapi.lossexpress.com/claims/order-types</code></p>
 <h2 id='create-order-s-request'>Create Order(s) Request</h2>
 <blockquote>
-<p>Create Order(s) Request Example Response Body:
-<code>json
-{
-  &quot;claimId&quot;: &quot;c30ae9da-9222-4de5-81fe-fe1ac590fa0f&quot;,
-  &quot;orders&quot;: [
-    {
-      &quot;orderId&quot;: &quot;3e8c38f3-f4ef-4414-88da-1793d25ef6f0&quot;, 
-      &quot;type&quot;: &quot;Repo Affidavit&quot;
-    }, 
-    {
-      &quot;orderId&quot;: &quot;77462941-7b6c-4bd0-9749-588c32654864&quot;,
-      &quot;type&quot;: &quot;Copy of Title&quot;
-    }
-  ],
-  &quot;success&quot;: true
-}
-</code></p>
+<p>Create Order(s) Request Example Response Body:</p>
 </blockquote>
-
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"claimId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c30ae9da-9222-4de5-81fe-fe1ac590fa0f"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"orders"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"orderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3e8c38f3-f4ef-4414-88da-1793d25ef6f0"</span><span class="p">,</span><span class="w"> 
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Repo Affidavit"</span><span class="w">
+    </span><span class="p">},</span><span class="w"> 
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"orderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"77462941-7b6c-4bd0-9749-588c32654864"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Copy of Title"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
 <p>This route will create a new order on a claim. </p>
 <h3 id='http-request-2'>HTTP Request</h3>
 <p><code>POST https://xapi.lossexpress.com/claims/{claimId}/orders</code></p>
@@ -2281,15 +2335,13 @@ This route is not currently available, but will be available in a future release
 </tbody></table>
 <h2 id='cancel-order-s-request'>Cancel Order(s) Request</h2>
 <blockquote>
-<p>Cancel Order(s) Request Example Response Body:
-<code>json
-{
-  &quot;claimId&quot;: &quot;c30ae9da-9222-4de5-81fe-fe1ac590fa0f&quot;,
-  &quot;success&quot;: true
-}
-</code></p>
+<p>Cancel Order(s) Request Example Response Body:</p>
 </blockquote>
-<h3 id='http-request-3'>HTTP Request</h3>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"claimId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c30ae9da-9222-4de5-81fe-fe1ac590fa0f"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='http-request-3'>HTTP Request</h3>
 <p><code>DELETE https://xapi.lossexpress.com/claims/{claimId}/cancel-orders</code></p>
 <h3 id='url-parameters-2'>URL Parameters</h3>
 <table><thead>
@@ -2372,8 +2424,15 @@ This route is not currently available, but will be available in a future release
 </span></code></pre></div>
 <blockquote>
 <p>This route will throw a <code>404: NOT FOUND</code> if there are no settlement counters present on the claim.</p>
-</blockquote>
 
+<p>Example Error Response:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"statusCode"</span><span class="p">:</span><span class="w"> </span><span class="mi">404</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"error"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Not Found"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"A settlement counter does not exist for this claim."</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
 <p>This route allows for either accepting or disputing a settlement counter presented by a lender.</p>
 
 <p>To accept a counter, you must send a new settlement breakdown document. To dispute a counter, you must set <code>dispute</code> to true and provide a <code>reasonForDispute</code>.</p>
@@ -2420,6 +2479,58 @@ This route is not currently available, but will be available in a future release
 </tr>
 </tbody></table>
 <h1 id='errors'>Errors</h1>
+<blockquote>
+<p>400 Bad Request Example Error Response:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"statusCode"</span><span class="p">:</span><span class="w"> </span><span class="mi">400</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"error"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bad Request"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"vin is required"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"validation"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"errors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"key"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="s2">"vin"</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="nl">"path"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="s2">"vin"</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"vin is required"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"any"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"constraint"</span><span class="p">:</span><span class="w"> </span><span class="s2">"required"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"vin"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>401 Auth Token Example Error Response:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"statusCode"</span><span class="p">:</span><span class="w"> </span><span class="mi">401</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"error"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Unauthorized"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The provided token has expired."</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>403 Forbidden Example Error Response:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"statusCode"</span><span class="p">:</span><span class="w"> </span><span class="mi">403</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"error"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Forbidden"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This claim is not available during testing."</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>500 Internal Server Error Example Error Response:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"statusCode"</span><span class="p">:</span><span class="w"> </span><span class="mi">500</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"error"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Internal Server Error"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"An internal server error occurred"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
 <p>Our Vendor API uses the following error codes:</p>
 
 <table><thead>
