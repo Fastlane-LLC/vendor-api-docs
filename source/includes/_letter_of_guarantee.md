@@ -13,6 +13,16 @@
 
 > This route will throw a `400: BAD REQUEST` if it fails due to lack of information on a claim.
 
+> Create Letter of Guarantee Request Example Error Response:
+
+```json
+{
+  "statusCode": 400,
+  "error": "Bad Request",
+  "message": "Claim is missing one or more required documents: 'settlement breakdown' & 'valuation report'"
+}
+```
+
 This route will create a letter of guarantee request on a claim. The letter of guarantee request can be added at any time, but will fail when:
 
 - IF documents with type `settlement breakdown` and `valuation report` are not available (or a document with type `settlement breakdown & valuation report`)
@@ -39,6 +49,16 @@ claimId | The LossExpress UUID associated with the claim
 ```
 
 > This route will throw a `404: NOT FOUND` if a Letter of Guarantee request is not available on the claim.
+
+> Cancel Letter of Guarantee Request Example Error Response:
+
+```json
+{
+  "statusCode": 404,
+  "error": "Not Found",
+  "message": "Letter of Guarantee does not exist for this claim."
+}
+```
 
 This route will cancel a letter of guarantee request on a claim. This route will return an error if a letter of guarantee request has not been added on a claim yet.
 
@@ -67,6 +87,29 @@ claimId | The LossExpress UUID associated with the claim
 
 > This route will throw a `400: BAD REQUEST` if it fails due to lack of information on a claim.
 
+> This route will throw a `404: NOT FOUND` if a Letter of Guarantee request is not available on the claim.
+
+
+> Refresh Letter of Guarantee Request Example Error Responses:
+
+ ```json
+{
+  "statusCode": 404,
+  "error": "Not Found",
+  "message": "Letter of Guarantee does not exist for this claim."
+}
+```
+
+
+```json
+{
+  "statusCode": 400,
+  "error": "Bad Request",
+  "message": "Claim is missing one or more required documents: 'settlement breakdown' & 'valuation report'"
+}
+```
+
+
 <aside class="notice">
 This route is not currently available, but will be available in a future release of LossExpress xAPI.
 </aside>
@@ -74,6 +117,7 @@ This route is not currently available, but will be available in a future release
 This route will refresh an existing letter of guarantee request on a claim, notifying our system that vital information has changed and additional work may be required. The letter of guarantee request can be added at any time, but will fail when:
 
 - IF documents with type `settlement breakdown` and `valuation report` are not available (or a document with type `settlement breakdown & valuation report`)
+- IF a letter of guarantee request does not exist on a claim
 
 ### HTTP Request
 
