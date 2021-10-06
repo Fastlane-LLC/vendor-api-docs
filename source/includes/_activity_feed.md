@@ -341,6 +341,7 @@ Note that although we _typically_ request letters of guarantee whenever we reach
 ## letter-of-guarantee-request-cancelled
 
 > letter-of-guarantee-request-cancelled example object
+
 ```json
 {
   "activityId": "fed62fa0-c048-46b5-b994-6e3e69fb0f37",
@@ -356,7 +357,9 @@ Note that although we _typically_ request letters of guarantee whenever we reach
 This activity type is added to the feed whenever a letter of guarantee request is cancelled for a claim.
 
 ## lender-alias-verified
+
 > lender-alias-verified example object
+
 ```json
 {
   "activityId": "fed62fa0-c048-46b5-b994-6e3e69fb0f37",
@@ -376,13 +379,15 @@ This activity type is added to the feed whenever a letter of guarantee request i
 This activity type is added to the feed whenever a lender is verified as an alias for an existing lender.
 
 ## new-lender-verified
+
 > new-lender-verified example object
+
 ```json
 {
   "activityId": "fed62fa0-c048-46b5-b994-6e3e69fb0f37",
   "createdAt": "2021-01-08T22:03:09.598Z",
   "claimId": "c30ae9da-9222-4de5-81fe-fe1ac590fa0f",
-  "type": "lender-alias-verified",
+  "type": "new-lender-verified",
   "claimNumber": "EXAMPLE3",
   "externalId": "COO-30022",
   "data": {
@@ -396,6 +401,7 @@ This activity type is added to the feed whenever a lender is verified as a new l
 ## order-created
 
 > order-created example object
+
 ```json
 {
   "activityId": "fed62fa0-c048-46b5-b994-6e3e69fb0f37",
@@ -416,6 +422,7 @@ This activity type is added to the feed whenever an order is created for a claim
 ## order-cancelled
 
 > order-cancelled example object
+
 ```json
 {
   "activityId": "fed62fa0-c048-46b5-b994-6e3e69fb0f37",
@@ -435,6 +442,7 @@ This activity type is added to the feed whenever an order is cancelled for a cla
 ## order-fulfilled
 
 > order-fulfilled example object
+
 ```json
 {
   "activityId": "fed62fa0-c048-46b5-b994-6e3e69fb0f37",
@@ -455,6 +463,7 @@ This activity type is added to the feed whenever an order is fulfilled for a cla
 ## order-updated
 
 > order-updated example object
+
 ```json
 {
   "activityId": "fed62fa0-c048-46b5-b994-6e3e69fb0f37",
