@@ -74,6 +74,8 @@ document-sent-to-lender | A document is sent to a lender
 letter-of-guarantee-added | A letter of guarantee is added to a claim
 letter-of-guarantee-request-created | A letter of guarantee request is created on a claim
 letter-of-guarantee-request-cancelled | A letter of guarantee request on a claim has been cancelled
+lender-alias-verified | A lender has been verified as an alias of an existing lender
+new-lender-verified | A lender has been verified as a new lender to our system
 order-created | A new order has been added to a claim
 order-cancelled | An order on a claim has been cancelled
 order-fulfilled | An order on a claim has been successfully fulfilled
@@ -353,6 +355,44 @@ Note that although we _typically_ request letters of guarantee whenever we reach
 
 This activity type is added to the feed whenever a letter of guarantee request is cancelled for a claim.
 
+## lender-alias-verified
+> lender-alias-verified example object
+```json
+{
+  "activityId": "fed62fa0-c048-46b5-b994-6e3e69fb0f37",
+  "createdAt": "2021-01-08T22:03:09.598Z",
+  "claimId": "c30ae9da-9222-4de5-81fe-fe1ac590fa0f",
+  "type": "lender-alias-verified",
+  "claimNumber": "EXAMPLE3",
+  "externalId": "COO-30022",
+  "data": {
+    "previousLenderId": "4ace4d96-2b7f-425e-a3c7-d162879a792b",
+    "lenderId": "a720ef63-e6f5-4fed-bbf8-0edcd6eb8485",
+    "lenderName": "EXAMPLE NEW LENDER ALIAS"
+  }
+}
+```
+
+This activity type is added to the feed whenever a lender is verified as an alias for an existing lender.
+
+## new-lender-verified
+> new-lender-verified example object
+```json
+{
+  "activityId": "fed62fa0-c048-46b5-b994-6e3e69fb0f37",
+  "createdAt": "2021-01-08T22:03:09.598Z",
+  "claimId": "c30ae9da-9222-4de5-81fe-fe1ac590fa0f",
+  "type": "lender-alias-verified",
+  "claimNumber": "EXAMPLE3",
+  "externalId": "COO-30022",
+  "data": {
+    "lenderId": "a720ef63-e6f5-4fed-bbf8-0edcd6eb8485",
+    "lenderName": "EXAMPLE NEW LENDER"
+  }
+}
+```
+
+This activity type is added to the feed whenever a lender is verified as a new lender to our system.
 ## order-created
 
 > order-created example object
