@@ -372,6 +372,12 @@
                     <a href="#letter-of-guarantee-request-cancelled" class="toc-h2 toc-link" data-title="letter-of-guarantee-request-cancelled">letter-of-guarantee-request-cancelled</a>
                   </li>
                   <li>
+                    <a href="#lender-alias-verified" class="toc-h2 toc-link" data-title="lender-alias-verified">lender-alias-verified</a>
+                  </li>
+                  <li>
+                    <a href="#new-lender-verified" class="toc-h2 toc-link" data-title="new-lender-verified">new-lender-verified</a>
+                  </li>
+                  <li>
                     <a href="#order-created" class="toc-h2 toc-link" data-title="order-created">order-created</a>
                   </li>
                   <li>
@@ -763,6 +769,14 @@ You must replace <code>exampletokenbutreplacewithyourown</code> with the access 
 <td>A letter of guarantee request on a claim has been cancelled</td>
 </tr>
 <tr>
+<td>lender-alias-verified</td>
+<td>A lender has been verified as an alias of an existing lender</td>
+</tr>
+<tr>
+<td>new-lender-verified</td>
+<td>A lender has been verified as a new lender to our system</td>
+</tr>
+<tr>
 <td>order-created</td>
 <td>A new order has been added to a claim</td>
 </tr>
@@ -1029,99 +1043,126 @@ would appear as <code>undefined</code> when parsed.</p>
 <aside class="warning"><code>estimatedResponseTime</code> may not exist on every activity for this type, and is merely an estimate based on _prior_ letter of guarantee request response times for that lender.</aside>
 <h2 id='letter-of-guarantee-request-cancelled'>letter-of-guarantee-request-cancelled</h2>
 <blockquote>
-<p>letter-of-guarantee-request-cancelled example object
-<code>json
-{
-  &quot;activityId&quot;: &quot;fed62fa0-c048-46b5-b994-6e3e69fb0f37&quot;,
-  &quot;createdAt&quot;: &quot;2021-01-08T22:03:09.598Z&quot;,
-  &quot;claimId&quot;: &quot;c30ae9da-9222-4de5-81fe-fe1ac590fa0f&quot;,
-  &quot;type&quot;: &quot;letter-of-guarantee-request-cancelled&quot;,
-  &quot;claimNumber&quot;: &quot;EXAMPLE3&quot;,
-  &quot;externalId&quot;: &quot;COO-30022&quot;,
-  &quot;data&quot;: {}
-}
-</code></p>
+<p>letter-of-guarantee-request-cancelled example object</p>
 </blockquote>
-
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"activityId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fed62fa0-c048-46b5-b994-6e3e69fb0f37"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-08T22:03:09.598Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"claimId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c30ae9da-9222-4de5-81fe-fe1ac590fa0f"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"letter-of-guarantee-request-cancelled"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"claimNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EXAMPLE3"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"externalId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"COO-30022"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
 <p>This activity type is added to the feed whenever a letter of guarantee request is cancelled for a claim.</p>
+<h2 id='lender-alias-verified'>lender-alias-verified</h2>
+<blockquote>
+<p>lender-alias-verified example object</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"activityId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fed62fa0-c048-46b5-b994-6e3e69fb0f37"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-08T22:03:09.598Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"claimId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c30ae9da-9222-4de5-81fe-fe1ac590fa0f"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"lender-alias-verified"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"claimNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EXAMPLE3"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"externalId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"COO-30022"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"previousLenderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4ace4d96-2b7f-425e-a3c7-d162879a792b"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"lenderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a720ef63-e6f5-4fed-bbf8-0edcd6eb8485"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"lenderName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EXAMPLE NEW LENDER ALIAS"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This activity type is added to the feed whenever a lender is verified as an alias for an existing lender.</p>
+<h2 id='new-lender-verified'>new-lender-verified</h2>
+<blockquote>
+<p>new-lender-verified example object</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"activityId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fed62fa0-c048-46b5-b994-6e3e69fb0f37"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-08T22:03:09.598Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"claimId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c30ae9da-9222-4de5-81fe-fe1ac590fa0f"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"new-lender-verified"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"claimNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EXAMPLE3"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"externalId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"COO-30022"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"lenderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a720ef63-e6f5-4fed-bbf8-0edcd6eb8485"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"lenderName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EXAMPLE NEW LENDER"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This activity type is added to the feed whenever a lender is verified as a new lender to our system.</p>
 <h2 id='order-created'>order-created</h2>
 <blockquote>
-<p>order-created example object
-<code>json
-{
-  &quot;activityId&quot;: &quot;fed62fa0-c048-46b5-b994-6e3e69fb0f37&quot;,
-  &quot;createdAt&quot;: &quot;2021-01-08T22:03:09.598Z&quot;,
-  &quot;claimId&quot;: &quot;c30ae9da-9222-4de5-81fe-fe1ac590fa0f&quot;,
-  &quot;type&quot;: &quot;order-created&quot;,
-  &quot;claimNumber&quot;: &quot;EXAMPLE3&quot;,
-  &quot;externalId&quot;: &quot;COO-30022&quot;,
-  &quot;data&quot;: {
-    &quot;orderId&quot;: &quot;24907dea-2bd2-4547-bae6-8305b4256256&quot;,
-    &quot;orderType&quot;: &quot;Copy of Title&quot;
-  }
-}
-</code></p>
+<p>order-created example object</p>
 </blockquote>
-
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"activityId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fed62fa0-c048-46b5-b994-6e3e69fb0f37"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-08T22:03:09.598Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"claimId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c30ae9da-9222-4de5-81fe-fe1ac590fa0f"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"order-created"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"claimNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EXAMPLE3"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"externalId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"COO-30022"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"orderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"24907dea-2bd2-4547-bae6-8305b4256256"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"orderType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Copy of Title"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
 <p>This activity type is added to the feed whenever an order is created for a claim.</p>
 <h2 id='order-cancelled'>order-cancelled</h2>
 <blockquote>
-<p>order-cancelled example object
-<code>json
-{
-  &quot;activityId&quot;: &quot;fed62fa0-c048-46b5-b994-6e3e69fb0f37&quot;,
-  &quot;createdAt&quot;: &quot;2021-01-08T22:03:09.598Z&quot;,
-  &quot;claimId&quot;: &quot;c30ae9da-9222-4de5-81fe-fe1ac590fa0f&quot;,
-  &quot;type&quot;: &quot;order-cancelled&quot;,
-  &quot;claimNumber&quot;: &quot;EXAMPLE3&quot;,
-  &quot;externalId&quot;: &quot;COO-30022&quot;,
-  &quot;data&quot;: {
-    &quot;orderId&quot;: &quot;24907dea-2bd2-4547-bae6-8305b4256256&quot;
-  }
-}
-</code></p>
+<p>order-cancelled example object</p>
 </blockquote>
-
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"activityId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fed62fa0-c048-46b5-b994-6e3e69fb0f37"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-08T22:03:09.598Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"claimId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c30ae9da-9222-4de5-81fe-fe1ac590fa0f"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"order-cancelled"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"claimNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EXAMPLE3"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"externalId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"COO-30022"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"orderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"24907dea-2bd2-4547-bae6-8305b4256256"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
 <p>This activity type is added to the feed whenever an order is cancelled for a claim.</p>
 <h2 id='order-fulfilled'>order-fulfilled</h2>
 <blockquote>
-<p>order-fulfilled example object
-<code>json
-{
-  &quot;activityId&quot;: &quot;fed62fa0-c048-46b5-b994-6e3e69fb0f37&quot;,
-  &quot;createdAt&quot;: &quot;2021-01-08T22:03:09.598Z&quot;,
-  &quot;claimId&quot;: &quot;c30ae9da-9222-4de5-81fe-fe1ac590fa0f&quot;,
-  &quot;type&quot;: &quot;order-fulfilled&quot;,
-  &quot;claimNumber&quot;: &quot;EXAMPLE3&quot;,
-  &quot;data&quot;: {
-    &quot;orderId&quot;: &quot;24907dea-2bd2-4547-bae6-8305b4256256&quot;,
-    &quot;orderType&quot;: &quot;Copy of Title&quot;,
-    &quot;documentUrl&quot;: &quot;https://xapi.lossexpress.com/documents/555ae9da-9222-4de5-81fe-fe1ac590fa0f&quot;
-  }
-}
-</code></p>
+<p>order-fulfilled example object</p>
 </blockquote>
-
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"activityId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fed62fa0-c048-46b5-b994-6e3e69fb0f37"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-08T22:03:09.598Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"claimId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c30ae9da-9222-4de5-81fe-fe1ac590fa0f"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"order-fulfilled"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"claimNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EXAMPLE3"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"orderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"24907dea-2bd2-4547-bae6-8305b4256256"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"orderType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Copy of Title"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"documentUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://xapi.lossexpress.com/documents/555ae9da-9222-4de5-81fe-fe1ac590fa0f"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
 <p>This activity type is added to the feed whenever an order is fulfilled for a claim. If the order utilizes a document, it can be accessed via the <code>documentUrl</code>.</p>
 <h2 id='order-updated'>order-updated</h2>
 <blockquote>
-<p>order-updated example object
-<code>json
-{
-  &quot;activityId&quot;: &quot;fed62fa0-c048-46b5-b994-6e3e69fb0f37&quot;,
-  &quot;createdAt&quot;: &quot;2021-01-08T22:03:09.598Z&quot;,
-  &quot;claimId&quot;: &quot;c30ae9da-9222-4de5-81fe-fe1ac590fa0f&quot;,
-  &quot;type&quot;: &quot;order-updated&quot;,
-  &quot;claimNumber&quot;: &quot;EXAMPLE3&quot;,
-  &quot;externalId&quot;: &quot;COO-30022&quot;,
-  &quot;data&quot;: {
-    &quot;orderId&quot;: &quot;24907dea-2bd2-4547-bae6-8305b4256256&quot;,
-    &quot;nextFollowupDate&quot;: &quot;2021-08-31&quot;
-  }
-}
-</code></p>
+<p>order-updated example object</p>
 </blockquote>
-
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"activityId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fed62fa0-c048-46b5-b994-6e3e69fb0f37"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-08T22:03:09.598Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"claimId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c30ae9da-9222-4de5-81fe-fe1ac590fa0f"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"order-updated"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"claimNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EXAMPLE3"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"externalId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"COO-30022"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"orderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"24907dea-2bd2-4547-bae6-8305b4256256"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"nextFollowupDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-08-31"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
 <p>This activity type is added to the feed whenever an order is updated for a claim.</p>
 <h2 id='payment-sent'>payment-sent</h2>
 <blockquote>
