@@ -54,5 +54,5 @@ Parameter | Description
 --------- | -----------
 integratedPayoffOnly | `true` if only lenders with payoff integrations with LossExpress should be returned
 name | Name being queried against in LossExpress. Must be at least 3 characters long, and must be properly encoded
-
+customerAuthorizationRequired | Queries the lenders based on whether they are required in customer authorization or not. Must be boolean
 
