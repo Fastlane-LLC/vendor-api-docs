@@ -175,6 +175,8 @@ externalId | A string that can contain any identifier desired; not used by LossE
 financeType | Either "Retail" or "Lease" | Y
 insurerType | Either "First Party" or "Third Party" | N
 lenderName | The lender's name | Y (if lenderId not passed)
+lenderPhoneNumber | The lender's phone number | N
+lenderAddress | The lender's address - an object with keys consisting of streetAddress, streetAddress2 (suite #, etc), city, state, zipCode | N
 lenderId | The LossExpress ID for the lender | Y (if lenderName not passed)
 odometer | The mileage on the vehicle associated with the claim | N
 ownersName | The vehicle owner's name | N
