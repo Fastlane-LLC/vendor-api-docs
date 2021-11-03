@@ -449,6 +449,9 @@
             <a href="#documents" class="toc-h1 toc-link" data-title="Documents">Documents</a>
               <ul class="toc-list-h2">
                   <li>
+                    <a href="#document-types" class="toc-h2 toc-link" data-title="Document Types">Document Types</a>
+                  </li>
+                  <li>
                     <a href="#add-document-to-claim" class="toc-h2 toc-link" data-title="Add Document to Claim">Add Document to Claim</a>
                   </li>
               </ul>
@@ -1966,7 +1969,41 @@ Although many fields are not required when creating a claim, please note that ne
 <td>Y</td>
 </tr>
 </tbody></table>
-<h1 id='documents'>Documents</h1><h2 id='add-document-to-claim'>Add Document to Claim</h2>
+<h1 id='documents'>Documents</h1><h2 id='document-types'>Document Types</h2>
+<p>Some documents are required in order to receive a payoff quote. The standard document types for a claim are:</p>
+
+<table><thead>
+<tr>
+<th>Description</th>
+<th>Required</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>settlement breakdown</td>
+<td>Y (if carrier configuration does not allow combined documents)</td>
+</tr>
+<tr>
+<td>valuation report</td>
+<td>Y (if carrier configuration does not allow combined documents)</td>
+</tr>
+<tr>
+<td>valuation report &amp; settlement breakdown</td>
+<td>Y (if carrier configuration allows combined documents)</td>
+</tr>
+<tr>
+<td>cause of loss</td>
+<td>N</td>
+</tr>
+<tr>
+<td>police report</td>
+<td>N</td>
+</tr>
+<tr>
+<td>declaration page</td>
+<td>N</td>
+</tr>
+</tbody></table>
+<h2 id='add-document-to-claim'>Add Document to Claim</h2>
 <blockquote>
 <p>Example Response Body:</p>
 </blockquote>
