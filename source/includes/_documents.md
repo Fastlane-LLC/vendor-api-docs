@@ -2,16 +2,21 @@
 
 ## Document Types
 
-Some documents are required in order to receive a payoff quote. The standard document types for a claim are:
+Some documents are required in order to receive a payoff quote. The accepted (case-insensitive) standard document types for a claim are:
 
 Description | Required
 --------- | -----------
 settlement breakdown | Y (if carrier configuration does not allow combined documents)
 valuation report | Y (if carrier configuration does not allow combined documents)
+total loss evaluation | Y (if valuation report is not added, and carrier configuration does not allow combined documents)
 valuation report & settlement breakdown | Y (if carrier configuration allows combined documents)
 cause of loss | N
+cause of loss statement | N
 police report | N
 declaration page | N
+proof of payment | N
+other | N
+
 
 
 ## Add Document to Claim
