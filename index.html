@@ -1970,7 +1970,7 @@ Although many fields are not required when creating a claim, please note that ne
 </tr>
 </tbody></table>
 <h1 id='documents'>Documents</h1><h2 id='document-types'>Document Types</h2>
-<p>Some documents are required in order to receive a payoff quote. The standard document types for a claim are:</p>
+<p>Some documents are required in order to receive a payoff quote. The accepted (case-insensitive) standard document types for a claim are:</p>
 
 <table><thead>
 <tr>
@@ -1987,6 +1987,10 @@ Although many fields are not required when creating a claim, please note that ne
 <td>Y (if carrier configuration does not allow combined documents)</td>
 </tr>
 <tr>
+<td>total loss evaluation</td>
+<td>Y (if valuation report is not added, and carrier configuration does not allow combined documents)</td>
+</tr>
+<tr>
 <td>valuation report &amp; settlement breakdown</td>
 <td>Y (if carrier configuration allows combined documents)</td>
 </tr>
@@ -1995,11 +1999,23 @@ Although many fields are not required when creating a claim, please note that ne
 <td>N</td>
 </tr>
 <tr>
+<td>cause of loss statement</td>
+<td>N</td>
+</tr>
+<tr>
 <td>police report</td>
 <td>N</td>
 </tr>
 <tr>
 <td>declaration page</td>
+<td>N</td>
+</tr>
+<tr>
+<td>proof of payment</td>
+<td>N</td>
+</tr>
+<tr>
+<td>other</td>
 <td>N</td>
 </tr>
 </tbody></table>
