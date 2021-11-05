@@ -89,7 +89,7 @@ adjusterName | The primary adjuster for the claim
 adjusterEmailAddress | The email address associated with the primary adjuster for the claim
 adjusterPhoneNumber | The phone number associated with the primary adjuster for the claim
 carrierId | The LossExpress UUID associated with the carrier that the claim should be filed under
-causeOfLoss | The cause of loss listed on the claim. These causes can be one of the following: "Single-Vehicle Collision", "Multi-Vehicle Collision", "Wind/Hail", "Fire", "Flood", "Vandalism", "Theft", "Other"
+causeOfLoss | The cause of loss listed on the claim. These causes can be one of the following: "Single-Vehicle Collision", "Multi-Vehicle Collision", "Collision", "Wind/Hail", "Fire", "Flood", "Vandalism", "Theft", "Water", "Other"
 claimId | The LossExpress UUID associated with the claim
 claimNumber | The claim number as noted by the carrier
 createdAt | The timestamp the claim was created in the system
