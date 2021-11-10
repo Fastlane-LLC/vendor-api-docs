@@ -196,7 +196,8 @@ If desired, we do give carriers the ability to not have account numbers added to
     },
     "previous": { // contains the information just prior to update
       "accountNumber": "TEST-AN"
-    }
+    },
+    "updatedByLossExpress": true
   }
 }
 ```
