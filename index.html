@@ -454,6 +454,9 @@
                   <li>
                     <a href="#add-document-to-claim" class="toc-h2 toc-link" data-title="Add Document to Claim">Add Document to Claim</a>
                   </li>
+                  <li>
+                    <a href="#fetch-document" class="toc-h2 toc-link" data-title="Fetch Document">Fetch Document</a>
+                  </li>
               </ul>
           </li>
           <li>
@@ -2049,6 +2052,10 @@ Although many fields are not required when creating a claim, please note that ne
 <td>A brief description of the document (eg, Settlement Breakdown)</td>
 </tr>
 </tbody></table>
+<h2 id='fetch-document'>Fetch Document</h2>
+<p>This route allows for fetching documents from our system as PDFs. Any activity that references a document in our system will include a URL for this request.</p>
+<h3 id='http-request-2'>HTTP Request</h3>
+<p><code>GET https://xapi.lossexpress.com/claims/documents/{documentId}</code></p>
 <h1 id='lenders'>Lenders</h1>
 <blockquote>
 <p>Example Lender Object</p>
