@@ -43,3 +43,13 @@ Parameter | Description
 --------- | -----------
 document | A base64-encoded file string. Acceptable formats: `pdf`, `jpeg`, `jpg`, `tiff`, `gif`, `png`
 description | A brief description of the document (eg, Settlement Breakdown)
+
+
+
+## Fetch Document
+
+This route allows for fetching documents from our system as PDFs. Any activity that references a document in our system will include a URL for this request.
+
+### HTTP Request
+
+`GET https://xapi.lossexpress.com/claims/documents/{documentId}`
