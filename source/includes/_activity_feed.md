@@ -78,7 +78,6 @@ endpoint | The URL that will receive your activity feed data.
   "success": true,
   "statusCode": 200,
   "message": "Webhook endpoint verified, you will now begin receiving activity feed data."
-  }
 }
 ```
 > Note that the result will return a `success: false` object, if your endpoint does not yield a 200.
