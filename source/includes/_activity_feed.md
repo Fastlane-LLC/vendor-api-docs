@@ -56,6 +56,62 @@ activityId | | Show activity types starting from the activity and moving into th
 
 You can only supply `activityId` or `createdBefore` in a request, not both.
 
+# Activity Feed Webhook
+
+For receiving activity feed data via a registered webhook. In order to receive activity feed data through your webhook you will need to submit a URL that will return a http 200 status code. All webhook requests expect a valid auth token.
+
+## Register Webhook
+
+This route is for activating and setting a webhook endpoint. This route takes a JSON object comprising of a valid URL endpoint that will receive your activity feed data.
+
+### HTTP Request
+`POST https://xapi.lossexpress.com/carriers/webhook`
+
+Key | Description
+--- | -----------
+endpoint | The URL that will receive your activity feed data.
+
+> If your endpoint returns a status code of 200, this route returns a success object that looks like this:
+
+```json
+{
+  "success": true,
+  "statusCode": 200,
+  "message": "Webhook endpoint verified, you will now begin receiving activity feed data."
+  }
+}
+```
+> Note that the result will return a `success: false` object, if your endpoint does not yield a 200.
+
+## Fetch Webhook Information
+
+For fetching information about your webhook status and current endpoint.
+
+### HTTP Request
+
+`GET https://xapi.lossexpress.com/carriers/webhook-info`
+
+>This route returns an object with your webhook information that looks like this:
+
+```json
+{
+  "success": true,
+  "webhookInfo": {
+    "endpoint": "https://yourendpointthatreturnsa200.com",
+    "verified": true,
+    "apiKey": "exampleapikey1234"
+  }
+}
+```
+
+## Deactivate Webhook
+
+For deactivating your current webhook, this will not delete your entry and you can turn your webhook back on by using the POST route in the 'Register Webhook' section.
+
+### HTTP Request
+
+`PUT https://xapi.lossexpress.com/carriers/deactivate-webhook`
+
 # Activity Types
 
 ## List of Types
