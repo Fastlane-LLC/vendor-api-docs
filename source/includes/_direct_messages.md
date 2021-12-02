@@ -30,3 +30,19 @@ This route accepts a JSON payload of an object comprising of:
 Body Parameter | Description | Required?
 -------------- | ----------- | ---------
 message | The direct message to be sent to LossExpress | Y
+
+## Embed Direct Messages
+
+This allows for the above Direct Message functionality to be embedded into an iframe and used via UI.
+
+### Iframe Link
+
+`https://{subdomain}.lossexpress.com/direct-messages/{claimId}/{oauthToken}`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+subdomain | The subdomain associated with carrier/vendor
+claimId | The LossExpress UUID associated with the claim
+oauthToken | The token received via secret and clientId
