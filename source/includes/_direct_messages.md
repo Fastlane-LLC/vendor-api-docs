@@ -33,7 +33,7 @@ message | The direct message to be sent to LossExpress | Y
 
 ## Embed Direct Messages
 
-This allows for the above Direct Message functionality to be embedded into an iframe and used via UI.
+This allows for the above Direct Message functionality to be embedded into an iframe, serving the same experience we currently offer via our interface.
 
 ### Iframe Link
 
