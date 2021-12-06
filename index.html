@@ -325,13 +325,24 @@
               </ul>
           </li>
           <li>
-            <a href="#activity-feed" class="toc-h1 toc-link" data-title="Activity Feed">Activity Feed</a>
+            <a href="#activities" class="toc-h1 toc-link" data-title="Activities">Activities</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#activities" class="toc-h2 toc-link" data-title="Activities">Activities</a>
+                    <a href="#fetch-activities-activity-feed" class="toc-h2 toc-link" data-title="Fetch Activities (Activity Feed)">Fetch Activities (Activity Feed)</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#activity-feed-webhook" class="toc-h1 toc-link" data-title="Activity Feed Webhook">Activity Feed Webhook</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#register-webhook" class="toc-h2 toc-link" data-title="Register Webhook">Register Webhook</a>
                   </li>
                   <li>
-                    <a href="#fetch-activities" class="toc-h2 toc-link" data-title="Fetch Activities">Fetch Activities</a>
+                    <a href="#fetch-webhook-information" class="toc-h2 toc-link" data-title="Fetch Webhook Information">Fetch Webhook Information</a>
+                  </li>
+                  <li>
+                    <a href="#deactivate-webhook" class="toc-h2 toc-link" data-title="Deactivate Webhook">Deactivate Webhook</a>
                   </li>
               </ul>
           </li>
@@ -619,8 +630,8 @@ Not all Vendors may have access to all routes or activity types within our Vendo
 <aside class="notice">
 You must replace <code>exampletokenbutreplacewithyourown</code> with the access token provided.
 </aside>
-<h1 id='activity-feed'>Activity Feed</h1><h2 id='activities'>Activities</h2>
-<p>LossExpress provides a simple way to view events that have taken place within our system, relevant to an organization’s claims. Our Activity Feed provides access to all scoped activities while allowing for a large variety of filtering options to suit any organization’s needs. One of our core tenants at LossExpress is transparency, so you may find that we provide access to <em>too many</em> activities. Feel free to use only what’s important to your organization!</p>
+<h1 id='activities'>Activities</h1>
+<p>LossExpress provides a simple way to view events that have taken place within our system, relevant to an organization’s claims. We currently allow for two different methods for keeping up with the activities that can occur on a claim within LossExpress: fetching via our Activity Feed route and directly receiving via our supported webhook.</p>
 
 <p>As a general rule, all Activity objects include the following keys:</p>
 
@@ -655,7 +666,7 @@ You must replace <code>exampletokenbutreplacewithyourown</code> with the access 
 <td>A GUID uniquely identifying the activity</td>
 </tr>
 </tbody></table>
-<h2 id='fetch-activities'>Fetch Activities</h2>
+<h2 id='fetch-activities-activity-feed'>Fetch Activities (Activity Feed)</h2>
 <blockquote>
 <p>This route returns a paginated set of results that looks like this:</p>
 </blockquote>
@@ -675,6 +686,8 @@ You must replace <code>exampletokenbutreplacewithyourown</code> with the access 
 <blockquote>
 <p>Note that the result will return a <code>requestUrl</code> object, which will allow you to perfectly replay the request.</p>
 </blockquote>
+
+<p>Our Activity Feed provides access to all scoped activities while allowing for a large variety of filtering options to suit any organization’s needs. One of our core tenants at LossExpress is transparency, so you may find that we provide access to <em>too many</em> activities. Feel free to use only what’s important to your organization!</p>
 
 <p>This route will allow you to view Activities.</p>
 <h3 id='http-request'>HTTP Request</h3>
@@ -725,6 +738,68 @@ You must replace <code>exampletokenbutreplacewithyourown</code> with the access 
 </tbody></table>
 <h3 id='note'>Note</h3>
 <p>You can only supply <code>activityId</code> or <code>createdBefore</code> in a request, not both.</p>
+<h1 id='activity-feed-webhook'>Activity Feed Webhook</h1>
+<p>If you wish to be notified of activities that occur on your claims, we offer access to system-to-system notifications utilizing a <a href="https://sendgrid.com/blog/whats-webhook/">webhook</a>. Essentially, as activities occur within LossExpress, the system will send out activities to a URL that you designate and control.</p>
+
+<p>A simple workflow example:
+1. Payoff data is added to one of your claims.
+2. If a webhook has been enabled, a <code>payoff-data-added</code> activity will be sent as a <code>POST</code> request to the designated webhook URL.
+3. Your system may now process the activity as needed and responds with a 200 HTTP status code.</p>
+
+<p>In order to receive activity feed data through your webhook you will need to submit a URL that will return a 200 HTTP status code. All webhook requests expect a valid auth token.</p>
+
+<aside class="notice">
+With webhooks, we only send one activity per `POST` request. As an example, three activities that are triggered at the same time within LossExpress would result in three separate requests being made to the designated webhook, one for each activity.
+</aside>
+<h2 id='register-webhook'>Register Webhook</h2>
+<p>This route is for activating and setting a webhook endpoint. This route takes a JSON object comprising of a valid URL endpoint that will receive your activity feed data.</p>
+<h3 id='http-request-2'>HTTP Request</h3>
+<p><code>POST https://xapi.lossexpress.com/carriers/webhook</code></p>
+
+<table><thead>
+<tr>
+<th>Key</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>endpoint</td>
+<td>The URL that will receive your activity feed data.</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>If your endpoint returns a status code of 200, this route returns a success object that looks like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"statusCode"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Webhook endpoint verified, you will now begin receiving activity feed data."</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>Note that the result will return a <code>success: false</code> object, if your endpoint does not yield a 200.</p>
+</blockquote>
+<h2 id='fetch-webhook-information'>Fetch Webhook Information</h2>
+<p>For fetching information about your webhook status and current endpoint.</p>
+<h3 id='http-request-3'>HTTP Request</h3>
+<p><code>GET https://xapi.lossexpress.com/carriers/webhook-info</code></p>
+
+<blockquote>
+<p>This route returns an object with your webhook information that looks like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"webhookInfo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"endpoint"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://yourendpointthatreturnsa200.com"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"verified"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"apiKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"exampleapikey1234"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h2 id='deactivate-webhook'>Deactivate Webhook</h2>
+<p>For deactivating your current webhook, this will not delete your entry and you can turn your webhook back on by using the POST route in the &#39;Register Webhook&#39; section.</p>
+<h3 id='http-request-4'>HTTP Request</h3>
+<p><code>PUT https://xapi.lossexpress.com/carriers/deactivate-webhook</code></p>
 <h1 id='activity-types'>Activity Types</h1><h2 id='list-of-types'>List of Types</h2>
 <p>Below is a list of Activity Types that will be available within the Activity Feed:</p>
 
