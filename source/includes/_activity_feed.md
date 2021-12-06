@@ -548,7 +548,8 @@ This activity type is added to the feed whenever acknowledgement that payment ha
         "state": "TX",
         "zipCode": "75204"
       }
-    }
+    },
+    "documentUrl": "https://xapi.lossexpress.com/documents/555ae9da-9222-4de5-81fe-fe1ac590fa0f"
   }
 }
 ```
