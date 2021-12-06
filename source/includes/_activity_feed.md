@@ -1,8 +1,6 @@
-# Activity Feed
+# Activities
 
-## Activities
-
-LossExpress provides a simple way to view events that have taken place within our system, relevant to an organization’s claims. Our Activity Feed provides access to all scoped activities while allowing for a large variety of filtering options to suit any organization’s needs. One of our core tenants at LossExpress is transparency, so you may find that we provide access to _too many_ activities. Feel free to use only what’s important to your organization!
+LossExpress provides a simple way to view events that have taken place within our system, relevant to an organization’s claims. We currently allow for two different methods for keeping up with the activities that can occur on a claim within LossExpress: fetching via our Activity Feed route and directly receiving via our supported webhook.
 
 As a general rule, all Activity objects include the following keys:
 
@@ -15,7 +13,7 @@ claimNumber | The claim number entered for the claim the Activity occurred on
 data | An object containing relevant information for the Activity
 activityId | A GUID uniquely identifying the activity
 
-## Fetch Activities
+## Fetch Activities (Activity Feed)
 > This route returns a paginated set of results that looks like this:
 
 ```json
@@ -33,6 +31,8 @@ activityId | A GUID uniquely identifying the activity
 }
 ```
 > Note that the result will return a `requestUrl` object, which will allow you to perfectly replay the request.
+
+Our Activity Feed provides access to all scoped activities while allowing for a large variety of filtering options to suit any organization’s needs. One of our core tenants at LossExpress is transparency, so you may find that we provide access to _too many_ activities. Feel free to use only what’s important to your organization!
 
 This route will allow you to view Activities.
 
@@ -55,6 +55,71 @@ activityId | | Show activity types starting from the activity and moving into th
 ### Note
 
 You can only supply `activityId` or `createdBefore` in a request, not both.
+
+# Activity Feed Webhook
+If you wish to be notified of activities that occur on your claims, we offer access to system-to-system notifications utilizing a [webhook](https://sendgrid.com/blog/whats-webhook/). Essentially, as activities occur within LossExpress, the system will send out activities to a URL that you designate and control.
+
+A simple workflow example:
+1. Payoff data is added to one of your claims.
+2. If a webhook has been enabled, a `payoff-data-added` activity will be sent as a `POST` request to the designated webhook URL.
+3. Your system may now process the activity as needed and responds with a 200 HTTP status code.
+
+In order to receive activity feed data through your webhook you will need to submit a URL that will return a 200 HTTP status code. All webhook requests expect a valid auth token.
+
+<aside class="notice">
+With webhooks, we only send one activity per `POST` request. As an example, three activities that are triggered at the same time within LossExpress would result in three separate requests being made to the designated webhook, one for each activity.
+</aside>
+
+## Register Webhook
+
+This route is for activating and setting a webhook endpoint. This route takes a JSON object comprising of a valid URL endpoint that will receive your activity feed data.
+
+### HTTP Request
+`POST https://xapi.lossexpress.com/carriers/webhook`
+
+Key | Description
+--- | -----------
+endpoint | The URL that will receive your activity feed data.
+
+> If your endpoint returns a status code of 200, this route returns a success object that looks like this:
+
+```json
+{
+  "success": true,
+  "statusCode": 200,
+  "message": "Webhook endpoint verified, you will now begin receiving activity feed data."
+}
+```
+> Note that the result will return a `success: false` object, if your endpoint does not yield a 200.
+
+## Fetch Webhook Information
+
+For fetching information about your webhook status and current endpoint.
+
+### HTTP Request
+
+`GET https://xapi.lossexpress.com/carriers/webhook-info`
+
+>This route returns an object with your webhook information that looks like this:
+
+```json
+{
+  "success": true,
+  "webhookInfo": {
+    "endpoint": "https://yourendpointthatreturnsa200.com",
+    "verified": true,
+    "apiKey": "exampleapikey1234"
+  }
+}
+```
+
+## Deactivate Webhook
+
+For deactivating your current webhook, this will not delete your entry and you can turn your webhook back on by using the POST route in the 'Register Webhook' section.
+
+### HTTP Request
+
+`PUT https://xapi.lossexpress.com/carriers/deactivate-webhook`
 
 # Activity Types
 
