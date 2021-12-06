@@ -454,6 +454,9 @@
                   <li>
                     <a href="#create-direct-message" class="toc-h2 toc-link" data-title="Create Direct Message">Create Direct Message</a>
                   </li>
+                  <li>
+                    <a href="#embed-direct-messages" class="toc-h2 toc-link" data-title="Embed Direct Messages">Embed Direct Messages</a>
+                  </li>
               </ul>
           </li>
           <li>
@@ -2047,6 +2050,30 @@ Although many fields are not required when creating a claim, please note that ne
 <td>message</td>
 <td>The direct message to be sent to LossExpress</td>
 <td>Y</td>
+</tr>
+</tbody></table>
+<h2 id='embed-direct-messages'>Embed Direct Messages</h2>
+<p>This allows for the above Direct Message functionality to be embedded into an iframe, serving the same experience we currently offer via our interface.</p>
+<h3 id='iframe-link'>Iframe Link</h3>
+<p><code>https://{subdomain}.lossexpress.com/direct-messages/{claimId}/{oauthToken}</code></p>
+<h3 id='url-parameters-2'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>subdomain</td>
+<td>The subdomain associated with carrier/vendor</td>
+</tr>
+<tr>
+<td>claimId</td>
+<td>The LossExpress UUID associated with the claim</td>
+</tr>
+<tr>
+<td>oauthToken</td>
+<td>The token received via secret and clientId</td>
 </tr>
 </tbody></table>
 <h1 id='documents'>Documents</h1><h2 id='document-types'>Document Types</h2>
