@@ -52,4 +52,4 @@ This route allows for fetching documents from our system as PDFs. Any activity t
 
 ### HTTP Request
 
-`GET https://xapi.lossexpress.com/claims/documents/{documentId}`
+`GET https://xapi.lossexpress.com/documents/{documentId}`
