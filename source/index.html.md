@@ -49,7 +49,7 @@ During testing, you can create claims with these VINs to trigger actions which e
 | 1GCHC29U62E147776 |    Loss Express attaches a document to the claim   |
 | JHMFA36246S006140 | LossExpress sends a document to the claim's lender |
 | JN1CV6AP7CM621670 |   A letter of guarantee is attached to the claim   |
-| 1N4AL3AP8JC231503 |       The lender countered for the settlement      |
+| 1FAHP3EN7BW114135 |       The lender countered for the settlement      |
 
 # Authentication
 
