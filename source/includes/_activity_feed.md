@@ -305,7 +305,8 @@ Note that this activity type could be triggered by actions made by LossExpress. 
   "externalId": "COO-30022",
   "data": {
     "sentByLossExpress": true,
-    "message": "Settlement amount appears to differ from documents. Please update.",
+    "message": "A photo of the odometer reading is required.",
+    "category": "ADDITIONAL INFORMATION REQUIRED (NON-DISPUTE)"
   }
 ```
 
@@ -328,6 +329,19 @@ Note that this activity type could be triggered by actions made by LossExpress. 
 ```
 
 This activity type will appear in the feed whenever a direct message is added to a claim, either by LossExpress or by a carrier user.
+
+When a direct message is sent from LossExpress, you can expect to see a `category` value passed in the activity data. The following values are currently supported:
+
+| Category |
+| -------- |
+| TITLE |
+| ADDITIONAL INFORMATION REQUIRED (NON-DISPUTE) |
+| SETTLEMENT DISPUTE |
+| OWNER RETAINED SETTLEMENT |
+| BANKRUPTCY |
+| CUSTOMER AUTHORIZATION |
+| GENERAL |
+| OTHER |
 
 ## document-added
 
