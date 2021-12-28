@@ -56,6 +56,20 @@ activityId | | Show activity types starting from the activity and moving into th
 
 You can only supply `activityId` or `createdBefore` in a request, not both.
 
+## Trigger Activities (Testing)
+
+This route enables you to trigger a variety of activities that would typically be triggered by actions taken by our claim fulfillment specialists.
+
+### HTTP Request
+
+`POST https://xapi.lossexpress.com/activities/trigger-activity/{claimId}`
+
+### Query Parameters
+
+Parameter | Description
+--------- | ------- | -----------
+activityType | Must be one of: 'direct-message-added', 'document-sent-to-lender', 'letter-of-guarantee-added', 'payoff-data-added', 'claim-updated', 'call-made', 'document-added', 'settlement-counter-added', 'payoff-request-cancelled' |
+
 # Activity Feed Webhook
 If you wish to be notified of activities that occur on your claims, we offer access to system-to-system notifications utilizing a [webhook](https://sendgrid.com/blog/whats-webhook/). Essentially, as activities occur within LossExpress, the system will send out activities to a URL that you designate and control.
 
