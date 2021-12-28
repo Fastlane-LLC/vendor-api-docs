@@ -330,6 +330,9 @@
                   <li>
                     <a href="#fetch-activities-activity-feed" class="toc-h2 toc-link" data-title="Fetch Activities (Activity Feed)">Fetch Activities (Activity Feed)</a>
                   </li>
+                  <li>
+                    <a href="#trigger-activities-testing" class="toc-h2 toc-link" data-title="Trigger Activities (Testing)">Trigger Activities (Testing)</a>
+                  </li>
               </ul>
           </li>
           <li>
@@ -741,6 +744,22 @@ You must replace <code>exampletokenbutreplacewithyourown</code> with the access 
 </tbody></table>
 <h3 id='note'>Note</h3>
 <p>You can only supply <code>activityId</code> or <code>createdBefore</code> in a request, not both.</p>
+<h2 id='trigger-activities-testing'>Trigger Activities (Testing)</h2>
+<p>This route enables you to trigger a variety of activities that would typically be triggered by actions taken by our claim fulfillment specialists.</p>
+<h3 id='http-request-2'>HTTP Request</h3>
+<p><code>POST https://xapi.lossexpress.com/activities/trigger-activity/{claimId}</code></p>
+<h3 id='query-parameters-2'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>activityType</td>
+<td>Must be one of: &#39;direct-message-added&#39;, &#39;document-sent-to-lender&#39;, &#39;letter-of-guarantee-added&#39;, &#39;payoff-data-added&#39;, &#39;claim-updated&#39;, &#39;call-made&#39;, &#39;document-added&#39;, &#39;settlement-counter-added&#39;, &#39;payoff-request-cancelled&#39;</td>
+</tr>
+</tbody></table>
 <h1 id='activity-feed-webhook'>Activity Feed Webhook</h1>
 <p>If you wish to be notified of activities that occur on your claims, we offer access to system-to-system notifications utilizing a <a href="https://sendgrid.com/blog/whats-webhook/">webhook</a>. Essentially, as activities occur within LossExpress, the system will send out activities to a URL that you designate and control.</p>
 
@@ -756,7 +775,7 @@ With webhooks, we only send one activity per `POST` request. As an example, thre
 </aside>
 <h2 id='register-webhook'>Register Webhook</h2>
 <p>This route is for activating and setting a webhook endpoint. This route takes a JSON object comprising of a valid URL endpoint that will receive your activity feed data.</p>
-<h3 id='http-request-2'>HTTP Request</h3>
+<h3 id='http-request-3'>HTTP Request</h3>
 <p><code>POST https://xapi.lossexpress.com/carriers/webhook</code></p>
 
 <table><thead>
@@ -785,7 +804,7 @@ With webhooks, we only send one activity per `POST` request. As an example, thre
 </blockquote>
 <h2 id='fetch-webhook-information'>Fetch Webhook Information</h2>
 <p>For fetching information about your webhook status and current endpoint.</p>
-<h3 id='http-request-3'>HTTP Request</h3>
+<h3 id='http-request-4'>HTTP Request</h3>
 <p><code>GET https://xapi.lossexpress.com/carriers/webhook-info</code></p>
 
 <blockquote>
@@ -801,7 +820,7 @@ With webhooks, we only send one activity per `POST` request. As an example, thre
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div><h2 id='deactivate-webhook'>Deactivate Webhook</h2>
 <p>For deactivating your current webhook, this will not delete your entry and you can turn your webhook back on by using the POST route in the &#39;Register Webhook&#39; section.</p>
-<h3 id='http-request-4'>HTTP Request</h3>
+<h3 id='http-request-5'>HTTP Request</h3>
 <p><code>PUT https://xapi.lossexpress.com/carriers/deactivate-webhook</code></p>
 <h1 id='activity-types'>Activity Types</h1><h2 id='list-of-types'>List of Types</h2>
 <p>Below is a list of Activity Types that will be available within the Activity Feed:</p>
