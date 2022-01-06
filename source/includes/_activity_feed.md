@@ -155,6 +155,7 @@ letter-of-guarantee-request-created | A letter of guarantee request is created o
 letter-of-guarantee-request-cancelled | A letter of guarantee request on a claim has been cancelled
 lender-alias-verified | A lender has been verified as an alias of an existing lender
 new-lender-verified | A lender has been verified as a new lender to our system
+order-attempted | An attempt to fulfill an order has been added to a claim
 order-created | A new order has been added to a claim
 order-cancelled | An order on a claim has been cancelled
 order-fulfilled | An order on a claim has been successfully fulfilled
@@ -515,6 +516,13 @@ This activity type is added to the feed whenever a lender is verified as a new l
 ```
 
 This activity type is added to the feed whenever an attempt on an order is made.
+
+Key | Value
+---- | -------------------
+type | The type of order
+message | The note related to the order attempt
+count | The current number of attempts on the order
+orderId | The specific identification number for the order that was attempted
 
 ## order-created
 
