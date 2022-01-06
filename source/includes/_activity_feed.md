@@ -492,6 +492,30 @@ This activity type is added to the feed whenever a lender is verified as an alia
 ```
 
 This activity type is added to the feed whenever a lender is verified as a new lender to our system.
+
+## order-attempted
+
+> order-attempted example object
+
+```json
+{
+  "activityId": "fed62fa0-c048-46b5-b994-6e3e69fb0f37",
+  "createdAt": "2021-01-08T22:03:09.598Z",
+  "claimId": "c30ae9da-9222-4de5-81fe-fe1ac590fa0f",
+  "type": "order-attempted",
+  "claimNumber": "EXAMPLE3",
+  "externalId": "COO-30022",
+  "data": {
+    "type": "Payment History",
+    "message": "Lender unable to find requested document",
+    "count": 2,
+    "orderId": "93f0983d-5702-4bf4-9728-86d425edd7d5"
+  }
+}
+```
+
+This activity type is added to the feed whenever an attempt on an order is made.
+
 ## order-created
 
 > order-created example object
