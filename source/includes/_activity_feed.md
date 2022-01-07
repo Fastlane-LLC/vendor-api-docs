@@ -155,6 +155,7 @@ letter-of-guarantee-request-created | A letter of guarantee request is created o
 letter-of-guarantee-request-cancelled | A letter of guarantee request on a claim has been cancelled
 lender-alias-verified | A lender has been verified as an alias of an existing lender
 new-lender-verified | A lender has been verified as a new lender to our system
+order-attempted | An attempt to fulfill an order has been added to a claim
 order-created | A new order has been added to a claim
 order-cancelled | An order on a claim has been cancelled
 order-fulfilled | An order on a claim has been successfully fulfilled
@@ -492,6 +493,37 @@ This activity type is added to the feed whenever a lender is verified as an alia
 ```
 
 This activity type is added to the feed whenever a lender is verified as a new lender to our system.
+
+## order-attempted
+
+> order-attempted example object
+
+```json
+{
+  "activityId": "fed62fa0-c048-46b5-b994-6e3e69fb0f37",
+  "createdAt": "2021-01-08T22:03:09.598Z",
+  "claimId": "c30ae9da-9222-4de5-81fe-fe1ac590fa0f",
+  "type": "order-attempted",
+  "claimNumber": "EXAMPLE3",
+  "externalId": "COO-30022",
+  "data": {
+    "type": "Payment History",
+    "message": "Lender unable to find requested document",
+    "count": 2,
+    "orderId": "93f0983d-5702-4bf4-9728-86d425edd7d5"
+  }
+}
+```
+
+This activity type is added to the feed whenever an attempt on an order is made.
+
+Key | Value
+---- | -------------------
+type | The type of order
+message | The note related to the order attempt
+count | The current number of attempts on the order
+orderId | The specific identification number for the order that was attempted
+
 ## order-created
 
 > order-created example object
