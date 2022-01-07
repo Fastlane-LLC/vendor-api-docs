@@ -392,6 +392,9 @@
                     <a href="#new-lender-verified" class="toc-h2 toc-link" data-title="new-lender-verified">new-lender-verified</a>
                   </li>
                   <li>
+                    <a href="#order-attempted" class="toc-h2 toc-link" data-title="order-attempted">order-attempted</a>
+                  </li>
+                  <li>
                     <a href="#order-created" class="toc-h2 toc-link" data-title="order-created">order-created</a>
                   </li>
                   <li>
@@ -880,6 +883,10 @@ With webhooks, we only send one activity per `POST` request. As an example, thre
 <td>A lender has been verified as a new lender to our system</td>
 </tr>
 <tr>
+<td>order-attempted</td>
+<td>An attempt to fulfill an order has been added to a claim</td>
+</tr>
+<tr>
 <td>order-created</td>
 <td>A new order has been added to a claim</td>
 </tr>
@@ -1231,6 +1238,50 @@ would appear as <code>undefined</code> when parsed.</p>
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This activity type is added to the feed whenever a lender is verified as a new lender to our system.</p>
+<h2 id='order-attempted'>order-attempted</h2>
+<blockquote>
+<p>order-attempted example object</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"activityId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fed62fa0-c048-46b5-b994-6e3e69fb0f37"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-08T22:03:09.598Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"claimId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c30ae9da-9222-4de5-81fe-fe1ac590fa0f"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"order-attempted"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"claimNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EXAMPLE3"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"externalId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"COO-30022"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Payment History"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Lender unable to find requested document"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"count"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"orderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"93f0983d-5702-4bf4-9728-86d425edd7d5"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This activity type is added to the feed whenever an attempt on an order is made.</p>
+
+<table><thead>
+<tr>
+<th>Key</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>type</td>
+<td>The type of order</td>
+</tr>
+<tr>
+<td>message</td>
+<td>The note related to the order attempt</td>
+</tr>
+<tr>
+<td>count</td>
+<td>The current number of attempts on the order</td>
+</tr>
+<tr>
+<td>orderId</td>
+<td>The specific identification number for the order that was attempted</td>
+</tr>
+</tbody></table>
 <h2 id='order-created'>order-created</h2>
 <blockquote>
 <p>order-created example object</p>
