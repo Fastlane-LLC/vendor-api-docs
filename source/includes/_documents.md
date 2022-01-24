@@ -42,6 +42,7 @@ This route accepts a JSON payload of an object comprising of:
 Parameter | Description
 --------- | -----------
 document | A base64-encoded file string. Acceptable formats: `pdf`, `jpeg`, `jpg`, `tiff`, `gif`, `png`
+documentUrl | A url that points to a downloadable file of the above formats
 description | A brief description of the document (eg, Settlement Breakdown)
 
 
