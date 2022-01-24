@@ -163,9 +163,9 @@ This route accepts a JSON payload of an object comprising of:
 Body Parameter | Description | Required?
 -------------- | ----------- | ---------
 accountNumber | The customer's account number for the loan associated with the claim | N
-adjusterName	| The primary adjuster for the claim | Y
-adjusterEmailAddress | The email address associated with the primary adjuster for the claim | Y
-adjusterPhoneNumber | The phone number associated with the primary adjuster for the claim | Y
+adjusterName	| The primary adjuster for the claim | N
+adjusterEmailAddress | The email address associated with the primary adjuster for the claim | N
+adjusterPhoneNumber | The phone number associated with the primary adjuster for the claim | N
 carrierId | The GUID of the carrier associated with the claim | Y
 causeOfLoss | The cause of loss listed on the claim. These causes can be one of the following: "Single-Vehicle Collision", "Multi-Vehicle Collision", "Wind/Hail", "Fire", "Flood", "Vandalism", "Theft", "Other" | N
 claimNumber | The claim number as noted by the carrier | Y
