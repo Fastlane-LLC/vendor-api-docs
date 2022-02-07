@@ -106,7 +106,7 @@ To help you verify that webhook requests are valid and come from us, we provide 
 - A `X-LossExpress-Signature` header on every request, which contains an HMAC hash for a string with the structure: `{{ webhook payload }}:{{ clientId }}`
 - An API key that can be used, along with the request payload and your xAPI client ID, to recreate the HMAC
 
-By recreating the HMAC signature and comparing it with the request's `X-LossExpress-Signature` header, you can determine whether the request was generated using the secret API key. As long as you keep the API key secret, matching HMACs indicate that the request is valid and comes from our system.
+By recreating the HMAC hash and comparing it with the request's `X-LossExpress-Signature` header, you can determine whether the request was generated using the secret API key. As long as you keep the API key secret, matching HMACs indicate that the request is valid and comes from our system.
 
 ## Register Webhook
 
