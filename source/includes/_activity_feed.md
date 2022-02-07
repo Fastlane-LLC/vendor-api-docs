@@ -78,14 +78,8 @@ We will only ever send one activity per webhook request. Webhook payloads for an
 </aside>
 
 ### Validating Webhook Payloads
-To help you verify that webhook requests are valid and come from us, we provide the following:
 
-- A `X-LossExpress-Signature` header that contains an HMAC signature for a string with the structure: `{{ webhook payload }}:{{ clientId }}`
-- An API key that can be used, along with the request payload and your xAPI client ID, to recreate the HMAC
-
-By recreating the HMAC signature and comparing it with the request's `X-LossExpress-Signature` header, you can determine whether the request was generated using the secret API key. As long as you keep the API key secret, matching HMACs indicate that the request is valid and comes from our system.
-
-> Example HMAC validation
+> Example HMAC header validation
 
 ```
 const crypto = require('crypto');
@@ -106,6 +100,13 @@ if (generatedHmac === hmacHeader) {
   // Webhook is valid!
 }
 ```
+
+To help you verify that webhook requests are valid and come from us, we provide the following:
+
+- A `X-LossExpress-Signature` header that contains an HMAC signature for a string with the structure: `{{ webhook payload }}:{{ clientId }}`
+- An API key that can be used, along with the request payload and your xAPI client ID, to recreate the HMAC
+
+By recreating the HMAC signature and comparing it with the request's `X-LossExpress-Signature` header, you can determine whether the request was generated using the secret API key. As long as you keep the API key secret, matching HMACs indicate that the request is valid and comes from our system.
 
 ## Register Webhook
 
