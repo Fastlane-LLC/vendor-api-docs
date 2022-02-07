@@ -773,17 +773,8 @@ You must replace <code>exampletokenbutreplacewithyourown</code> with the access 
 We will only ever send one activity per webhook request. Webhook payloads for any given activities will match the activities' data structures as defined in the <a href=https://vendor-docs.lossexpress.com/#activity-types>Activity Types</a> section.
 </aside>
 <h3 id='validating-webhook-payloads'>Validating Webhook Payloads</h3>
-<p>To help you verify that webhook requests are valid and come from us, we provide the following:</p>
-
-<ul>
-<li>A <code>X-LossExpress-Signature</code> header that contains an HMAC signature for a string with the structure: <code>{{ webhook payload }}:{{ clientId }}</code></li>
-<li>An API key that can be used, along with the request payload and your xAPI client ID, to recreate the HMAC</li>
-</ul>
-
-<p>By recreating the HMAC signature and comparing it with the request&#39;s <code>X-LossExpress-Signature</code> header, you can determine whether the request was generated using the secret API key. As long as you keep the API key secret, matching HMACs indicate that the request is valid and comes from our system.</p>
-
 <blockquote>
-<p>Example HMAC validation</p>
+<p>Example HMAC header validation</p>
 </blockquote>
 <div class="highlight"><pre class="highlight plaintext"><code>const crypto = require('crypto');
 
@@ -802,7 +793,16 @@ const generatedHmac = crypto.createHmac('sha256', apiKey)
 if (generatedHmac === hmacHeader) {
   // Webhook is valid!
 }
-</code></pre></div><h2 id='register-webhook'>Register Webhook</h2>
+</code></pre></div>
+<p>To help you verify that webhook requests are valid and come from us, we provide the following:</p>
+
+<ul>
+<li>A <code>X-LossExpress-Signature</code> header that contains an HMAC signature for a string with the structure: <code>{{ webhook payload }}:{{ clientId }}</code></li>
+<li>An API key that can be used, along with the request payload and your xAPI client ID, to recreate the HMAC</li>
+</ul>
+
+<p>By recreating the HMAC signature and comparing it with the request&#39;s <code>X-LossExpress-Signature</code> header, you can determine whether the request was generated using the secret API key. As long as you keep the API key secret, matching HMACs indicate that the request is valid and comes from our system.</p>
+<h2 id='register-webhook'>Register Webhook</h2>
 <p>This endpoint can be used to set your webhook&#39;s URL. A test payload (a <a href="https://vendor-docs.lossexpress.com/#direct-message-added">direct-message-added</a> activity) will be sent to the provided URL, and a response with a 200 status code is expected.</p>
 
 <p>This endpoint also generates an API key secret that can be used to validate incoming payloads. A new API key is generated whenever this endpoint is used, and it can be retrieved anytime via the <a href="https://vendor-docs.lossexpress.com/#fetch-webhook-information">Fetch Webhook Information</a> endpoint.</p>
