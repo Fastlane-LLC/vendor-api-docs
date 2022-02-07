@@ -15,10 +15,6 @@ includes:
   - settlement_counters
   - errors
 
-language_tabs:
-  - js: JavaScript
-  - json:JSON
-
 search: true
 
 code_clipboard: true
