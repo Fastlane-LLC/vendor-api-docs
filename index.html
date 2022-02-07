@@ -801,7 +801,7 @@ if (generatedHmac === hmacHeader) {
 <li>An API key that can be used, along with the request payload and your xAPI client ID, to recreate the HMAC</li>
 </ul>
 
-<p>By recreating the HMAC signature and comparing it with the request&#39;s <code>X-LossExpress-Signature</code> header, you can determine whether the request was generated using the secret API key. As long as you keep the API key secret, matching HMACs indicate that the request is valid and comes from our system.</p>
+<p>By recreating the HMAC hash and comparing it with the request&#39;s <code>X-LossExpress-Signature</code> header, you can determine whether the request was generated using the secret API key. As long as you keep the API key secret, matching HMACs indicate that the request is valid and comes from our system.</p>
 <h2 id='register-webhook'>Register Webhook</h2>
 <p>This endpoint can be used to set your webhook&#39;s URL. A test payload (a <a href="https://vendor-docs.lossexpress.com/#direct-message-added">direct-message-added</a> activity) will be sent to the provided URL, and a response with a 200 status code is expected.</p>
 
