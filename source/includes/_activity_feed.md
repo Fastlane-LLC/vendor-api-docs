@@ -71,22 +71,45 @@ Parameter | Description
 activityType | Must be one of: 'direct-message-added', 'document-sent-to-lender', 'letter-of-guarantee-added', 'payoff-data-added', 'claim-updated', 'call-made', 'document-added', 'settlement-counter-added', 'payoff-request-cancelled' |
 
 # Activity Feed Webhook
-If you wish to be notified of activities that occur on your claims, we offer access to system-to-system notifications utilizing a [webhook](https://sendgrid.com/blog/whats-webhook/). Essentially, as activities occur within LossExpress, the system will send out activities to a URL that you designate and control.
-
-A simple workflow example:
-1. Payoff data is added to one of your claims.
-2. If a webhook has been enabled, a `payoff-data-added` activity will be sent as a `POST` request to the designated webhook URL.
-3. Your system may now process the activity as needed and responds with a 200 HTTP status code.
-
-In order to receive activity feed data through your webhook you will need to submit a URL that will return a 200 HTTP status code. All webhook requests expect a valid auth token.
+If you wish to be notified when activities occur for your claims, we offer real-time notifications via a [webhook](https://sendgrid.com/blog/whats-webhook/). After registering your URL, it will start receiving POST requests whenever activities get generated in our system.
 
 <aside class="notice">
-With webhooks, we only send one activity per `POST` request. As an example, three activities that are triggered at the same time within LossExpress would result in three separate requests being made to the designated webhook, one for each activity.
+We will only ever send one activity per webhook request. Webhook payloads for any given activities will match the activities' data structures as defined in the [Activity Types](https://vendor-docs.lossexpress.com/#activity-types) section.
 </aside>
+
+### Validating Webhook Payloads
+To help you verify that webhook requests are valid and come from us, we provide the following:
+- A `X-LossExpress-Signature` header that contains an HMAC signature for a string with the structure: `{{ webhook payload }}:{{ clientId }}`
+- An API key that can be used, along with the request payload and your xAPI client ID, to recreate the HMAC
+
+By recreating the HMAC signature and comparing it with the request's `X-LossExpress-Signature` header, you can determine whether the request was generated using the secret API key. As long as you keep the API key secret, matching HMACs indicate that the request is valid and comes from our system.
+
+> Example HMAC validation
+```JavaScript
+const crypto = require('crypto');
+
+const apiKey = 'your API key';
+const clientId = 'your client ID';
+
+const hmacHeader = request.headers["X-LossExpress-Signature"];
+const body = request.payload;
+
+const message = `${JSON.stringify(body)}:${clientId}`;
+
+const generatedHmac = crypto.createHmac('sha256', apiKey)
+  .update(message)
+  .digest('hex');
+  
+if (generatedHmac === hmacHeader) {
+  // Webhook is valid!
+}
+```
 
 ## Register Webhook
 
-This route is for activating and setting a webhook endpoint. This route takes a JSON object comprising of a valid URL endpoint that will receive your activity feed data.
+This endpoint can be used to set your webhook's URL. A test payload (a [direct-message-added](https://vendor-docs.lossexpress.com/#direct-message-added) activity) will be sent to the provided URL, and a response with a 200 status code is expected.
+
+This endpoint also generates an API key secret that can be used to validate incoming payloads. A new API key is generated whenever this endpoint is used, and it can be retrieved anytime via the [Fetch Webhook Information](https://vendor-docs.lossexpress.com/#fetch-webhook-information) endpoint.
 
 ### HTTP Request
 `POST https://xapi.lossexpress.com/carriers/webhook`
@@ -101,14 +124,13 @@ endpoint | The URL that will receive your activity feed data.
 {
   "success": true,
   "statusCode": 200,
-  "message": "Webhook endpoint verified, you will now begin receiving activity feed data."
 }
 ```
 > Note that the result will return a `success: false` object, if your endpoint does not yield a 200.
 
 ## Fetch Webhook Information
 
-For fetching information about your webhook status and current endpoint.
+For fetching information about your webhook status, current endpoint, and API key.
 
 ### HTTP Request
 
