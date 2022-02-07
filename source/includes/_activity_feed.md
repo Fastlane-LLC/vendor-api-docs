@@ -85,7 +85,7 @@ To help you verify that webhook requests are valid and come from us, we provide 
 By recreating the HMAC signature and comparing it with the request's `X-LossExpress-Signature` header, you can determine whether the request was generated using the secret API key. As long as you keep the API key secret, matching HMACs indicate that the request is valid and comes from our system.
 
 > Example HMAC validation
-```JavaScript
+```js
 const crypto = require('crypto');
 
 const apiKey = 'your API key';
