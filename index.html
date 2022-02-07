@@ -797,7 +797,7 @@ if (generatedHmac === hmacHeader) {
 <p>To help you verify that webhook requests are valid and come from us, we provide the following:</p>
 
 <ul>
-<li>A <code>X-LossExpress-Signature</code> header on every request, which contains an HMAC signature for a string with the structure: <code>{{ webhook payload }}:{{ clientId }}</code></li>
+<li>A <code>X-LossExpress-Signature</code> header on every request, which contains an HMAC hash for a string with the structure: <code>{{ webhook payload }}:{{ clientId }}</code></li>
 <li>An API key that can be used, along with the request payload and your xAPI client ID, to recreate the HMAC</li>
 </ul>
 
