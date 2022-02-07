@@ -339,6 +339,9 @@
             <a href="#activity-feed-webhook" class="toc-h1 toc-link" data-title="Activity Feed Webhook">Activity Feed Webhook</a>
               <ul class="toc-list-h2">
                   <li>
+                    <a href="#validating-webhook-payloads" class="toc-h2 toc-link" data-title="Validating Webhook Payloads">Validating Webhook Payloads</a>
+                  </li>
+                  <li>
                     <a href="#register-webhook" class="toc-h2 toc-link" data-title="Register Webhook">Register Webhook</a>
                   </li>
                   <li>
@@ -764,20 +767,44 @@ You must replace <code>exampletokenbutreplacewithyourown</code> with the access 
 </tr>
 </tbody></table>
 <h1 id='activity-feed-webhook'>Activity Feed Webhook</h1>
-<p>If you wish to be notified of activities that occur on your claims, we offer access to system-to-system notifications utilizing a <a href="https://sendgrid.com/blog/whats-webhook/">webhook</a>. Essentially, as activities occur within LossExpress, the system will send out activities to a URL that you designate and control.</p>
-
-<p>A simple workflow example:
-1. Payoff data is added to one of your claims.
-2. If a webhook has been enabled, a <code>payoff-data-added</code> activity will be sent as a <code>POST</code> request to the designated webhook URL.
-3. Your system may now process the activity as needed and responds with a 200 HTTP status code.</p>
-
-<p>In order to receive activity feed data through your webhook you will need to submit a URL that will return a 200 HTTP status code. All webhook requests expect a valid auth token.</p>
+<p>If you wish to be notified when activities occur for your claims, we offer real-time notifications via a <a href="https://sendgrid.com/blog/whats-webhook/">webhook</a>. After registering your URL, it will start receiving POST requests whenever activities get generated in our system.</p>
 
 <aside class="notice">
-With webhooks, we only send one activity per `POST` request. As an example, three activities that are triggered at the same time within LossExpress would result in three separate requests being made to the designated webhook, one for each activity.
+We will only ever send one activity per webhook request. Webhook payloads for any given activities will match the activities' data structures as defined in the [Activity Types](https://vendor-docs.lossexpress.com/#activity-types) section.
 </aside>
+<h3 id='validating-webhook-payloads'>Validating Webhook Payloads</h3>
+<p>To help you verify that webhook requests are valid and come from us, we provide the following:
+- A <code>X-LossExpress-Signature</code> header that contains an HMAC signature for a string with the structure: <code>{{ webhook payload }}:{{ clientId }}</code>
+- An API key that can be used, along with the request payload and your xAPI client ID, to recreate the HMAC</p>
+
+<p>By recreating the HMAC signature and comparing it with the request&#39;s <code>X-LossExpress-Signature</code> header, you can determine whether the request was generated using the secret API key. As long as you keep the API key secret, matching HMACs indicate that the request is valid and comes from our system.</p>
+
+<blockquote>
+<p>Example HMAC validation
+```JavaScript
+const crypto = require(&#39;crypto&#39;);</p>
+</blockquote>
+
+<p>const apiKey = &#39;your API key&#39;;
+const clientId = &#39;your client ID&#39;;</p>
+
+<p>const hmacHeader = request.headers[&quot;X-LossExpress-Signature&quot;];
+const body = request.payload;</p>
+
+<p>const message = <code>${JSON.stringify(body)}:${clientId}</code>;</p>
+
+<p>const generatedHmac = crypto.createHmac(&#39;sha256&#39;, apiKey)
+  .update(message)
+  .digest(&#39;hex&#39;);</p>
+
+<p>if (generatedHmac === hmacHeader) {
+  // Webhook is valid!
+}
+```</p>
 <h2 id='register-webhook'>Register Webhook</h2>
-<p>This route is for activating and setting a webhook endpoint. This route takes a JSON object comprising of a valid URL endpoint that will receive your activity feed data.</p>
+<p>This endpoint can be used to set your webhook&#39;s URL. A test payload (a <a href="https://vendor-docs.lossexpress.com/#direct-message-added">direct-message-added</a> activity) will be sent to the provided URL, and a response with a 200 status code is expected.</p>
+
+<p>This endpoint also generates an API key secret that can be used to validate incoming payloads. A new API key is generated whenever this endpoint is used, and it can be retrieved anytime via the <a href="https://vendor-docs.lossexpress.com/#fetch-webhook-information">Fetch Webhook Information</a> endpoint.</p>
 <h3 id='http-request-3'>HTTP Request</h3>
 <p><code>POST https://xapi.lossexpress.com/carriers/webhook</code></p>
 
@@ -799,14 +826,13 @@ With webhooks, we only send one activity per `POST` request. As an example, thre
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
   </span><span class="nl">"statusCode"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Webhook endpoint verified, you will now begin receiving activity feed data."</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <blockquote>
 <p>Note that the result will return a <code>success: false</code> object, if your endpoint does not yield a 200.</p>
 </blockquote>
 <h2 id='fetch-webhook-information'>Fetch Webhook Information</h2>
-<p>For fetching information about your webhook status and current endpoint.</p>
+<p>For fetching information about your webhook status, current endpoint, and API key.</p>
 <h3 id='http-request-4'>HTTP Request</h3>
 <p><code>GET https://xapi.lossexpress.com/carriers/webhook-info</code></p>
 
