@@ -74,7 +74,7 @@ activityType | Must be one of: 'direct-message-added', 'document-sent-to-lender'
 If you wish to be notified when activities occur for your claims, we offer real-time notifications via a [webhook](https://sendgrid.com/blog/whats-webhook/). After registering your URL, it will start receiving POST requests whenever activities get generated in our system.
 
 <aside class="notice">
-We will only ever send one activity per webhook request. Webhook payloads for any given activities will match the activities' data structures as defined in the [Activity Types](https://vendor-docs.lossexpress.com/#activity-types) section.
+We will only ever send one activity per webhook request. Webhook payloads for any given activities will match the activities' data structures as defined in the <a href=https://vendor-docs.lossexpress.com/#activity-types>Activity Types</a> section.
 </aside>
 
 ### Validating Webhook Payloads
