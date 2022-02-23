@@ -332,7 +332,8 @@ Note that this activity type could be triggered by actions made by LossExpress. 
   "data": {
     "sentByLossExpress": true,
     "message": "A photo of the odometer reading is required.",
-    "category": "ADDITIONAL INFORMATION REQUIRED (NON-DISPUTE)"
+    "category": "ADDITIONAL INFORMATION REQUIRED (NON-DISPUTE)",
+    "actionRequired": true
   }
 ```
 
@@ -349,7 +350,8 @@ Note that this activity type could be triggered by actions made by LossExpress. 
   "data": {
     "sentByLossExpress": false,
     "message": "The LoG looks to have the wrong settlement amount, please get an LoG with the proper amount. Thanks!",
-    "sentBy": "User Name"
+    "sentBy": "User Name",
+    "actionRequired": false
   }
 }
 ```
