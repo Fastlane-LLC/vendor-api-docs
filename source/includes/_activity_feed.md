@@ -81,7 +81,7 @@ We will only ever send one activity per webhook request. Webhook payloads for an
 
 > Example HMAC header validation
 
-```
+```js
 const crypto = require('crypto');
 
 const apiKey = 'your API key';
@@ -385,12 +385,17 @@ When a direct message is sent from LossExpress, you can expect to see a `categor
   "externalId": "COO-30022",
   "data": {
     "type": "settlement breakdown",
-    "documentUrl": "https://xapi.lossexpress.com/documents/555ae9da-9222-4de5-81fe-fe1ac590fa0f"
+    "documentUrl": "https://xapi.lossexpress.com/documents/555ae9da-9222-4de5-81fe-fe1ac590fa0f",
+    "sentByLossExpress": false,
+    "sentBy": "John Doe"
   }
 }
 ```
 
 This activity type will appear in the feed whenever a document has been added to a claim.
+
+Please note that <code>sentByLossExpress</code> will be true when a document is attached to the claim by a LossExpress representative, and <code>sentBy</code> will be null.<br/>
+<code>sentByLossExpress</code> will be false when a document is attached to the claim, <code>sentBy</code> will be the user uploading the documents name.
 
 <aside class="warning">Letters of Guarantee added to the claim will not trigger this activity type.</aside>
 
@@ -730,6 +735,7 @@ This activity type is added to the feed whenever a payoff request is created on 
 ## payoff-request-cancelled
 
 > payoff-request-cancelled example object
+
 ```json
 {
   "activityId": "fed62fa0-c048-46b5-b994-6e3e69fb0f37",
