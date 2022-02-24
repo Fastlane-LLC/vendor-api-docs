@@ -394,8 +394,7 @@ When a direct message is sent from LossExpress, you can expect to see a `categor
 
 This activity type will appear in the feed whenever a document has been added to a claim.
 
-Please note that <code>sentByLossExpress</code> will be true when a document is attached to the claim by a LossExpress representative, and <code>sentBy</code> will be null.<br/>
-<code>sentByLossExpress</code> will be false when a document is attached to the claim, <code>sentBy</code> will be the user uploading the documents name.
+Note that when <code>sentByLossexpress</code> is true, this indicates that the document was attached to the claim by LossExpress, not a carrier user, and <code>sentBy</code> will be null.
 
 <aside class="warning">Letters of Guarantee added to the claim will not trigger this activity type.</aside>
 
