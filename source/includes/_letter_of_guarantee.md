@@ -37,6 +37,8 @@ Parameter | Description
 --------- | -----------
 claimId | The LossExpress UUID associated with the claim
 
+<aside class="warning">"turnAroundTimeEstimate" is currently not supported and will return a NULL value for all Letter of Guarantee requests.</aside>
+
 ## Cancel Letter of Guarantee Request
 
 > Cancel Letter of Guarantee Request Example Response Body:

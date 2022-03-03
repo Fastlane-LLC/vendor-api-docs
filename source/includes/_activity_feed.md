@@ -62,7 +62,7 @@ This route enables you to trigger a variety of activities that would typically b
 
 ### HTTP Request
 
-`POST https://xapi.lossexpress.com/activities/trigger-activity/{claimId}`
+`POST https://xapi.lossexpress.com/activities/trigger-activity/{claimId}?activityType={activityType}`
 
 ### Query Parameters
 
@@ -166,31 +166,31 @@ For deactivating your current webhook, this will not delete your entry and you c
 
 Below is a list of Activity Types that will be available within the Activity Feed:
 
-Type | Will appear when...
----- | -------------------
-account-number-viewed | Account number is viewed
-call-made | A call is made by LossExpress
-claim-created | A claim is originally created
-claim-updated | A claim's primary information is updated
-direct-message-added | A direct message is added to a claim
-document-added | A document is added to a claim
-document-sent-to-lender | A document is sent to a lender
-letter-of-guarantee-added | A letter of guarantee is added to a claim
-letter-of-guarantee-request-created | A letter of guarantee request is created on a claim
-letter-of-guarantee-request-cancelled | A letter of guarantee request on a claim has been cancelled
-lender-alias-verified | A lender has been verified as an alias of an existing lender
-new-lender-verified | A lender has been verified as a new lender to our system
-order-attempted | An attempt to fulfill an order has been added to a claim
-order-created | A new order has been added to a claim
-order-cancelled | An order on a claim has been cancelled
-order-fulfilled | An order on a claim has been successfully fulfilled
-order-updated | An order on a claim has been updated
-payment-sent | Payment has been sent for a claim
-payoff-data-added | Payoff information is added to a claim
-payoff-request-created | A payoff request is created on a claim
-payoff-request-cancelled | A payoff request on a claim has been cancelled
-settlement-counter-added | A lender adds a counter to the proposed settlement amount
-settlement-counter-updated | The settlement counter is either accepted or disputed by the carrier
+Type | Will appear when... | Triggered by
+---- | ------------------- | ------------
+account-number-viewed | Account number is viewed | LossExpress
+call-made | A call is made by LossExpress | LossExpress
+claim-created | A claim is originally created | Carrier
+claim-updated | A claim's primary information is updated | Carrier/LossExpress
+direct-message-added | A direct message is added to a claim | Carrier/LossExpress
+document-added | A document is added to a claim | Carrier/LossExpress
+document-sent-to-lender | A document is sent to a lender | LossExpress
+letter-of-guarantee-added | A letter of guarantee is added to a claim | LossExpress 
+letter-of-guarantee-request-created | A letter of guarantee request is created on a claim | Carrier
+letter-of-guarantee-request-cancelled | A letter of guarantee request on a claim has been cancelled | Carrier/LossExpress
+lender-alias-verified | A lender has been verified as an alias of an existing lender | LossExpress
+new-lender-verified | A lender has been verified as a new lender to our system | LossExpress
+order-attempted | An attempt to fulfill an order has been added to claim | LossExpress
+order-created | A new order has been added to a claim | Carrier
+order-cancelled | An order on a claim has been cancelled | Carrier/LossExpress
+order-fulfilled | An order on a claim has been successfully fulfilled | LossExpress
+order-updated | An order on a claim has been updated | LossExpress
+payment-sent | Payment has been sent for a claim | Carrier
+payoff-data-added | Payoff information is added to a claim | LossExpress
+payoff-request-created | A payoff request is created on a claim | Carrier
+payoff-request-cancelled | A payoff request on a claim has been cancelled | Carrier/LossExpress
+settlement-counter-added | A lender adds a counter to the proposed settlement amount | LossExpress
+settlement-counter-updated | The settlement counter is either accepted or disputed by the carrier | Carrier
 
 ## account-number-viewed
 
@@ -396,7 +396,29 @@ This activity type will appear in the feed whenever a document has been added to
 
 Note that when <code>sentByLossexpress</code> is true, this indicates that the document was attached to the claim by LossExpress, not a carrier user, and <code>sentBy</code> will be null.
 
-<aside class="warning">Letters of Guarantee added to the claim will not trigger this activity type.</aside>
+<aside class="warning">This activity will NOT be triggered when the documents that are added fulfill an existing order on the claim. In that case - an order-fulfilled activity will be triggered.
+Documents that will not trigger this activity:
+<br/>
+- Loan Payoff Document
+<br/>
+- Letter of Guarantee
+<br/>
+- Copy of Title
+<br/>
+- Lien Release Letter
+<br/>
+- Installment Contract
+<br/>
+- Bill of Sale
+<br/>
+- Payment History
+<br/>
+- Repo Affidavit
+<br/>
+- One and the Same Letter
+<br/>
+- Settlement Dispute (Counter-Offer)
+</aside>
 
 ## document-sent-to-lender
 
