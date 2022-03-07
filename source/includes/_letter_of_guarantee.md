@@ -112,10 +112,6 @@ claimId | The LossExpress UUID associated with the claim
 ```
 
 
-<aside class="notice">
-This route is not currently available, but will be available in a future release of LossExpress xAPI.
-</aside>
-
 This route will refresh an existing letter of guarantee request on a claim, notifying our system that vital information has changed and additional work may be required. The letter of guarantee request can be added at any time, but will fail when:
 
 - IF documents with type `settlement breakdown` and `valuation report` are not available (or a document with type `settlement breakdown & valuation report`)
