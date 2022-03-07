@@ -753,7 +753,7 @@ You must replace <code>exampletokenbutreplacewithyourown</code> with the access 
 <h2 id='trigger-activities-testing'>Trigger Activities (Testing)</h2>
 <p>This route enables you to trigger a variety of activities that would typically be triggered by actions taken by our claim fulfillment specialists.</p>
 <h3 id='http-request-2'>HTTP Request</h3>
-<p><code>POST https://xapi.lossexpress.com/activities/trigger-activity/{claimId}</code></p>
+<p><code>POST https://xapi.lossexpress.com/activities/trigger-activity/{claimId}?activityType={activityType}</code></p>
 <h3 id='query-parameters-2'>Query Parameters</h3>
 <table><thead>
 <tr>
@@ -776,23 +776,23 @@ We will only ever send one activity per webhook request. Webhook payloads for an
 <blockquote>
 <p>Example HMAC header validation</p>
 </blockquote>
-<div class="highlight"><pre class="highlight plaintext"><code>const crypto = require('crypto');
+<div class="highlight"><pre class="highlight javascript"><code><span class="kd">const</span> <span class="nx">crypto</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">crypto</span><span class="dl">'</span><span class="p">);</span>
 
-const apiKey = 'your API key';
-const clientId = 'your client ID';
+<span class="kd">const</span> <span class="nx">apiKey</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">your API key</span><span class="dl">'</span><span class="p">;</span>
+<span class="kd">const</span> <span class="nx">clientId</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">your client ID</span><span class="dl">'</span><span class="p">;</span>
 
-const hmacHeader = request.headers["X-LossExpress-Signature"];
-const body = request.payload;
+<span class="kd">const</span> <span class="nx">hmacHeader</span> <span class="o">=</span> <span class="nx">request</span><span class="p">.</span><span class="nx">headers</span><span class="p">[</span><span class="dl">"</span><span class="s2">X-LossExpress-Signature</span><span class="dl">"</span><span class="p">];</span>
+<span class="kd">const</span> <span class="nx">body</span> <span class="o">=</span> <span class="nx">request</span><span class="p">.</span><span class="nx">payload</span><span class="p">;</span>
 
-const message = `${JSON.stringify(body)}:${clientId}`;
+<span class="kd">const</span> <span class="nx">message</span> <span class="o">=</span> <span class="s2">`</span><span class="p">${</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">body</span><span class="p">)}</span><span class="s2">:</span><span class="p">${</span><span class="nx">clientId</span><span class="p">}</span><span class="s2">`</span><span class="p">;</span>
 
-const generatedHmac = crypto.createHmac('sha256', apiKey)
-  .update(message)
-  .digest('hex');
+<span class="kd">const</span> <span class="nx">generatedHmac</span> <span class="o">=</span> <span class="nx">crypto</span><span class="p">.</span><span class="nx">createHmac</span><span class="p">(</span><span class="dl">'</span><span class="s1">sha256</span><span class="dl">'</span><span class="p">,</span> <span class="nx">apiKey</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">update</span><span class="p">(</span><span class="nx">message</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">digest</span><span class="p">(</span><span class="dl">'</span><span class="s1">hex</span><span class="dl">'</span><span class="p">);</span>
 
-if (generatedHmac === hmacHeader) {
-  // Webhook is valid!
-}
+<span class="k">if</span> <span class="p">(</span><span class="nx">generatedHmac</span> <span class="o">===</span> <span class="nx">hmacHeader</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// Webhook is valid!</span>
+<span class="p">}</span>
 </code></pre></div>
 <p>To help you verify that webhook requests are valid and come from us, we provide the following:</p>
 
@@ -859,99 +859,123 @@ if (generatedHmac === hmacHeader) {
 <tr>
 <th>Type</th>
 <th>Will appear when...</th>
+<th>Triggered by</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>account-number-viewed</td>
 <td>Account number is viewed</td>
+<td>LossExpress</td>
 </tr>
 <tr>
 <td>call-made</td>
 <td>A call is made by LossExpress</td>
+<td>LossExpress</td>
 </tr>
 <tr>
 <td>claim-created</td>
 <td>A claim is originally created</td>
+<td>Carrier</td>
 </tr>
 <tr>
 <td>claim-updated</td>
 <td>A claim&#39;s primary information is updated</td>
+<td>Carrier/LossExpress</td>
 </tr>
 <tr>
 <td>direct-message-added</td>
 <td>A direct message is added to a claim</td>
+<td>Carrier/LossExpress</td>
 </tr>
 <tr>
 <td>document-added</td>
 <td>A document is added to a claim</td>
+<td>Carrier/LossExpress</td>
 </tr>
 <tr>
 <td>document-sent-to-lender</td>
 <td>A document is sent to a lender</td>
+<td>LossExpress</td>
 </tr>
 <tr>
 <td>letter-of-guarantee-added</td>
 <td>A letter of guarantee is added to a claim</td>
+<td>LossExpress</td>
 </tr>
 <tr>
 <td>letter-of-guarantee-request-created</td>
 <td>A letter of guarantee request is created on a claim</td>
+<td>Carrier</td>
 </tr>
 <tr>
 <td>letter-of-guarantee-request-cancelled</td>
 <td>A letter of guarantee request on a claim has been cancelled</td>
+<td>Carrier/LossExpress</td>
 </tr>
 <tr>
 <td>lender-alias-verified</td>
 <td>A lender has been verified as an alias of an existing lender</td>
+<td>LossExpress</td>
 </tr>
 <tr>
 <td>new-lender-verified</td>
 <td>A lender has been verified as a new lender to our system</td>
+<td>LossExpress</td>
 </tr>
 <tr>
 <td>order-attempted</td>
-<td>An attempt to fulfill an order has been added to a claim</td>
+<td>An attempt to fulfill an order has been added to claim</td>
+<td>LossExpress</td>
 </tr>
 <tr>
 <td>order-created</td>
 <td>A new order has been added to a claim</td>
+<td>Carrier</td>
 </tr>
 <tr>
 <td>order-cancelled</td>
 <td>An order on a claim has been cancelled</td>
+<td>Carrier/LossExpress</td>
 </tr>
 <tr>
 <td>order-fulfilled</td>
 <td>An order on a claim has been successfully fulfilled</td>
+<td>LossExpress</td>
 </tr>
 <tr>
 <td>order-updated</td>
 <td>An order on a claim has been updated</td>
+<td>LossExpress</td>
 </tr>
 <tr>
 <td>payment-sent</td>
 <td>Payment has been sent for a claim</td>
+<td>Carrier</td>
 </tr>
 <tr>
 <td>payoff-data-added</td>
 <td>Payoff information is added to a claim</td>
+<td>LossExpress</td>
 </tr>
 <tr>
 <td>payoff-request-created</td>
 <td>A payoff request is created on a claim</td>
+<td>Carrier</td>
 </tr>
 <tr>
 <td>payoff-request-cancelled</td>
 <td>A payoff request on a claim has been cancelled</td>
+<td>Carrier/LossExpress</td>
 </tr>
 <tr>
 <td>settlement-counter-added</td>
 <td>A lender adds a counter to the proposed settlement amount</td>
+<td>LossExpress</td>
 </tr>
 <tr>
 <td>settlement-counter-updated</td>
 <td>The settlement counter is either accepted or disputed by the carrier</td>
+<td>Carrier</td>
 </tr>
 </tbody></table>
 <h2 id='account-number-viewed'>account-number-viewed</h2>
@@ -1151,13 +1175,39 @@ would appear as <code>undefined</code> when parsed.</p>
   </span><span class="nl">"externalId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"COO-30022"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"settlement breakdown"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"documentUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://xapi.lossexpress.com/documents/555ae9da-9222-4de5-81fe-fe1ac590fa0f"</span><span class="w">
+    </span><span class="nl">"documentUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://xapi.lossexpress.com/documents/555ae9da-9222-4de5-81fe-fe1ac590fa0f"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"sentByLossExpress"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"sentBy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John Doe"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This activity type will appear in the feed whenever a document has been added to a claim.</p>
 
-<aside class="warning">Letters of Guarantee added to the claim will not trigger this activity type.</aside>
+<p>Note that when <code>sentByLossexpress</code> is true, this indicates that the document was attached to the claim by LossExpress, not a carrier user, and <code>sentBy</code> will be null.</p>
+
+<aside class="warning">This activity will NOT be triggered when the documents that are added fulfill an existing order on the claim. In that case - an order-fulfilled activity will be triggered.
+Documents that will not trigger this activity:
+<br/>
+- Loan Payoff Document
+<br/>
+- Letter of Guarantee
+<br/>
+- Copy of Title
+<br/>
+- Lien Release Letter
+<br/>
+- Installment Contract
+<br/>
+- Bill of Sale
+<br/>
+- Payment History
+<br/>
+- Repo Affidavit
+<br/>
+- One and the Same Letter
+<br/>
+- Settlement Dispute (Counter-Offer)
+</aside>
 <h2 id='document-sent-to-lender'>document-sent-to-lender</h2>
 <blockquote>
 <p>document-sent-to-lender example object</p>
@@ -1470,20 +1520,18 @@ would appear as <code>undefined</code> when parsed.</p>
 <p>This activity type is added to the feed whenever a payoff request is created on a particular claim.</p>
 <h2 id='payoff-request-cancelled'>payoff-request-cancelled</h2>
 <blockquote>
-<p>payoff-request-cancelled example object
-<code>json
-{
-  &quot;activityId&quot;: &quot;fed62fa0-c048-46b5-b994-6e3e69fb0f37&quot;,
-  &quot;createdAt&quot;: &quot;2021-01-08T22:03:09.598Z&quot;,
-  &quot;claimId&quot;: &quot;c30ae9da-9222-4de5-81fe-fe1ac590fa0f&quot;,
-  &quot;type&quot;: &quot;payoff-request-cancelled&quot;,
-  &quot;claimNumber&quot;: &quot;EXAMPLE3&quot;,
-  &quot;externalId&quot;: &quot;COO-30022&quot;,
-  &quot;data&quot;: {}
-}
-</code></p>
+<p>payoff-request-cancelled example object</p>
 </blockquote>
-
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"activityId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fed62fa0-c048-46b5-b994-6e3e69fb0f37"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-08T22:03:09.598Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"claimId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c30ae9da-9222-4de5-81fe-fe1ac590fa0f"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"payoff-request-cancelled"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"claimNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EXAMPLE3"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"externalId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"COO-30022"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
 <p>This activity type is added to the feed whenever a payoff request is cancelled on a particular claim.</p>
 <h2 id='settlement-counter-added'>settlement-counter-added</h2>
 <blockquote>
@@ -2414,6 +2462,8 @@ Although many fields are not required when creating a claim, please note that ne
 <td>The LossExpress UUID associated with the claim</td>
 </tr>
 </tbody></table>
+
+<aside class="warning">"turnAroundTimeEstimate" is currently not supported and will return a NULL value for all Letter of Guarantee requests.</aside>
 <h2 id='cancel-letter-of-guarantee-request'>Cancel Letter of Guarantee Request</h2>
 <blockquote>
 <p>Cancel Letter of Guarantee Request Example Response Body:</p>
@@ -2478,10 +2528,6 @@ Although many fields are not required when creating a claim, please note that ne
   </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Claim is missing one or more required documents: 'settlement breakdown' &amp; 'valuation report'"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<aside class="notice">
-This route is not currently available, but will be available in a future release of LossExpress xAPI.
-</aside>
-
 <p>This route will refresh an existing letter of guarantee request on a claim, notifying our system that vital information has changed and additional work may be required. The letter of guarantee request can be added at any time, but will fail when:</p>
 
 <ul>
@@ -2603,10 +2649,6 @@ This route is not currently available, but will be available in a future release
   </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Claim is missing one or more required documents: 'settlement breakdown' &amp; 'valuation report'"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<aside class="notice">
-This route is not currently available, but will be available in a future release of LossExpress xAPI.
-</aside>
-
 <p>This route will refresh a payoff request on a claim, notifying our system that vital information has changed and additional work may be required. The request will fail when:</p>
 
 <ul>
