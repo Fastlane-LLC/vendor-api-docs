@@ -37,6 +37,8 @@ Parameter | Description
 --------- | -----------
 claimId | The LossExpress UUID associated with the claim
 
+<aside class="warning">"turnAroundTimeEstimate" is currently not supported and will return a NULL value for all Letter of Guarantee requests.</aside>
+
 ## Cancel Letter of Guarantee Request
 
 > Cancel Letter of Guarantee Request Example Response Body:
@@ -109,10 +111,6 @@ claimId | The LossExpress UUID associated with the claim
 }
 ```
 
-
-<aside class="notice">
-This route is not currently available, but will be available in a future release of LossExpress xAPI.
-</aside>
 
 This route will refresh an existing letter of guarantee request on a claim, notifying our system that vital information has changed and additional work may be required. The letter of guarantee request can be added at any time, but will fail when:
 
