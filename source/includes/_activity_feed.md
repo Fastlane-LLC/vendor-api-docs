@@ -730,7 +730,9 @@ Although we plan to maintain this legacy activity type, the newer activity is re
 }
 ```
 
-This activity type is added to the feed whenever the status for an order is changed (typically to `fulfilled` or `cancelled`). The actvity data includes an `updatedOrder` object for the order who's status was changed, as well as an `orders` array that includes all of the claim's orders. The `orders` array allows you to compare a claim's order statuses and data as they existed at the moment the activity was generated.
+This activity type is added to the feed whenever the status for an order is changed (typically to `fulfilled` or `cancelled`).
+
+The actvity data includes an `updatedOrder` object for the order who's status was changed, as well as an `orders` array that includes all of the claim's orders. The `orders` array allows you to compare a claim's order statuses and data as they existed at the moment the activity was generated.
 
 Each order object, whether the `updatedOrder` or those in the `orders` array will have the following structure:
 
@@ -738,7 +740,7 @@ Key | Description | Will be included when...
 --- | ----------- | ------------------------
 orderId | The LossExpress UUID for the order | Always
 orderType | The order's [type](https://vendor-docs.lossexpress.com/#fetch-order-types) | Always
-status | One of: `[ 'pending', 'fulfilled', 'cancelled' ]` | Always
+status | `pending`, `fulfilled`, or `canceled` | Always
 documentUrl | A URL that can be used to [fetch a document](https://vendor-docs.lossexpress.com/#fetch-document) attached to an order | A document was attached to the order during fulfillment
 fulfillmentData | Data pertaining to the order's fulfillment | Various data was gathered in order to fulfill the order
 
