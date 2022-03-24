@@ -383,30 +383,6 @@
                     <a href="#letter-of-guarantee-added" class="toc-h2 toc-link" data-title="letter-of-guarantee-added">letter-of-guarantee-added</a>
                   </li>
                   <li>
-                    <a href="#letter-of-guarantee-request-created" class="toc-h2 toc-link" data-title="letter-of-guarantee-request-created">letter-of-guarantee-request-created</a>
-                  </li>
-                  <li>
-                    <a href="#letter-of-guarantee-request-cancelled" class="toc-h2 toc-link" data-title="letter-of-guarantee-request-cancelled">letter-of-guarantee-request-cancelled</a>
-                  </li>
-                  <li>
-                    <a href="#lender-alias-verified" class="toc-h2 toc-link" data-title="lender-alias-verified">lender-alias-verified</a>
-                  </li>
-                  <li>
-                    <a href="#new-lender-verified" class="toc-h2 toc-link" data-title="new-lender-verified">new-lender-verified</a>
-                  </li>
-                  <li>
-                    <a href="#order-attempted" class="toc-h2 toc-link" data-title="order-attempted">order-attempted</a>
-                  </li>
-                  <li>
-                    <a href="#order-created" class="toc-h2 toc-link" data-title="order-created">order-created</a>
-                  </li>
-                  <li>
-                    <a href="#order-cancelled" class="toc-h2 toc-link" data-title="order-cancelled">order-cancelled</a>
-                  </li>
-                  <li>
-                    <a href="#order-fulfilled" class="toc-h2 toc-link" data-title="order-fulfilled">order-fulfilled</a>
-                  </li>
-                  <li>
                     <a href="#order-updated" class="toc-h2 toc-link" data-title="order-updated">order-updated</a>
                   </li>
                   <li>
@@ -1244,176 +1220,281 @@ Documents that will not trigger this activity:
 <p>This activity type is added to the feed whenever a letter of guarantee is added to a claim. The <code>documentUrl</code> contains a link to the letter of guarantee that was received.</p>
 
 <aside class="warning">This activity could be added to the feed even if a letter of guarantee request wasn't created in LossExpress. In those scenarios, a letter of guarantee request will be automatically created at the same time as the letter of guarantee is added to the claim.</aside>
-<h2 id='letter-of-guarantee-request-created'>letter-of-guarantee-request-created</h2>
-<blockquote>
-<p>letter-of-guarantee-request-created example object</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"activityId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fed62fa0-c048-46b5-b994-6e3e69fb0f37"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-08T22:03:09.598Z"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"claimId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c30ae9da-9222-4de5-81fe-fe1ac590fa0f"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"letter-of-guarantee-request-created"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"claimNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EXAMPLE3"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"externalId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"COO-30022"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"estimatedResponseTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-20T22:03:09.598Z"</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<p>This activity type is added to the feed whenever a letter of guarantee request is created for a claim.</p>
 
-<p>Note that although we <em>typically</em> request letters of guarantee whenever we reach out to a lender, we do not follow-up on the status of letters of guarantee nor can we absolutely guarantee that a letter of guarantee will be added to a claim unless a letter of guarantee request is created on a claim.</p>
+<aside class="warning">This activity has been deprecated in favor of the newer [order-status-changed](https://vendor-docs.lossexpress.com/#order-status-changed) activity.
+  
+Although we plan to maintain this legacy activity type, the newer activity is recommended as it provides a more useful and consistent data structure for all types of orders that we support.</aside>
+
+## letter-of-guarantee-request-created
+
+> letter-of-guarantee-request-created example object
+
+```json
+{
+  "activityId": "fed62fa0-c048-46b5-b994-6e3e69fb0f37",
+  "createdAt": "2021-01-08T22:03:09.598Z",
+  "claimId": "c30ae9da-9222-4de5-81fe-fe1ac590fa0f",
+  "type": "letter-of-guarantee-request-created",
+  "claimNumber": "EXAMPLE3",
+  "externalId": "COO-30022",
+  "data": {
+    "estimatedResponseTime": "2021-01-20T22:03:09.598Z"
+  }
+}
+```
+
+This activity type is added to the feed whenever a letter of guarantee request is created for a claim.
+
+Note that although we _typically_ request letters of guarantee whenever we reach out to a lender, we do not follow-up on the status of letters of guarantee nor can we absolutely guarantee that a letter of guarantee will be added to a claim unless a letter of guarantee request is created on a claim.
 
 <aside class="warning"><code>estimatedResponseTime</code> may not exist on every activity for this type, and is merely an estimate based on _prior_ letter of guarantee request response times for that lender.</aside>
-<h2 id='letter-of-guarantee-request-cancelled'>letter-of-guarantee-request-cancelled</h2>
-<blockquote>
-<p>letter-of-guarantee-request-cancelled example object</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"activityId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fed62fa0-c048-46b5-b994-6e3e69fb0f37"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-08T22:03:09.598Z"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"claimId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c30ae9da-9222-4de5-81fe-fe1ac590fa0f"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"letter-of-guarantee-request-cancelled"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"claimNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EXAMPLE3"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"externalId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"COO-30022"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<p>This activity type is added to the feed whenever a letter of guarantee request is cancelled for a claim.</p>
-<h2 id='lender-alias-verified'>lender-alias-verified</h2>
-<blockquote>
-<p>lender-alias-verified example object</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"activityId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fed62fa0-c048-46b5-b994-6e3e69fb0f37"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-08T22:03:09.598Z"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"claimId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c30ae9da-9222-4de5-81fe-fe1ac590fa0f"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"lender-alias-verified"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"claimNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EXAMPLE3"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"externalId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"COO-30022"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"previousLenderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4ace4d96-2b7f-425e-a3c7-d162879a792b"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"lenderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a720ef63-e6f5-4fed-bbf8-0edcd6eb8485"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"lenderName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EXAMPLE NEW LENDER ALIAS"</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<p>This activity type is added to the feed whenever a lender is verified as an alias for an existing lender.</p>
-<h2 id='new-lender-verified'>new-lender-verified</h2>
-<blockquote>
-<p>new-lender-verified example object</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"activityId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fed62fa0-c048-46b5-b994-6e3e69fb0f37"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-08T22:03:09.598Z"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"claimId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c30ae9da-9222-4de5-81fe-fe1ac590fa0f"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"new-lender-verified"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"claimNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EXAMPLE3"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"externalId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"COO-30022"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"lenderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a720ef63-e6f5-4fed-bbf8-0edcd6eb8485"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"lenderName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EXAMPLE NEW LENDER"</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<p>This activity type is added to the feed whenever a lender is verified as a new lender to our system.</p>
-<h2 id='order-attempted'>order-attempted</h2>
-<blockquote>
-<p>order-attempted example object</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"activityId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fed62fa0-c048-46b5-b994-6e3e69fb0f37"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-08T22:03:09.598Z"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"claimId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c30ae9da-9222-4de5-81fe-fe1ac590fa0f"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"order-attempted"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"claimNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EXAMPLE3"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"externalId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"COO-30022"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Payment History"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Lender unable to find requested document"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"count"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"orderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"93f0983d-5702-4bf4-9728-86d425edd7d5"</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<p>This activity type is added to the feed whenever an attempt on an order is made.</p>
 
-<table><thead>
-<tr>
-<th>Key</th>
-<th>Value</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>type</td>
-<td>The type of order</td>
-</tr>
-<tr>
-<td>message</td>
-<td>The note related to the order attempt</td>
-</tr>
-<tr>
-<td>count</td>
-<td>The current number of attempts on the order</td>
-</tr>
-<tr>
-<td>orderId</td>
-<td>The specific identification number for the order that was attempted</td>
-</tr>
-</tbody></table>
-<h2 id='order-created'>order-created</h2>
-<blockquote>
-<p>order-created example object</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"activityId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fed62fa0-c048-46b5-b994-6e3e69fb0f37"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-08T22:03:09.598Z"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"claimId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c30ae9da-9222-4de5-81fe-fe1ac590fa0f"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"order-created"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"claimNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EXAMPLE3"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"externalId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"COO-30022"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"orderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"24907dea-2bd2-4547-bae6-8305b4256256"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"orderType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Copy of Title"</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<p>This activity type is added to the feed whenever an order is created for a claim.</p>
-<h2 id='order-cancelled'>order-cancelled</h2>
-<blockquote>
-<p>order-cancelled example object</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"activityId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fed62fa0-c048-46b5-b994-6e3e69fb0f37"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-08T22:03:09.598Z"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"claimId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c30ae9da-9222-4de5-81fe-fe1ac590fa0f"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"order-cancelled"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"claimNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EXAMPLE3"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"externalId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"COO-30022"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"orderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"24907dea-2bd2-4547-bae6-8305b4256256"</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<p>This activity type is added to the feed whenever an order is cancelled for a claim.</p>
-<h2 id='order-fulfilled'>order-fulfilled</h2>
-<blockquote>
-<p>order-fulfilled example object</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"activityId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fed62fa0-c048-46b5-b994-6e3e69fb0f37"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-08T22:03:09.598Z"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"claimId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c30ae9da-9222-4de5-81fe-fe1ac590fa0f"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"order-fulfilled"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"claimNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EXAMPLE3"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"orderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"24907dea-2bd2-4547-bae6-8305b4256256"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"orderType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Copy of Title"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"documentUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://xapi.lossexpress.com/documents/555ae9da-9222-4de5-81fe-fe1ac590fa0f"</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<p>This activity type is added to the feed whenever an order is fulfilled for a claim. If the order utilizes a document, it can be accessed via the <code>documentUrl</code>.</p>
+## letter-of-guarantee-request-cancelled
+
+> letter-of-guarantee-request-cancelled example object
+
+```json
+{
+  "activityId": "fed62fa0-c048-46b5-b994-6e3e69fb0f37",
+  "createdAt": "2021-01-08T22:03:09.598Z",
+  "claimId": "c30ae9da-9222-4de5-81fe-fe1ac590fa0f",
+  "type": "letter-of-guarantee-request-cancelled",
+  "claimNumber": "EXAMPLE3",
+  "externalId": "COO-30022",
+  "data": {}
+}
+```
+
+This activity type is added to the feed whenever a letter of guarantee request is cancelled for a claim.
+
+<aside class="warning">This activity has been deprecated in favor of the newer [order-status-changed](https://vendor-docs.lossexpress.com/#order-status-changed) activity.
+  
+Although we plan to maintain this legacy activity type, the newer activity is recommended as it provides a more useful and consistent data structure for all types of orders that we support.</aside>
+
+## lender-alias-verified
+
+> lender-alias-verified example object
+
+```json
+{
+  "activityId": "fed62fa0-c048-46b5-b994-6e3e69fb0f37",
+  "createdAt": "2021-01-08T22:03:09.598Z",
+  "claimId": "c30ae9da-9222-4de5-81fe-fe1ac590fa0f",
+  "type": "lender-alias-verified",
+  "claimNumber": "EXAMPLE3",
+  "externalId": "COO-30022",
+  "data": {
+    "previousLenderId": "4ace4d96-2b7f-425e-a3c7-d162879a792b",
+    "lenderId": "a720ef63-e6f5-4fed-bbf8-0edcd6eb8485",
+    "lenderName": "EXAMPLE NEW LENDER ALIAS"
+  }
+}
+```
+
+This activity type is added to the feed whenever a lender is verified as an alias for an existing lender.
+
+## new-lender-verified
+
+> new-lender-verified example object
+
+```json
+{
+  "activityId": "fed62fa0-c048-46b5-b994-6e3e69fb0f37",
+  "createdAt": "2021-01-08T22:03:09.598Z",
+  "claimId": "c30ae9da-9222-4de5-81fe-fe1ac590fa0f",
+  "type": "new-lender-verified",
+  "claimNumber": "EXAMPLE3",
+  "externalId": "COO-30022",
+  "data": {
+    "lenderId": "a720ef63-e6f5-4fed-bbf8-0edcd6eb8485",
+    "lenderName": "EXAMPLE NEW LENDER"
+  }
+}
+```
+
+This activity type is added to the feed whenever a lender is verified as a new lender to our system.
+
+## order-attempted
+
+> order-attempted example object
+
+```json
+{
+  "activityId": "fed62fa0-c048-46b5-b994-6e3e69fb0f37",
+  "createdAt": "2021-01-08T22:03:09.598Z",
+  "claimId": "c30ae9da-9222-4de5-81fe-fe1ac590fa0f",
+  "type": "order-attempted",
+  "claimNumber": "EXAMPLE3",
+  "externalId": "COO-30022",
+  "data": {
+    "type": "Payment History",
+    "message": "Lender unable to find requested document",
+    "count": 2,
+    "orderId": "93f0983d-5702-4bf4-9728-86d425edd7d5"
+  }
+}
+```
+
+This activity type is added to the feed whenever an attempt on an order is made.
+
+Key | Value
+---- | -------------------
+type | The type of order
+message | The note related to the order attempt
+count | The current number of attempts on the order
+orderId | The specific identification number for the order that was attempted
+
+## order-created
+
+> order-created example object
+
+```json
+{
+  "activityId": "fed62fa0-c048-46b5-b994-6e3e69fb0f37",
+  "createdAt": "2021-01-08T22:03:09.598Z",
+  "claimId": "c30ae9da-9222-4de5-81fe-fe1ac590fa0f",
+  "type": "order-created",
+  "claimNumber": "EXAMPLE3",
+  "externalId": "COO-30022",
+  "data": {
+    "orderId": "24907dea-2bd2-4547-bae6-8305b4256256",
+    "orderType": "Copy of Title"
+  }
+}
+```
+
+This activity type is added to the feed whenever an order is created for a claim.
+
+## order-cancelled
+
+> order-cancelled example object
+
+```json
+{
+  "activityId": "fed62fa0-c048-46b5-b994-6e3e69fb0f37",
+  "createdAt": "2021-01-08T22:03:09.598Z",
+  "claimId": "c30ae9da-9222-4de5-81fe-fe1ac590fa0f",
+  "type": "order-cancelled",
+  "claimNumber": "EXAMPLE3",
+  "externalId": "COO-30022",
+  "data": {
+    "orderId": "24907dea-2bd2-4547-bae6-8305b4256256"
+  }
+}
+```
+
+This activity type is added to the feed whenever an order is cancelled for a claim.
+
+<aside class="warning">This activity has been deprecated in favor of the newer [order-status-changed](https://vendor-docs.lossexpress.com/#order-status-changed) activity.
+  
+Although we plan to maintain this legacy activity type, the newer activity is recommended as it provides a more useful and consistent data structure for all types of orders that we support.</aside>
+
+## order-fulfilled
+
+> order-fulfilled example object
+
+```json
+{
+  "activityId": "fed62fa0-c048-46b5-b994-6e3e69fb0f37",
+  "createdAt": "2021-01-08T22:03:09.598Z",
+  "claimId": "c30ae9da-9222-4de5-81fe-fe1ac590fa0f",
+  "type": "order-fulfilled",
+  "claimNumber": "EXAMPLE3",
+  "data": {
+    "orderId": "24907dea-2bd2-4547-bae6-8305b4256256",
+    "orderType": "Copy of Title",
+    "documentUrl": "https://xapi.lossexpress.com/documents/555ae9da-9222-4de5-81fe-fe1ac590fa0f"
+  }
+}
+```
+
+This activity type is added to the feed whenever an order is fulfilled for a claim. If the order utilizes a document, it can be accessed via the <code>documentUrl</code>.
+
+<aside class="warning">This activity has been deprecated in favor of the newer [order-status-changed](https://vendor-docs.lossexpress.com/#order-status-changed) activity.
+  
+Although we plan to maintain this legacy activity type, the newer activity is recommended as it provides a more useful and consistent data structure for all types of orders that we support.</aside>
+
+## order-status-changed
+
+> order-status-changed example object
+
+```json
+{
+  "activityId": "fed62fa0-c048-46b5-b994-6e3e69fb0f37",
+  "createdAt": "2021-01-08T22:03:09.598Z",
+  "claimId": "c30ae9da-9222-4de5-81fe-fe1ac590fa0f",
+  "type": "order-status-changed"
+  "claimNumber": "EXAMPLE3",
+  "externalId": "COO-30022",
+  "data": {
+    "updatedOrder": {
+      "orderId": "8ebc4790-a0cb-40f8-bff7-140b9f0260cc",
+      "orderType": "Letter of Guarantee",
+      "status": "fulfilled",
+      "documentUrl": "https://xapi-dev.lossexpress.com/documents/fb498779-7464-469f-bb3b-a6d647cf7541"
+    },
+    "orders": [
+      {
+        "orderId": "bce319ea-11f2-4965-821d-c36bca62b506",
+        "orderType": "Copy of Title",
+        "status": "pending",
+      },
+      {
+        "orderId": "8ebc4790-a0cb-40f8-bff7-140b9f0260cc",
+        "orderType": "Letter of Guarantee",
+        "status": "fulfilled",
+        "documentUrl": "https://xapi.lossexpress.com/documents/fb498779-7464-469f-bb3b-a6d647cf7541"
+      },
+      {
+        "orderId": "c60fe8f7-653a-47a6-acaa-e23f46a603bb",
+        "orderType": "Loan Payoff Request",
+        "status": "fulfilled",
+        "documentUrl": "https://xapi.lossexpress.com/documents/d48e2ff8-cb79-49fd-ad6c-f5a35e5525cf"
+        "fulfillmentData": {
+          "payoffAmount": 99999,
+          "perDiem": 10,
+          "validThroughDate": "2022-04-01T21:28:40.256Z",
+          "remittanceInformation": {
+            "standard": {
+              "attn": "That Person",
+              "streetAddress": "77 E No St",
+              "city": "No",
+              "state": "CO",
+              "zipCode": "90000",
+              "makeCheckPayableTo": "Some Entity"
+            },
+            "overnight": {
+              "streetAddress": "55 Address Place",
+              "city": "City",
+              "state": "CA",
+              "zipCode": "10011",
+              "streetAddress2": "2",
+              "makeCheckPayableTo": "Some Entity"
+            }
+          }
+        },
+      }
+    ]
+  },
+}
+
+This activity type is added to the feed whenever the status for an order is changed (typically to `fulfilled` or `cancelled`). The actvity data includes an `updatedOrder` object for the order who's status was changed, as well as an `orders` array that includes all of the claim's orders. The `orders` array allows you to compare a claim's order statuses and data as they existed at the moment the activity was generated.
+
+Each order object, whether the `updatedOrder` or those in the `orders` array will have the following structure:
+
+Key | Description | Will be included when...
+--- | ----------- | ------------------------
+orderId | The LossExpress UUID for the order | Always
+orderType | The order's [type](https://vendor-docs.lossexpress.com/#fetch-order-types) | Always
+status | One of: `[ 'pending', 'fulfilled', 'cancelled' ]` | Always
+documentUrl | A URL that can be used to [fetch a document](https://vendor-docs.lossexpress.com/#fetch-document) attached to an order | A document was attached to the order during fulfillment
+fulfillmentData | Data pertaining to the order's fulfillment | Various data was gathered in order to fulfill the order
+
+<aside class="notice">
+Currently, `fulfillmentData` will only be included for `Loan Payoff Request` orders, for which `fulfilmentData`'s structure will always be consistent (although we may not gather all data points during fulfillment).
+
+We may add other order types that include it in the future. While the structure of `fulfillmentData` may vary between order types, it will be consistent for each individual order type. We will include the full data structure for any such order in the example JSON to the right, as we have done here for `Loan Payoff Request` orders.
+</aside>
 <h2 id='order-updated'>order-updated</h2>
 <blockquote>
 <p>order-updated example object</p>
@@ -1503,6 +1584,10 @@ Documents that will not trigger this activity:
 <p>This activity type is added to the feed whenever payoff data is added to a claim.</p>
 
 <aside class="warning">This activity may be called multiple times in the claim and may not contain all information. Only information changed or added will be available in this activity type.</aside>
+
+<aside class="warning">This activity has been deprecated in favor of the newer [order-status-changed](https://vendor-docs.lossexpress.com/#order-status-changed) activity.
+  
+Although we plan to maintain this legacy activity type, the newer activity is recommended as it provides a more useful and consistent data structure for all types of orders that we support.</aside>
 <h2 id='payoff-request-created'>payoff-request-created</h2>
 <blockquote>
 <p>payoff-request-created example object</p>
@@ -1533,6 +1618,10 @@ Documents that will not trigger this activity:
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This activity type is added to the feed whenever a payoff request is cancelled on a particular claim.</p>
+
+<aside class="warning">This activity has been deprecated in favor of the newer [order-status-changed](https://vendor-docs.lossexpress.com/#order-status-changed) activity.
+  
+Although we plan to maintain this legacy activity type, the newer activity is recommended as it provides a more useful and consistent data structure for all types of orders that we support.</aside>
 <h2 id='settlement-counter-added'>settlement-counter-added</h2>
 <blockquote>
 <p>settlement-counter-added example object</p>
