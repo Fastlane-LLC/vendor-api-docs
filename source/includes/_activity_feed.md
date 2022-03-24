@@ -718,6 +718,7 @@ Although we plan to maintain this legacy activity type, the newer activity is re
     ]
   },
 }
+```
 
 This activity type is added to the feed whenever the status for an order is changed (typically to `fulfilled` or `cancelled`). The actvity data includes an `updatedOrder` object for the order who's status was changed, as well as an `orders` array that includes all of the claim's orders. The `orders` array allows you to compare a claim's order statuses and data as they existed at the moment the activity was generated.
 
@@ -732,7 +733,7 @@ documentUrl | A URL that can be used to [fetch a document](https://vendor-docs.l
 fulfillmentData | Data pertaining to the order's fulfillment | Various data was gathered in order to fulfill the order
 
 <aside class="notice">
-Currently, `fulfillmentData` will only be included for Loan Payoff Request orders, for which the data structure will always be consistent with that in the example (although we may not gather all data points during fulfillment).
+Currently, <code>fulfillmentData</code> will only be included for Loan Payoff Request orders, for which the data structure will always be consistent with that in the example (although we may not gather all data points during fulfillment).
 </aside>
 
 ## order-updated
