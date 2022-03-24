@@ -1506,7 +1506,9 @@ Although we plan to maintain this legacy activity type, the newer activity is re
   </span><span class="p">},</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<p>This activity type is added to the feed whenever the status for an order is changed (typically to <code>fulfilled</code> or <code>cancelled</code>). The actvity data includes an <code>updatedOrder</code> object for the order who&#39;s status was changed, as well as an <code>orders</code> array that includes all of the claim&#39;s orders. The <code>orders</code> array allows you to compare a claim&#39;s order statuses and data as they existed at the moment the activity was generated.</p>
+<p>This activity type is added to the feed whenever the status for an order is changed (typically to <code>fulfilled</code> or <code>cancelled</code>).</p>
+
+<p>The actvity data includes an <code>updatedOrder</code> object for the order who&#39;s status was changed, as well as an <code>orders</code> array that includes all of the claim&#39;s orders. The <code>orders</code> array allows you to compare a claim&#39;s order statuses and data as they existed at the moment the activity was generated.</p>
 
 <p>Each order object, whether the <code>updatedOrder</code> or those in the <code>orders</code> array will have the following structure:</p>
 
@@ -1529,7 +1531,7 @@ Although we plan to maintain this legacy activity type, the newer activity is re
 </tr>
 <tr>
 <td>status</td>
-<td>One of: <code>[ &#39;pending&#39;, &#39;fulfilled&#39;, &#39;cancelled&#39; ]</code></td>
+<td><code>pending</code>, <code>fulfilled</code>, or <code>canceled</code></td>
 <td>Always</td>
 </tr>
 <tr>
