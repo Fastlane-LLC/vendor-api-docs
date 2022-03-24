@@ -462,6 +462,10 @@ This activity type is added to the feed whenever a letter of guarantee is added 
 
 <aside class="warning">This activity could be added to the feed even if a letter of guarantee request wasn't created in LossExpress. In those scenarios, a letter of guarantee request will be automatically created at the same time as the letter of guarantee is added to the claim.</aside>
 
+<aside class="warning">This activity has been deprecated in favor of the newer [order-status-changed](https://vendor-docs.lossexpress.com/#order-status-changed) activity.
+  
+Although we plan to maintain this legacy activity type, the newer activity is recommended as it provides a more useful and consistent data structure for all types of orders that we support.</aside>
+
 ## letter-of-guarantee-request-created
 
 > letter-of-guarantee-request-created example object
@@ -503,6 +507,10 @@ Note that although we _typically_ request letters of guarantee whenever we reach
 ```
 
 This activity type is added to the feed whenever a letter of guarantee request is cancelled for a claim.
+
+<aside class="warning">This activity has been deprecated in favor of the newer [order-status-changed](https://vendor-docs.lossexpress.com/#order-status-changed) activity.
+  
+Although we plan to maintain this legacy activity type, the newer activity is recommended as it provides a more useful and consistent data structure for all types of orders that we support.</aside>
 
 ## lender-alias-verified
 
@@ -618,6 +626,10 @@ This activity type is added to the feed whenever an order is created for a claim
 
 This activity type is added to the feed whenever an order is cancelled for a claim.
 
+<aside class="warning">This activity has been deprecated in favor of the newer [order-status-changed](https://vendor-docs.lossexpress.com/#order-status-changed) activity.
+  
+Although we plan to maintain this legacy activity type, the newer activity is recommended as it provides a more useful and consistent data structure for all types of orders that we support.</aside>
+
 ## order-fulfilled
 
 > order-fulfilled example object
@@ -638,6 +650,92 @@ This activity type is added to the feed whenever an order is cancelled for a cla
 ```
 
 This activity type is added to the feed whenever an order is fulfilled for a claim. If the order utilizes a document, it can be accessed via the <code>documentUrl</code>.
+
+<aside class="warning">This activity has been deprecated in favor of the newer [order-status-changed](https://vendor-docs.lossexpress.com/#order-status-changed) activity.
+  
+Although we plan to maintain this legacy activity type, the newer activity is recommended as it provides a more useful and consistent data structure for all types of orders that we support.</aside>
+
+## order-status-changed
+
+> order-status-changed example object
+
+```json
+{
+  "activityId": "fed62fa0-c048-46b5-b994-6e3e69fb0f37",
+  "createdAt": "2021-01-08T22:03:09.598Z",
+  "claimId": "c30ae9da-9222-4de5-81fe-fe1ac590fa0f",
+  "type": "order-status-changed"
+  "claimNumber": "EXAMPLE3",
+  "externalId": "COO-30022",
+  "data": {
+    "updatedOrder": {
+      "orderId": "8ebc4790-a0cb-40f8-bff7-140b9f0260cc",
+      "orderType": "Letter of Guarantee",
+      "status": "fulfilled",
+      "documentUrl": "https://xapi-dev.lossexpress.com/documents/fb498779-7464-469f-bb3b-a6d647cf7541"
+    },
+    "orders": [
+      {
+        "orderId": "bce319ea-11f2-4965-821d-c36bca62b506",
+        "orderType": "Copy of Title",
+        "status": "pending",
+      },
+      {
+        "orderId": "8ebc4790-a0cb-40f8-bff7-140b9f0260cc",
+        "orderType": "Letter of Guarantee",
+        "status": "fulfilled",
+        "documentUrl": "https://xapi.lossexpress.com/documents/fb498779-7464-469f-bb3b-a6d647cf7541"
+      },
+      {
+        "orderId": "c60fe8f7-653a-47a6-acaa-e23f46a603bb",
+        "orderType": "Loan Payoff Request",
+        "status": "fulfilled",
+        "documentUrl": "https://xapi.lossexpress.com/documents/d48e2ff8-cb79-49fd-ad6c-f5a35e5525cf"
+        "fulfillmentData": {
+          "payoffAmount": 99999,
+          "perDiem": 10,
+          "validThroughDate": "2022-04-01T21:28:40.256Z",
+          "remittanceInformation": {
+            "standard": {
+              "attn": "That Person",
+              "streetAddress": "77 E No St",
+              "city": "No",
+              "state": "CO",
+              "zipCode": "90000",
+              "makeCheckPayableTo": "Some Entity"
+            },
+            "overnight": {
+              "streetAddress": "55 Address Place",
+              "city": "City",
+              "state": "CA",
+              "zipCode": "10011",
+              "streetAddress2": "2",
+              "makeCheckPayableTo": "Some Entity"
+            }
+          }
+        },
+      }
+    ]
+  },
+}
+
+This activity type is added to the feed whenever the status for an order is changed (typically to `fulfilled` or `cancelled`). The actvity data includes an `updatedOrder` object for the order who's status was changed, as well as an `orders` array that includes all of the claim's orders. The `orders` array allows you to compare a claim's order statuses and data as they existed at the moment the activity was generated.
+
+Each order object, whether the `updatedOrder` or those in the `orders` array will have the following structure:
+
+Key | Description | Will be included when...
+--- | ----------- | ------------------------
+orderId | The LossExpress UUID for the order | Always
+orderType | The order's [type](https://vendor-docs.lossexpress.com/#fetch-order-types) | Always
+status | One of: `[ 'pending', 'fulfilled', 'cancelled' ]` | Always
+documentUrl | A URL that can be used to [fetch a document](https://vendor-docs.lossexpress.com/#fetch-document) attached to an order | A document was attached to the order during fulfillment
+fulfillmentData | Data pertaining to the order's fulfillment | Various data was gathered in order to fulfill the order
+
+<aside class="notice">
+Currently, `fulfillmentData` will only be included for `Loan Payoff Request` orders, for which `fulfilmentData`'s structure will always be consistent (although we may not gather all data points during fulfillment).
+
+We may add other order types that include it in the future. While the structure of `fulfillmentData` may vary between order types, it will be consistent for each individual order type. We will include the full data structure for any such order in the example JSON to the right, as we have done here for `Loan Payoff Request` orders.
+</aside>
 
 ## order-updated
 
@@ -736,6 +834,10 @@ This activity type is added to the feed whenever payoff data is added to a claim
 
 <aside class="warning">This activity may be called multiple times in the claim and may not contain all information. Only information changed or added will be available in this activity type.</aside>
 
+<aside class="warning">This activity has been deprecated in favor of the newer [order-status-changed](https://vendor-docs.lossexpress.com/#order-status-changed) activity.
+  
+Although we plan to maintain this legacy activity type, the newer activity is recommended as it provides a more useful and consistent data structure for all types of orders that we support.</aside>
+
 ## payoff-request-created
 
 > payoff-request-created example object
@@ -770,6 +872,11 @@ This activity type is added to the feed whenever a payoff request is created on 
 ```
 
 This activity type is added to the feed whenever a payoff request is cancelled on a particular claim.
+
+<aside class="warning">This activity has been deprecated in favor of the newer [order-status-changed](https://vendor-docs.lossexpress.com/#order-status-changed) activity.
+  
+Although we plan to maintain this legacy activity type, the newer activity is recommended as it provides a more useful and consistent data structure for all types of orders that we support.</aside>
+
 ## settlement-counter-added
 
 > settlement-counter-added example object
