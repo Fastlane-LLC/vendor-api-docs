@@ -462,7 +462,7 @@ This activity type is added to the feed whenever a letter of guarantee is added 
 
 <aside class="warning">This activity could be added to the feed even if a letter of guarantee request wasn't created in LossExpress. In those scenarios, a letter of guarantee request will be automatically created at the same time as the letter of guarantee is added to the claim.</aside>
 
-<aside class="warning">This activity has been deprecated in favor of the newer [order-status-changed](https://vendor-docs.lossexpress.com/#order-status-changed) activity.
+<aside class="warning">This activity has been deprecated in favor of the newer <a href="https://vendor-docs.lossexpress.com/#order-status-changed">order-status-changed</a> activity.
   
 Although we plan to maintain this legacy activity type, the newer activity is recommended as it provides a more useful and consistent data structure for all types of orders that we support.</aside>
 
@@ -508,7 +508,7 @@ Note that although we _typically_ request letters of guarantee whenever we reach
 
 This activity type is added to the feed whenever a letter of guarantee request is cancelled for a claim.
 
-<aside class="warning">This activity has been deprecated in favor of the newer [order-status-changed](https://vendor-docs.lossexpress.com/#order-status-changed) activity.
+<aside class="warning">This activity has been deprecated in favor of the newer <a href="https://vendor-docs.lossexpress.com/#order-status-changed">order-status-changed</a> activity.
   
 Although we plan to maintain this legacy activity type, the newer activity is recommended as it provides a more useful and consistent data structure for all types of orders that we support.</aside>
 
@@ -626,7 +626,7 @@ This activity type is added to the feed whenever an order is created for a claim
 
 This activity type is added to the feed whenever an order is cancelled for a claim.
 
-<aside class="warning">This activity has been deprecated in favor of the newer [order-status-changed](https://vendor-docs.lossexpress.com/#order-status-changed) activity.
+<aside class="warning">This activity has been deprecated in favor of the newer <a href="https://vendor-docs.lossexpress.com/#order-status-changed">order-status-changed</a> activity.
   
 Although we plan to maintain this legacy activity type, the newer activity is recommended as it provides a more useful and consistent data structure for all types of orders that we support.</aside>
 
@@ -651,7 +651,7 @@ Although we plan to maintain this legacy activity type, the newer activity is re
 
 This activity type is added to the feed whenever an order is fulfilled for a claim. If the order utilizes a document, it can be accessed via the <code>documentUrl</code>.
 
-<aside class="warning">This activity has been deprecated in favor of the newer [order-status-changed](https://vendor-docs.lossexpress.com/#order-status-changed) activity.
+<aside class="warning">This activity has been deprecated in favor of the newer <a href="https://vendor-docs.lossexpress.com/#order-status-changed">order-status-changed</a> activity.
   
 Although we plan to maintain this legacy activity type, the newer activity is recommended as it provides a more useful and consistent data structure for all types of orders that we support.</aside>
 
@@ -834,7 +834,7 @@ This activity type is added to the feed whenever payoff data is added to a claim
 
 <aside class="warning">This activity may be called multiple times in the claim and may not contain all information. Only information changed or added will be available in this activity type.</aside>
 
-<aside class="warning">This activity has been deprecated in favor of the newer [order-status-changed](https://vendor-docs.lossexpress.com/#order-status-changed) activity.
+<aside class="warning">This activity has been deprecated in favor of the newer <a href="https://vendor-docs.lossexpress.com/#order-status-changed">order-status-changed</a> activity.
   
 Although we plan to maintain this legacy activity type, the newer activity is recommended as it provides a more useful and consistent data structure for all types of orders that we support.</aside>
 
@@ -873,7 +873,7 @@ This activity type is added to the feed whenever a payoff request is created on 
 
 This activity type is added to the feed whenever a payoff request is cancelled on a particular claim.
 
-<aside class="warning">This activity has been deprecated in favor of the newer [order-status-changed](https://vendor-docs.lossexpress.com/#order-status-changed) activity.
+<aside class="warning">This activity has been deprecated in favor of the newer <a href="https://vendor-docs.lossexpress.com/#order-status-changed">order-status-changed</a> activity.
   
 Although we plan to maintain this legacy activity type, the newer activity is recommended as it provides a more useful and consistent data structure for all types of orders that we support.</aside>
 
