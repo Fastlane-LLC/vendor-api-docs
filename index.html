@@ -383,6 +383,12 @@
                     <a href="#letter-of-guarantee-added" class="toc-h2 toc-link" data-title="letter-of-guarantee-added">letter-of-guarantee-added</a>
                   </li>
                   <li>
+                    <a href="#letter-of-guarantee-request-created" class="toc-h2 toc-link" data-title="letter-of-guarantee-request-created">letter-of-guarantee-request-created</a>
+                  </li>
+                  <li>
+                    <a href="#letter-of-guarantee-request-cancelled" class="toc-h2 toc-link" data-title="letter-of-guarantee-request-cancelled">letter-of-guarantee-request-cancelled</a>
+                  </li>
+                  <li>
                     <a href="#order-updated" class="toc-h2 toc-link" data-title="order-updated">order-updated</a>
                   </li>
                   <li>
@@ -1220,52 +1226,42 @@ Documents that will not trigger this activity:
 <p>This activity type is added to the feed whenever a letter of guarantee is added to a claim. The <code>documentUrl</code> contains a link to the letter of guarantee that was received.</p>
 
 <aside class="notice">This activity could be added to the feed even if a letter of guarantee request wasn't created in LossExpress. In those scenarios, a letter of guarantee request will be automatically created at the same time as the letter of guarantee is added to the claim.</aside>
+<h2 id='letter-of-guarantee-request-created'>letter-of-guarantee-request-created</h2>
+<blockquote>
+<p>letter-of-guarantee-request-created example object</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"activityId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fed62fa0-c048-46b5-b994-6e3e69fb0f37"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-08T22:03:09.598Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"claimId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c30ae9da-9222-4de5-81fe-fe1ac590fa0f"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"letter-of-guarantee-request-created"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"claimNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EXAMPLE3"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"externalId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"COO-30022"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"estimatedResponseTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-20T22:03:09.598Z"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This activity type is added to the feed whenever a letter of guarantee request is created for a claim.</p>
 
-<aside class="warning">This activity has been deprecated in favor of the newer <a href="https://vendor-docs.lossexpress.com/#order-status-changed">order-status-changed</a> activity.
-<br><br>
-Although we plan to maintain this legacy activity type, the newer activity is recommended as it provides a more useful and consistent data structure for all types of orders that we support.</aside>
-
-## letter-of-guarantee-request-created
-
-> letter-of-guarantee-request-created example object
-
-```json
-{
-  "activityId": "fed62fa0-c048-46b5-b994-6e3e69fb0f37",
-  "createdAt": "2021-01-08T22:03:09.598Z",
-  "claimId": "c30ae9da-9222-4de5-81fe-fe1ac590fa0f",
-  "type": "letter-of-guarantee-request-created",
-  "claimNumber": "EXAMPLE3",
-  "externalId": "COO-30022",
-  "data": {
-    "estimatedResponseTime": "2021-01-20T22:03:09.598Z"
-  }
-}
-```
-
-This activity type is added to the feed whenever a letter of guarantee request is created for a claim.
-
-Note that although we _typically_ request letters of guarantee whenever we reach out to a lender, we do not follow-up on the status of letters of guarantee nor can we absolutely guarantee that a letter of guarantee will be added to a claim unless a letter of guarantee request is created on a claim.
+<p>Note that although we <em>typically</em> request letters of guarantee whenever we reach out to a lender, we do not follow-up on the status of letters of guarantee nor can we absolutely guarantee that a letter of guarantee will be added to a claim unless a letter of guarantee request is created on a claim.</p>
 
 <aside class="warning"><code>estimatedResponseTime</code> may not exist on every activity for this type, and is merely an estimate based on _prior_ letter of guarantee request response times for that lender.</aside>
-
-## letter-of-guarantee-request-cancelled
-
-> letter-of-guarantee-request-cancelled example object
-
-```json
-{
-  "activityId": "fed62fa0-c048-46b5-b994-6e3e69fb0f37",
-  "createdAt": "2021-01-08T22:03:09.598Z",
-  "claimId": "c30ae9da-9222-4de5-81fe-fe1ac590fa0f",
-  "type": "letter-of-guarantee-request-cancelled",
-  "claimNumber": "EXAMPLE3",
-  "externalId": "COO-30022",
-  "data": {}
-}
-```
-
-This activity type is added to the feed whenever a letter of guarantee request is cancelled for a claim.
+<h2 id='letter-of-guarantee-request-cancelled'>letter-of-guarantee-request-cancelled</h2>
+<blockquote>
+<p>letter-of-guarantee-request-cancelled example object</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"activityId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fed62fa0-c048-46b5-b994-6e3e69fb0f37"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-08T22:03:09.598Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"claimId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c30ae9da-9222-4de5-81fe-fe1ac590fa0f"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"letter-of-guarantee-request-cancelled"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"claimNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EXAMPLE3"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"externalId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"COO-30022"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This activity type is added to the feed whenever a letter of guarantee request is cancelled for a claim.</p>
 
 <aside class="warning">This activity has been deprecated in favor of the newer <a href="https://vendor-docs.lossexpress.com/#order-status-changed">order-status-changed</a> activity.
 <br><br>
