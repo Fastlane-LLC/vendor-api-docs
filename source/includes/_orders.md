@@ -110,7 +110,7 @@ orderIds | An array containing orderIds of orders to be cancelled | Y
 }
 ```
 
-This route will refresh orders, with status "cancelled" or "fulfilled", on a claim. 
+This route will refresh "cancelled" or "fulfilled" orders on a claim.
 
 ### HTTP Request
 
