@@ -533,6 +533,9 @@
                   <li>
                     <a href="#cancel-order-s-request" class="toc-h2 toc-link" data-title="Cancel Order(s) Request">Cancel Order(s) Request</a>
                   </li>
+                  <li>
+                    <a href="#refresh-order-s-request" class="toc-h2 toc-link" data-title="Refresh Order(s) Request">Refresh Order(s) Request</a>
+                  </li>
               </ul>
           </li>
           <li>
@@ -2913,6 +2916,56 @@ Although many fields are not required when creating a claim, please note that ne
 <tr>
 <td>orderIds</td>
 <td>An array containing orderIds of orders to be cancelled</td>
+<td>Y</td>
+</tr>
+</tbody></table>
+<h2 id='refresh-order-s-request'>Refresh Order(s) Request</h2>
+<blockquote>
+<p>Refresh Order(s) Request Example Response Body:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"claimId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c30ae9da-9222-4de5-81fe-fe1ac590fa0f"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"orders"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"orderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3e8c38f3-f4ef-4414-88da-1793d25ef6f0"</span><span class="p">,</span><span class="w"> 
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Copy of Title"</span><span class="w">
+    </span><span class="p">},</span><span class="w"> 
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"orderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"77462941-7b6c-4bd0-9749-588c32654864"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Lien Release Letter"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This route will refresh &quot;cancelled&quot; or &quot;fulfilled&quot; orders on a claim.</p>
+<h3 id='http-request-4'>HTTP Request</h3>
+<p><code>POST https://xapi.lossexpress.com/claims/{claimId}/orders/refresh</code></p>
+<h3 id='url-parameters-3'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>claimId</td>
+<td>The LossExpress UUID associated with the claim</td>
+</tr>
+</tbody></table>
+<h3 id='request-body-3'>Request Body</h3>
+<p>This route accepts a JSON payload of an object comprising of:</p>
+
+<table><thead>
+<tr>
+<th>Body Parameter</th>
+<th>Description</th>
+<th>Required?</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>types</td>
+<td>An array containing strings with types of orders to be refreshed</td>
 <td>Y</td>
 </tr>
 </tbody></table>
