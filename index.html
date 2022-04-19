@@ -813,7 +813,7 @@ We will only ever send one activity per webhook request. Webhook payloads for an
 
 <p>This endpoint also generates an API key secret that can be used to validate incoming payloads. A new API key is generated whenever this endpoint is used, and it can be retrieved anytime via the <a href="https://vendor-docs.lossexpress.com/#fetch-webhook-information">Fetch Webhook Information</a> endpoint.</p>
 <h3 id='http-request-3'>HTTP Request</h3>
-<p><code>POST https://xapi.lossexpress.com/carriers/webhook</code></p>
+<p><code>POST https://xapi.lossexpress.com/activities/webhook</code></p>
 
 <table><thead>
 <tr>
@@ -824,6 +824,10 @@ We will only ever send one activity per webhook request. Webhook payloads for an
 <tr>
 <td>endpoint</td>
 <td>The URL that will receive your activity feed data.</td>
+</tr>
+<tr>
+<td>types</td>
+<td>Allows you to subscribe to and only be sent specific activity types. This optional parameter accepts either the string &quot;all&quot; or an array of <a href="https://vendor-docs.lossexpress.com/#activity-types">activity type</a> strings.</td>
 </tr>
 </tbody></table>
 
@@ -851,7 +855,8 @@ We will only ever send one activity per webhook request. Webhook payloads for an
   </span><span class="nl">"webhookInfo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nl">"endpoint"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://yourendpointthatreturnsa200.com"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"verified"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"apiKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"exampleapikey1234"</span><span class="w">
+    </span><span class="nl">"apiKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"exampleapikey1234"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"activityTypeSubscriptions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">"order-status-changed"</span><span class="p">,</span><span class="w"> </span><span class="s2">"direct-message-added"</span><span class="p">,</span><span class="w"> </span><span class="s2">"claim-updated"</span><span class="w"> </span><span class="p">]</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div><h2 id='deactivate-webhook'>Deactivate Webhook</h2>
