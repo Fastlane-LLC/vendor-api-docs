@@ -115,11 +115,12 @@ This endpoint can be used to set your webhook's URL. A test payload (a [direct-m
 This endpoint also generates an API key secret that can be used to validate incoming payloads. A new API key is generated whenever this endpoint is used, and it can be retrieved anytime via the [Fetch Webhook Information](https://vendor-docs.lossexpress.com/#fetch-webhook-information) endpoint.
 
 ### HTTP Request
-`POST https://xapi.lossexpress.com/carriers/webhook`
+`POST https://xapi.lossexpress.com/activities/webhook`
 
 Key | Description
 --- | -----------
 endpoint | The URL that will receive your activity feed data.
+types | Allows you to subscribe to and only be sent specific activity types. This optional parameter accepts either the string "all" or an array of [activity type](https://vendor-docs.lossexpress.com/#activity-types) strings.
 
 > If your endpoint returns a status code of 200, this route returns a success object that looks like this:
 
@@ -147,7 +148,8 @@ For fetching information about your webhook status, current endpoint, and API ke
   "webhookInfo": {
     "endpoint": "https://yourendpointthatreturnsa200.com",
     "verified": true,
-    "apiKey": "exampleapikey1234"
+    "apiKey": "exampleapikey1234",
+    "activityTypeSubscriptions": [ "order-status-changed", "direct-message-added", "claim-updated" ]
   }
 }
 ```
