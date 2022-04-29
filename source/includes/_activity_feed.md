@@ -138,7 +138,7 @@ For fetching information about your webhook status, current endpoint, and API ke
 
 ### HTTP Request
 
-`GET https://xapi.lossexpress.com/carriers/webhook-info`
+`GET https://xapi.lossexpress.com/activities/webhook-info`
 
 >This route returns an object with your webhook information that looks like this:
 
