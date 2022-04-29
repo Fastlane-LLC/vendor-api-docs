@@ -742,7 +742,7 @@ Key | Description | Will be included when...
 --- | ----------- | ------------------------
 orderId | The LossExpress UUID for the order | Always
 orderType | The order's [type](https://vendor-docs.lossexpress.com/#fetch-order-types) | Always
-status | `pending`, `fulfilled`, or `canceled` | Always
+status | `pending`, `fulfilled`, or `cancelled` | Always
 documentUrl | A URL that can be used to [fetch a document](https://vendor-docs.lossexpress.com/#fetch-document) attached to an order | A document was attached to the order during fulfillment
 fulfillmentData | Data pertaining to the order's fulfillment | Various data was gathered in order to fulfill the order
 
