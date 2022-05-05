@@ -186,6 +186,7 @@ order-attempted | An attempt to fulfill an order has been added to claim | LossE
 order-created | A new order has been added to a claim | Carrier
 order-cancelled | An order on a claim has been cancelled | Carrier/LossExpress
 order-fulfilled | An order on a claim has been successfully fulfilled | LossExpress
+order-status-changed | The status for an order has changed | LossExpress
 order-updated | An order on a claim has been updated | LossExpress
 payment-sent | Payment has been sent for a claim | Carrier
 payoff-data-added | Payoff information is added to a claim | LossExpress
