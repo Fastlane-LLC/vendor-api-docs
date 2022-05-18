@@ -359,6 +359,35 @@ Note that this activity type could be triggered by actions made by LossExpress. 
 }
 ```
 
+> direct-message-added example object (Including the orders array)
+
+```json
+{
+			"activityId": "19c2c62f-0437-5657-b745-09e73b878bd3",
+			"claimId": "39a7617f-296f-44e3-a080-32e95cdf7d27",
+			"claimNumber": "DMtest30",
+			"createdAt": "2022-05-10T21:11:55.153Z",
+			"data": {
+				"sentByLossExpress": true,
+				"message": "Attention Needed: A loan/lease account is unable to be located with the account information provided. Confirmation of account information, specifically the account number, will need to be provided in order for a Copy of Title, Letter of Guarantee to continue to be processed. If the account number is confirmed as being the same as previously provided, the loan/lease account may be at a different financial institution.",
+				"category": "OTHER",
+				"actionRequired": true,
+				"orders": [
+					{
+						"orderType": "Copy of Title",
+						"orderId": "618bf9ac-ed18-4d19-9861-ef387bd390a4"
+					},
+					{
+						"orderType": "Letter of Guarantee",
+						"orderId": "47b521f0-7e82-41b7-b9e2-79e120f72588"
+					}
+				]
+			},
+			"externalId": "306126",
+			"type": "direct-message-added"
+		},
+```
+
 This activity type will appear in the feed whenever a direct message is added to a claim, either by LossExpress or by a carrier user.
 
 When a direct message is sent from LossExpress, you can expect to see a `category` value passed in the activity data. The following values are currently supported:
@@ -373,6 +402,8 @@ When a direct message is sent from LossExpress, you can expect to see a `categor
 | CUSTOMER AUTHORIZATION |
 | GENERAL |
 | OTHER |
+
+For DM activities where `actionRequired: true`, an `orders` array will be included in the data object containing the `orderType` and `orderId` of the corresponding orders. If `actionRequired: false`, there will not be an orders array.
 
 ## document-added
 
