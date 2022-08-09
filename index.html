@@ -425,6 +425,9 @@
                     <a href="#payoff-request-cancelled" class="toc-h2 toc-link" data-title="payoff-request-cancelled">payoff-request-cancelled</a>
                   </li>
                   <li>
+                    <a href="#request-pending-lender-contacted" class="toc-h2 toc-link" data-title="request-pending-lender-contacted">request-pending-lender-contacted</a>
+                  </li>
+                  <li>
                     <a href="#settlement-counter-added" class="toc-h2 toc-link" data-title="settlement-counter-added">settlement-counter-added</a>
                   </li>
                   <li>
@@ -982,6 +985,11 @@ We will only ever send one activity per webhook request. Webhook payloads for an
 <td>payoff-request-cancelled</td>
 <td>A payoff request on a claim has been cancelled</td>
 <td>Carrier/LossExpress</td>
+</tr>
+<tr>
+<td>request-pending-lender-contacted</td>
+<td>The lender has been contacted on behalf of the carrier</td>
+<td>LossExpress</td>
 </tr>
 <tr>
 <td>settlement-counter-added</td>
@@ -1723,6 +1731,20 @@ Although we plan to maintain this legacy activity type, the newer activity is re
 <br><br>
 Although we plan to maintain this legacy activity type, the newer activity is recommended as it provides a more useful and consistent data structure for all types of orders that we support.
 </aside>
+<h2 id='request-pending-lender-contacted'>request-pending-lender-contacted</h2>
+<blockquote>
+<p>request-pending-lender-contacted example object</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"activityId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fed62fa0-c048-46b5-b994-6e3e69fb0f37"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-01-08T22:03:09.598Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"claimId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"c30ae9da-9222-4de5-81fe-fe1ac590fa0f"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"request-pending-lender-contacted"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"claimNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EXAMPLE2"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This activity type will appear in the feed whenever a lender is contacted by LossExpress on behalf of the carrier.</p>
 <h2 id='settlement-counter-added'>settlement-counter-added</h2>
 <blockquote>
 <p>settlement-counter-added example object</p>
