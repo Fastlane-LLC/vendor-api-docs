@@ -192,6 +192,7 @@ payment-sent | Payment has been sent for a claim | Carrier
 payoff-data-added | Payoff information is added to a claim | LossExpress
 payoff-request-created | A payoff request is created on a claim | Carrier
 payoff-request-cancelled | A payoff request on a claim has been cancelled | Carrier/LossExpress
+request-pending-lender-contacted | The lender has been contacted on behalf of the carrier | LossExpress
 settlement-counter-added | A lender adds a counter to the proposed settlement amount | LossExpress
 settlement-counter-updated | The settlement counter is either accepted or disputed by the carrier | Carrier
 
@@ -925,6 +926,23 @@ This activity type is added to the feed whenever a payoff request is cancelled o
 <br><br>
 Although we plan to maintain this legacy activity type, the newer activity is recommended as it provides a more useful and consistent data structure for all types of orders that we support.
 </aside>
+
+## request-pending-lender-contacted
+
+> request-pending-lender-contacted example object
+
+```json
+{
+  "activityId": "fed62fa0-c048-46b5-b994-6e3e69fb0f37",
+  "createdAt": "2021-01-08T22:03:09.598Z",
+  "claimId": "c30ae9da-9222-4de5-81fe-fe1ac590fa0f",
+  "type": "request-pending-lender-contacted",
+  "claimNumber": "EXAMPLE2",
+  "data": {}
+}
+```
+
+This activity type will appear in the feed whenever a lender is contacted by LossExpress on behalf of the carrier.
 
 ## settlement-counter-added
 
