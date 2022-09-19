@@ -237,6 +237,10 @@ This activity type will appear in the feed whenever an account number is viewed 
 
 This activity type will appear in the feed whenever a call was made on behalf of the carrier by LossExpress.
 
+<aside class="warning">
+  This activity has been deprecated in favor of the newer <a href="https://vendor-docs.lossexpress.com/#request-pending-lender-contacted">request-pending-lender-contacted</a> activity.
+</aside>
+
 ## claim-created
 
 > claim-created example object
@@ -474,6 +478,10 @@ Documents that will not trigger this activity:
 ```
 
 This activity type is added to the feed whenever a document is sent by LossExpress to the lender for a particular claim. The <code>documentUrl</code> contains a link to the document that was sent to the lender.
+
+<aside class="warning">
+  This activity has been deprecated in favor of the newer <a href="https://vendor-docs.lossexpress.com/#request-pending-lender-contacted">request-pending-lender-contacted</a> activity.
+</aside>
 
 ## letter-of-guarantee-added
 
