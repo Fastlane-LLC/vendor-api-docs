@@ -13,6 +13,7 @@ includes:
   - orders
   - payments
   - settlement_counters
+  - vin_details
   - errors
 
 search: true
