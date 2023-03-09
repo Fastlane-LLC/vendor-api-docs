@@ -558,6 +558,14 @@
               </ul>
           </li>
           <li>
+            <a href="#vin-inquiry" class="toc-h1 toc-link" data-title="VIN Inquiry">VIN Inquiry</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#fetch-vin-information" class="toc-h2 toc-link" data-title="Fetch VIN Information">Fetch VIN Information</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
             <a href="#errors" class="toc-h1 toc-link" data-title="Errors">Errors</a>
           </li>
       </ul>
@@ -3146,6 +3154,87 @@ Although many fields are not required when creating a claim, please note that ne
 <td>Y if dispute</td>
 </tr>
 </tbody></table>
+<h1 id='vin-inquiry'>VIN Inquiry</h1><h2 id='fetch-vin-information'>Fetch VIN Information</h2>
+<p>This route returns information about one or more vins.</p>
+
+<blockquote>
+<p>Example Response Body</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-03-09T16:30:01.644Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"vehicleCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"results"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"vin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"JN8AZ28R49T122921"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"owner"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"JOHN LEE DOE"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123 MAIN STREET, DALLAS, TX 75204-1407"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"county"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DALLAS"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="nl">"vehicle"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"financial"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"accident"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"registration"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"recordType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CURRENT"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"JOHN LEE DOE"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123 MAIN STREET, DALLAS, TX 75204-1407"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"county"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DALLAS"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"tagNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OOOXXX"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"earliestDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XX/XX/XXXX"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"latestDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XX/XX/XXXX"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"expirationDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XX/XX/XXXX"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"previousTagNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OOOXXX"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"vin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"JH4DA9440NS003801"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"owner"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FIRST MIDDLE LAST"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"321 MAIN STREET, DALLAS, TX 75204-1407"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"county"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DALLAS"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="nl">"vehicle"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"financial"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"accident"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"registration"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"recordType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CURRENT"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FIRST MIDDLE LAST"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"321 MAIN STREET, DALLAS, TX 75204-1407"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"county"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DALLAS"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"tagNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OOOXXX"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"earliestDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XX/XX/XXXX"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"latestDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XX/XX/XXXX"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"expirationDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XX/XX/XXXX"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"previousTagNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OOOXXX"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='http-request'>HTTP Request</h3>
+<p><code>POST https://xapi.lossexpress.com/vin-check</code></p>
+<h3 id='request-body'>Request Body</h3>
+<table><thead>
+<tr>
+<th>Body Parameter</th>
+<th>Description</th>
+<th>Required</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>vins</td>
+<td>An array of 17-digit VINs</td>
+<td>Y</td>
+</tr>
+<tr>
+<td>requestedData</td>
+<td>An array of data types to fetch*</td>
+<td>Y</td>
+</tr>
+</tbody></table>
+
+<p>*Accepted data types are <code>&quot;OWNER&quot;, &quot;VEHICLE&quot;, &quot;ACCIDENT&quot;, &quot;FINANCIAL&quot;, &quot;REGISTRATION&quot;</code></p>
+
+<aside class="warning">This feature is currently in the testing phase, and only two vins (`JN8AZ28R49T122921` and `JH4DA9440NS003801`) will return test data. All other vins will return a value of `No Info Found`</aside>
 <h1 id='errors'>Errors</h1>
 <blockquote>
 <p>400 Bad Request Example Error Response:</p>
