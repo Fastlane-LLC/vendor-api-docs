@@ -3161,53 +3161,114 @@ Although many fields are not required when creating a claim, please note that ne
 <p>Example Response Body</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="nl">"time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-03-09T16:30:01.644Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-04-20T13:29:33.935Z"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"vehicleCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
     </span><span class="nl">"results"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"vin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"JN8AZ28R49T122921"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"vin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"KL1TD526X5B4XXXXX"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"owner"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"JOHN LEE DOE"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123 MAIN STREET, DALLAS, TX 75204-1407"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"county"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DALLAS"</span><span class="w">
+                </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jared"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test address 1"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"county"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Wichita"</span><span class="w">
             </span><span class="p">},</span><span class="w">
-            </span><span class="nl">"vehicle"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"financial"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"accident"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"vehicle"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"year"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2005"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"make"</span><span class="p">:</span><span class="w"> </span><span class="s2">"example 1"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"model"</span><span class="p">:</span><span class="w"> </span><span class="s2">"example 1"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"trim"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LS / Special Value"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"titleProblem"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"vehicleProblem"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"vehicleOrTitleProblems"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                    </span><span class="s2">"Title brand or other problem"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"Accident"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"Rebuilt"</span><span class="w">
+                </span><span class="p">]</span><span class="w">
+            </span><span class="p">},</span><span class="w">
             </span><span class="nl">"registration"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                </span><span class="nl">"recordType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CURRENT"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"JOHN LEE DOE"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123 MAIN STREET, DALLAS, TX 75204-1407"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"county"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DALLAS"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"tagNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OOOXXX"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"earliestDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XX/XX/XXXX"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"latestDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XX/XX/XXXX"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"expirationDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XX/XX/XXXX"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"previousTagNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OOOXXX"</span><span class="w">
+                </span><span class="nl">"tagNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"example 1"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"earliestDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2005-04-22"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"latestDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2012-02-10"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"expirationDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-04-25"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"titleNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10831838959165444"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="nl">"financial"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"titleIssueDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2012-02-10"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"titledState"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MO"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="nl">"accident"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"count"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"earliestDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"December 15, 1995 03:24:00"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"lastReportedEvent"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"lastReportedAccidentDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"reportedAccidents"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                    </span><span class="p">{</span><span class="w">
+                        </span><span class="nl">"accidentSeqNum"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+                        </span><span class="nl">"reportedDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"December 17, 1995 03:24:00"</span><span class="p">,</span><span class="w">
+                        </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string a"</span><span class="p">,</span><span class="w">
+                        </span><span class="nl">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string a"</span><span class="p">,</span><span class="w">
+                        </span><span class="nl">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string a"</span><span class="w">
+                    </span><span class="p">},</span><span class="w">
+                    </span><span class="p">{</span><span class="w">
+                        </span><span class="nl">"accidentSeqNum"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+                        </span><span class="nl">"reportedDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"December 15, 1995 03:24:00"</span><span class="p">,</span><span class="w">
+                        </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string b"</span><span class="p">,</span><span class="w">
+                        </span><span class="nl">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string b"</span><span class="p">,</span><span class="w">
+                        </span><span class="nl">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string b"</span><span class="w">
+                    </span><span class="p">}</span><span class="w">
+                </span><span class="p">]</span><span class="w">
             </span><span class="p">}</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"vin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"JH4DA9440NS003801"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"vin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1GNFC130X8R2XXXXX"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"owner"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FIRST MIDDLE LAST"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"321 MAIN STREET, DALLAS, TX 75204-1407"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"county"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DALLAS"</span><span class="w">
+                </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John Doe"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123 Main St."</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"county"</span><span class="p">:</span><span class="w"> </span><span class="s2">"New York"</span><span class="w">
             </span><span class="p">},</span><span class="w">
-            </span><span class="nl">"vehicle"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"financial"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"accident"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"vehicle"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"year"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"make"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BMW"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"model"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4 Series"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"trim"</span><span class="p">:</span><span class="w"> </span><span class="s2">"435i"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"titleProblem"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"vehicleProblem"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"vehicleOrTitleProblems"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                    </span><span class="s2">"Title brand or other problem"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"Accident"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"Rebuilt"</span><span class="w">
+                </span><span class="p">]</span><span class="w">
+            </span><span class="p">},</span><span class="w">
             </span><span class="nl">"registration"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                </span><span class="nl">"recordType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CURRENT"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FIRST MIDDLE LAST"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"321 MAIN STREET, DALLAS, TX 75204-1407"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"county"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DALLAS"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"tagNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OOOXXX"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"earliestDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XX/XX/XXXX"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"latestDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XX/XX/XXXX"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"expirationDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XX/XX/XXXX"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"previousTagNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OOOXXX"</span><span class="w">
+                </span><span class="nl">"tagNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ABC123"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"earliestDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-06-01"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"latestDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-03-15"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"expirationDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-03-15"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"titleNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123456789"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="nl">"financial"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"titleIssueDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-03-15"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"titledState"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NY"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="nl">"accident"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"count"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"earliestDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"December 1, 2020 03:24:00"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"lastReportedEvent"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Collision with animal"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"lastReportedAccidentDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-09-30"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"New York"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NY"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"reportedAccidents"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                    </span><span class="p">{</span><span class="w">
+                        </span><span class="nl">"accidentSeqNum"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+                        </span><span class="nl">"reportedDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"December 1, 2020 03:24:00"</span><span class="p">,</span><span class="w">
+                        </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rear-end collision"</span><span class="p">,</span><span class="w">
+                        </span><span class="nl">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Brooklyn"</span><span class="p">,</span><span class="w">
+                        </span><span class="nl">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NY"</span><span class="w">
+                    </span><span class="p">}</span><span class="w">
+                </span><span class="p">]</span><span class="w">
             </span><span class="p">}</span><span class="w">
-        </span><span class="p">}</span><span class="w">
+        </span><span class="p">},</span><span class="w">
     </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div><h3 id='http-request'>HTTP Request</h3>
@@ -3234,7 +3295,7 @@ Although many fields are not required when creating a claim, please note that ne
 
 <p>*Accepted data types are <code>&quot;OWNER&quot;, &quot;VEHICLE&quot;, &quot;ACCIDENT&quot;, &quot;FINANCIAL&quot;, &quot;REGISTRATION&quot;</code></p>
 
-<aside class="warning">This feature is currently in the testing phase, and only two vins (`JN8AZ28R49T122921` and `JH4DA9440NS003801`) will return test data. All other vins will return a value of `No Info Found`</aside>
+<aside class="warning">This feature is currently in the testing phase, and only five vins ('KL1TD526X5B4XXXXX', '1GNFC130X8R2XXXXX', 'JA7FJ23E5JJ0XXXXX', '3C3EL55H0TT2XXXXX', and '1FACP41E1LF1XXXXX') will return test data. All other vins will return a value of `No Info Found`</aside>
 <h1 id='errors'>Errors</h1>
 <blockquote>
 <p>400 Bad Request Example Error Response:</p>
