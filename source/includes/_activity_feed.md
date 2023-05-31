@@ -315,7 +315,7 @@ If desired, we do give carriers the ability to not have account numbers added to
 }
 ```
 
-This activity type will appear in the feed whenever _primary claim information_ is updated. In LossExpress, we define primary claim information as any piece of data that can be sent in the update or create claim routes.
+This activity type will appear in the feed whenever _primary claim information_ is updated. In LossExpress, we define primary claim information as any piece of data that can be sent in the update or create claim routes. Updated claim data may include any [claim parameters](https://vendor-docs.lossexpress.com/#claims).
 
 Note that this activity type could be triggered by actions made by LossExpress. Some examples that could cause LossExpress to trigger this activity type:
 
