@@ -127,3 +127,8 @@ Parameter | Description
 --------- | -----------
 claimId | The LossExpress UUID associated with the claim
 
+<aside class="warning">
+  This end-point has been deprecated in favor of the newer <a href="https://vendor-docs.lossexpress.com/#refresh-order-s-request">Refresh Order(s) Request</a> end-point.
+<br><br>
+Although we plan to maintain this legacy end-point, the newer end-point is recommended as it provides a more useful and consistent data structure for all types of orders that we support.
+</aside>
