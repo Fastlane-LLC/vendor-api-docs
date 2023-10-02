@@ -129,3 +129,21 @@ This route accepts a JSON payload of an object comprising of:
 Body Parameter | Description | Required?
 -------------- | ----------- | ---------
 types | An array containing strings with types of orders to be refreshed | Y
+
+**Accepted `types`:*
+
+* `Bill of Sale`
+* `Copy of Title`
+* `Installment Contract`
+* `Lien Release Letter`
+* `One and the Same Letter`
+* `Payment History`
+* `Payment Status`
+* `Repo Affidavit`
+* `Title Status`
+* `Letter of Guarantee`
+* `Loan Payoff Request`
+
+<aside class="notice">
+This endpoint refreshes each order-type concurrently. While processing each order-type, if one rejects then the remaining order-types will continue to process, but the client will recieve a error response with an HTTP status 500.
+</aside>
