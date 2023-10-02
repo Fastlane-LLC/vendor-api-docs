@@ -2776,6 +2776,12 @@ Although many fields are not required when creating a claim, please note that ne
 <td>The LossExpress UUID associated with the claim</td>
 </tr>
 </tbody></table>
+
+<aside class="warning">
+  This end-point has been deprecated in favor of the newer <a href="https://vendor-docs.lossexpress.com/#refresh-order-s-request">Refresh Order(s) Request</a> end-point.
+<br><br>
+Although we plan to maintain this legacy end-point, the newer end-point is recommended as it provides a more useful and consistent data structure for all types of orders that we support.
+</aside>
 <h1 id='payoff-requests'>Payoff Requests</h1><h2 id='create-payoff-request'>Create Payoff Request</h2>
 <blockquote>
 <p>Create Payoff Request Example Response Body:</p>
@@ -2897,6 +2903,12 @@ Although many fields are not required when creating a claim, please note that ne
 <td>The LossExpress UUID associated with the claim</td>
 </tr>
 </tbody></table>
+
+<aside class="warning">
+  This end-point has been deprecated in favor of the newer <a href="https://vendor-docs.lossexpress.com/#refresh-order-s-request">Refresh Order(s) Request</a> end-point.
+<br><br>
+Although we plan to maintain this legacy end-point, the newer end-point is recommended as it provides a more useful and consistent data structure for all types of orders that we support.
+</aside>
 <h1 id='orders'>Orders</h1><h2 id='fetch-order-types'>Fetch Order Types</h2>
 <blockquote>
 <p>Fetch Order Types Request Example Response Body </p>
@@ -3047,6 +3059,26 @@ Although many fields are not required when creating a claim, please note that ne
 <td>Y</td>
 </tr>
 </tbody></table>
+
+<p>*<em>Accepted <code>types</code>:</em></p>
+
+<ul>
+<li><code>Bill of Sale</code></li>
+<li><code>Copy of Title</code></li>
+<li><code>Installment Contract</code></li>
+<li><code>Lien Release Letter</code></li>
+<li><code>One and the Same Letter</code></li>
+<li><code>Payment History</code></li>
+<li><code>Payment Status</code></li>
+<li><code>Repo Affidavit</code></li>
+<li><code>Title Status</code></li>
+<li><code>Letter of Guarantee</code></li>
+<li><code>Loan Payoff Request</code></li>
+</ul>
+
+<aside class="notice">
+This endpoint refreshes each order-type concurrently. While processing each order-type, if one rejects then the remaining order-types will continue to process, but the client will recieve a error response with an HTTP status 500.
+</aside>
 <h1 id='payments'>Payments</h1><h2 id='acknowledge-payment-sent'>Acknowledge Payment Sent</h2>
 <p>We offer support for carriers to give us acknowledgement that payment has been sent to the lender. Enabling this allows us to more effectively answer questions directed at us by lenders regarding payment status. Additionally, this step can be skipped if an integration with our designated payment processing partner has been enabled.</p>
 <h3 id='http-request'>HTTP Request</h3>
