@@ -110,7 +110,7 @@ orderIds | An array containing orderIds of orders to be cancelled | Y
 }
 ```
 
-This route will refresh "cancelled" or "fulfilled" orders on a claim.
+This route will refresh "cancelled" or "fulfilled" orders on a claim, and is effectively a re-order. Refreshing an order will result in an additional billing event being created.
 
 ### HTTP Request
 
