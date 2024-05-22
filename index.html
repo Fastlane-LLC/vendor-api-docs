@@ -1307,11 +1307,12 @@ Documents that will not trigger this activity:
   </span><span class="nl">"claimNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EXAMPLE3"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"externalId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"COO-30022"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"documentUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://xapi.lossexpress.com/documents/555ae9da-9222-4de5-81fe-fe1ac590fa0f"</span><span class="w">
+    </span><span class="nl">"documentUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://xapi.lossexpress.com/documents/555ae9da-9222-4de5-81fe-fe1ac590fa0f"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"xLoG"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<p>This activity type is added to the feed whenever a letter of guarantee is added to a claim. The <code>documentUrl</code> contains a link to the letter of guarantee that was received.</p>
+<p>This activity type is added to the feed whenever a letter of guarantee is added to a claim. The <code>documentUrl</code> contains a link to the letter of guarantee that was received. When a customer has requested additional information on whether the document is an xLOG or not, the &quot;xLoG&quot; boolean field will be added to the result.</p>
 
 <aside class="notice">
   This activity could be added to the feed even if a letter of guarantee request wasn't created in LossExpress. In those scenarios, a letter of guarantee request will be automatically created at the same time as the letter of guarantee is added to the claim.
@@ -2671,13 +2672,15 @@ Although many fields are not required when creating a claim, please note that ne
   </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Claim is missing one or more required documents: 'settlement breakdown' &amp; 'valuation report'"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<p>This route will create a letter of guarantee request on a claim. The letter of guarantee request can be added at any time, but will fail when:</p>
+<p>This route will create a letter of guarantee request on a claim. If the customer has manual xLOG requests enabled, you must specify TRUE on the xLogRequested variable for an xLOG to be processed. Null or False will not return an xLOG. Customers without this configuration can ignore this. The letter of guarantee request can be added at any time, but will fail when:</p>
 
 <ul>
 <li>IF documents with type <code>settlement breakdown</code> and <code>valuation report</code> are not available (or a document with type <code>settlement breakdown &amp; valuation report</code>)</li>
 </ul>
 <h3 id='http-request'>HTTP Request</h3>
 <p><code>POST https://xapi.lossexpress.com/claims/{claimId}/letter-of-guarantee-request</code></p>
+<h3 id='when-an-xlog-is-specifically-requested'>When an xLOG is specifically requested:</h3>
+<p><code>POST https://xapi.lossexpress.com/claims/{claimId}/letter-of-guarantee-request?xLogRequested=true</code></p>
 <h3 id='url-parameters'>URL Parameters</h3>
 <table><thead>
 <tr>
