@@ -23,13 +23,17 @@
 }
 ```
 
-This route will create a letter of guarantee request on a claim. The letter of guarantee request can be added at any time, but will fail when:
+This route will create a letter of guarantee request on a claim. If the customer has manual xLOG requests enabled, you must specify TRUE on the xLogRequested variable for an xLOG to be processed. Null or False will not return an xLOG. Customers without this configuration can ignore this. The letter of guarantee request can be added at any time, but will fail when:
 
 - IF documents with type `settlement breakdown` and `valuation report` are not available (or a document with type `settlement breakdown & valuation report`)
 
 ### HTTP Request
 
 `POST https://xapi.lossexpress.com/claims/{claimId}/letter-of-guarantee-request`
+
+### When an xLOG is specifically requested:
+
+`POST https://xapi.lossexpress.com/claims/{claimId}/letter-of-guarantee-request?xLogRequested=true`
 
 ### URL Parameters
 

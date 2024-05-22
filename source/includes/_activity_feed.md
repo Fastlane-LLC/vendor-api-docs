@@ -496,12 +496,13 @@ This activity type is added to the feed whenever a document is sent by LossExpre
   "claimNumber": "EXAMPLE3",
   "externalId": "COO-30022",
   "data": {
-    "documentUrl": "https://xapi.lossexpress.com/documents/555ae9da-9222-4de5-81fe-fe1ac590fa0f"
+    "documentUrl": "https://xapi.lossexpress.com/documents/555ae9da-9222-4de5-81fe-fe1ac590fa0f",
+    "xLoG": true
   }
 }
 ```
 
-This activity type is added to the feed whenever a letter of guarantee is added to a claim. The <code>documentUrl</code> contains a link to the letter of guarantee that was received.
+This activity type is added to the feed whenever a letter of guarantee is added to a claim. The <code>documentUrl</code> contains a link to the letter of guarantee that was received. When a customer has requested additional information on whether the document is an xLOG or not, the "xLoG" boolean field will be added to the result.
 
 <aside class="notice">
   This activity could be added to the feed even if a letter of guarantee request wasn't created in LossExpress. In those scenarios, a letter of guarantee request will be automatically created at the same time as the letter of guarantee is added to the claim.
