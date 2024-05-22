@@ -39,7 +39,13 @@ This route returns information about one or more vins.
 			},
 			"financial": {
 				"titleIssueDate": "2012-02-10",
-				"titledState": "MO"
+				"titledState": "MO",
+        "lienholder": [
+		      {
+			      "accountType": "example 1",
+			      "companyName": "example 1"
+          }
+        ],
 			},
 			"accident": {
 				"count": "2",
@@ -95,7 +101,13 @@ This route returns information about one or more vins.
 			},
 			"financial": {
 				"titleIssueDate": "2022-03-15",
-				"titledState": "NY"
+				"titledState": "NY",
+        "lienholder": [
+		      {
+			      "accountType": "example 1",
+			      "companyName": "example 1"
+          }
+        ],
 			},
 			"accident": {
 				"count": "1",
@@ -130,4 +142,4 @@ requestedData | An array of data types to fetch* | Y
 
 *Accepted data types are `"OWNER", "VEHICLE", "ACCIDENT", "FINANCIAL", "REGISTRATION"`
 
-<aside class="warning">This feature is currently in the testing phase, and only five vins ('KL1TD526X5B4XXXXX', '1GNFC130X8R2XXXXX', 'JA7FJ23E5JJ0XXXXX', '3C3EL55H0TT2XXXXX', and '1FACP41E1LF1XXXXX') will return test data. All other vins will return a value of `No Info Found`</aside>
+<aside class="warning">Example test VINs: ('KL1TD526X5B4XXXXX', '1GNFC130X8R2XXXXX', 'JA7FJ23E5JJ0XXXXX', '3C3EL55H0TT2XXXXX', and '1FACP41E1LF1XXXXX') that will return test data. You may input other VINs as well. When using the development endpoint, test data may be returned randomly for variety so you may not always get the same response for the same VIN entered. Random errors will also be returned around 10% of the time to help simulate error handling. </aside>
