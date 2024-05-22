@@ -8,11 +8,11 @@ on:
 
 jobs:
   test:
-    runs-on: ubuntu-latest
+    runs-on: ruby:3-bookworm
 
     strategy:
       matrix:
-        ruby-version: [2.6, 2.7]
+        ruby-version: [3.0, 3.3]
 
     steps:
     - uses: actions/checkout@v2
