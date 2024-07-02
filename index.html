@@ -3228,7 +3228,13 @@ This endpoint refreshes each order-type concurrently. While processing each orde
             </span><span class="p">},</span><span class="w">
             </span><span class="nl">"financial"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
                 </span><span class="nl">"titleIssueDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2012-02-10"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"titledState"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MO"</span><span class="w">
+                </span><span class="nl">"titledState"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MO"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"lienholder"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"accountType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"example 1"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"companyName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"example 1"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">],</span><span class="w">
             </span><span class="p">},</span><span class="w">
             </span><span class="nl">"accident"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
                 </span><span class="nl">"count"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
@@ -3284,7 +3290,13 @@ This endpoint refreshes each order-type concurrently. While processing each orde
             </span><span class="p">},</span><span class="w">
             </span><span class="nl">"financial"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
                 </span><span class="nl">"titleIssueDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-03-15"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"titledState"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NY"</span><span class="w">
+                </span><span class="nl">"titledState"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NY"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"lienholder"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+              </span><span class="p">{</span><span class="w">
+                  </span><span class="nl">"accountType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"example 1"</span><span class="p">,</span><span class="w">
+                  </span><span class="nl">"companyName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"example 1"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">],</span><span class="w">
             </span><span class="p">},</span><span class="w">
             </span><span class="nl">"accident"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
                 </span><span class="nl">"count"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
@@ -3330,7 +3342,9 @@ This endpoint refreshes each order-type concurrently. While processing each orde
 
 <p>*Accepted data types are <code>&quot;OWNER&quot;, &quot;VEHICLE&quot;, &quot;ACCIDENT&quot;, &quot;FINANCIAL&quot;, &quot;REGISTRATION&quot;</code></p>
 
-<aside class="warning">This feature is currently in the testing phase, and only five vins ('KL1TD526X5B4XXXXX', '1GNFC130X8R2XXXXX', 'JA7FJ23E5JJ0XXXXX', '3C3EL55H0TT2XXXXX', and '1FACP41E1LF1XXXXX') will return test data. All other vins will return a value of `No Info Found`</aside>
+<aside class="warning">Example test VINs: ('KL1TD526X5B4XXXXX', '1GNFC130X8R2XXXXX', 'JA7FJ23E5JJ0XXXXX', '3C3EL55H0TT2XXXXX', and '1FACP41E1LF1XXXXX') that will return test data. You may input other VINs as well. When using the development endpoint, test data may be returned randomly for variety so you may not always get the same response for the same VIN entered. Random errors will also be returned around 10% of the time to help simulate error handling. </aside>
+
+<aside class="warning">Currently the VIN Inquiry endpoint is deprecated. Contact your customer service representative for additional pricing details if you wish to use this feature.</aside>
 <h1 id='errors'>Errors</h1>
 <blockquote>
 <p>400 Bad Request Example Error Response:</p>
