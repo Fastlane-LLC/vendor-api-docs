@@ -41,9 +41,9 @@ This route returns information about one or more vins.
 				"titleIssueDate": "2012-02-10",
 				"titledState": "MO",
         "lienholder": [
-		      {
-			      "accountType": "example 1",
-			      "companyName": "example 1"
+          {
+            "accountType": "example 1",
+            "companyName": "example 1"
           }
         ],
 			},
@@ -143,3 +143,5 @@ requestedData | An array of data types to fetch* | Y
 *Accepted data types are `"OWNER", "VEHICLE", "ACCIDENT", "FINANCIAL", "REGISTRATION"`
 
 <aside class="warning">Example test VINs: ('KL1TD526X5B4XXXXX', '1GNFC130X8R2XXXXX', 'JA7FJ23E5JJ0XXXXX', '3C3EL55H0TT2XXXXX', and '1FACP41E1LF1XXXXX') that will return test data. You may input other VINs as well. When using the development endpoint, test data may be returned randomly for variety so you may not always get the same response for the same VIN entered. Random errors will also be returned around 10% of the time to help simulate error handling. </aside>
+
+<aside class="warning">Currently the VIN Inquiry endpoint is deprecated. Contact your customer service representative for additional pricing details if you wish to use this feature.</aside>
