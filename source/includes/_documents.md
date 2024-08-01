@@ -10,6 +10,10 @@ settlement breakdown | Y (if carrier configuration does not allow combined docum
 valuation report | Y (if carrier configuration does not allow combined documents)
 total loss evaluation | Y (if valuation report is not added, and carrier configuration does not allow combined documents)
 valuation report & settlement breakdown | Y (if carrier configuration allows combined documents)
+title image signed | N (required for title transfers)
+lien release signed | N (required for title transfers with liens)
+odometer disclosure signed | N (required for title transfers unless odometer is exempt)
+bill of sale signed | N (required for title transfers)
 cause of loss | N
 cause of loss statement | N
 police report | N

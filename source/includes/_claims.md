@@ -66,7 +66,40 @@
     }
   },
   "settlementAmount": 5553,
-  "titleRemittanceAddress": "1000 Main Street Dallas TX 75204",
+  "titleRemittanceAddress": {
+    "streetAddress": "1000 Main Street",
+    "streetAddress2": "Suite 400",
+    "city": "Dallas",
+    "state": "TX",
+    "zipCode": "75204"
+  },
+  "titledOwners": [
+    {
+      "type": "person",
+      "name": "Bob Dobbs",
+      "streetAddress": "1234 Slack St.",
+      "city": "Dallas",
+      "state": "TX",
+      "zipCode": "75217"
+    }
+  ],
+  "titledState": "TX",
+  "titleTransfer": {
+    "isSalvage": true,
+    "titleTransferDate": "2021-01-08T22:03:09.598Z",
+    "titleNumber": "1234567890",
+    "requestedFormat": "DIGITAL",
+    "odometerExempt": true,
+    "odometerExemptReason": "exceeds mechanical limit",
+    "existingFormat": "PAPER",
+    "representative": {
+      "name": "Murray Bookchin",
+      "title": "Adjuster",
+      "emailAddress": "bookchin@lossexpress.com",
+    },
+    "requestedBrand": "FIRE",
+    "damages": [ "VANDALISM" ],
+  },
   "updatedAt": "2021-01-08T22:03:09.598Z",
   "vehicle": {
     "make": "TEST",
@@ -184,13 +217,83 @@ ownersPhoneNumber | The vehicle owner's phone number | N
 ownersRetained | Whether the owner is retaining the vehicle (boolean) | N
 ownersStreetAddress | The full address of the vehicle owner | N
 settlementAmount | The settlement amount for the claim | N
+titledOwners | An array of objects containing data for each titled owner | N
 titleRemittanceAddress | The full address that the vehicle title should be sent to | N
+titledState | The two-character abbreviation of the state listed on the vehicle's title | N
+titleTransfer | An object containing various data required for title transfer orders | N
 vehicleLocation | The full address where the vehicle is located, if different from the titleRemittanceAddress | N
 vin | The Vehicle Identification Number for the vehicle on the claim | Y
 
 <aside class="warning">
 Although many fields are not required when creating a claim, please note that nearly all fields are required when requesting information through LossExpress.
 </aside>
+
+<aside class="warning">
+To create a title transfer order, you must include the following data: `titledOwners`, `titledState`, `titleTransfer`, `titleRemittanceAddress`, and `odometer` (if `titleTransfer.odometerExempt` is false). If you attempt to create a title transfer order without providing required data, you will receive an error that lists the missing data.
+</aside>
+
+### `titledOwners`
+
+The `titledOwners` parameter must be an array of objects with the following structure:
+
+Parameter | Description | Required?
+-------------- | ----------- | ---------
+type | Must be one of: `'person', 'dealer', 'company', 'trust'` | Y
+name | The owner's name as listed on the title | Y
+phoneNumber | The owner's phone number | N
+streetAddress | The owner's street address | Y
+streetAddress2 | Address line 2 (apartment number, etc) | N
+city | The owner's city | Y
+state | The 2-character abbreviation for the owner's state | Y
+zipCode | The 5-character zip code for the owner's address | Y
+
+### `titleTransfer`
+
+The `titleTransfer` object can include the following parameters:
+
+Parameter | Description | Required?
+-------------- | ----------- | ---------
+damages | An array containing vehicle damages. See possible values below. | Y (if `isSalvage` is true)
+existingFormat | The format of the existing title (must be one of: `PAPER, DIGITAL`) | Y
+isSalvage | A boolean indicating whether the title transfer is for a salvage | Y
+odometerExempt | A boolean indicating whether the vehicle is exempt from mileage disclosure. | Y
+odometerExemptReason | The reason for the mileage disclosure exemption. For example, if the mileage exceeds the odometer's mechanical limit or if the odometer has been tampered with. | Y (if `odometerExempt` is true)
+odometerReadDate | The date that the odometer value was read | Y (if `odometerExempt` is false)
+representative | An object containing information about the representative for the acquiring party | Y
+requestedBrand | Branding to be used for the title. See possible values below. | Y (if `isSalvage` is true)
+requestedFormat | The format that the new title should be issued as (must be one of: `PAPER, DIGITAL`) | Y
+titleNumber | The existing title's number | Y
+titleTransferDate | The date that the title transfer should occur | Y
+
+<aside class="notice">
+`damages` must be an array that includes at least one of: `BACK_END, FIRE, FLOOD, FRONT_END, FUEL_CONTAMINATION, HAIL, LEFT_SIDE, MECHANICAL, RIGHT_SIDE, TOP_ROOF, UNDERCARRIAGE, VANDALISM, WIND`
+</aside>
+
+<aside class="notice">
+`requestedBrand` must be one of: `COSMETIC_TOTAL_LOSS, FIRE, FLOOD, SALVAGE, NON_REPAIRABLE`
+</aside>
+
+### `titleTransfer.representative`
+
+The `titleTransfer` object must include the following parameters:
+
+Parameter | Description | Required?
+-------------- | ----------- | ---------
+name | The representative's name | Y
+title | The representative's title | Y
+emailAddress | The representative's email address | Y
+
+### `titleRemittanceAddress`
+
+While we accept a single string for `titleRemittanceAddress` for most orders, an address object can also be provided. For title transfers in particular, an address object is required.
+
+Parameter | Required?
+-------------- | ---------
+streetAddress | Y
+streetAddress2 | N
+city | Y
+state | Y
+zipCode | Y
 
 ## Update Claim
 
@@ -240,9 +343,16 @@ ownersPhoneNumber | The vehicle owner's phone number | N
 ownersRetained | Whether the owner is retaining the vehicle (boolean) | N
 ownersStreetAddress | The full address of the vehicle owner | N
 settlementAmount | The settlement amount for the claim | N
+titledOwners | An array of objects containing data for each titled owner | N
 titleRemittanceAddress | The full address that the vehicle title should be sent to | N
+titledState | The two-character abbreviation of the state listed on the vehicle's title | N
+titleTransfer | An object containing various data required for title transfer orders | N
 vehicleLocation | The full address where the vehicle is located, if different from the titleRemittanceAddress | N
 vin | The Vehicle Identification Number for the vehicle on the claim | N
+
+<aside class="notice">
+Title transfer data structures (`titledOwners` and `titleTransfer`) are the same for this endpoint as they are for claim creation.
+</aside>
 
 ## Search Claims
 > Search Claims response body:
