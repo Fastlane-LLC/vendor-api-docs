@@ -104,7 +104,9 @@
   "vehicle": {
     "make": "TEST",
     "model": "Car",
-    "year": 2034
+    "year": 2034,
+    "trim": "base",
+    "type": "sudan" 
   },
   "vehicleLocation": "1200 Main Street Dallas TX 75204",
   "vin": "1N4AL3AP8JC231503"
@@ -144,7 +146,7 @@ payoffData | A Payoff Data object
 settlementAmount | The settlement amount for the claim
 titleRemittanceAddress | The full address that the vehicle title should be sent to
 updatedAt | The timestamp the claim was last updated; this can happen in a number of scenarios and is not recommended to be used to track claim changes - please use the activity feed instead
-vehicle | A vehicle object containing the make, model, and year of the vehicle, if available
+vehicle | A vehicle object containing the make, model, year, trim and type of the vehicle, if available. If the Vehicle object is not provided, we will attempt a VIN decode on the provided VIN in order to populate these fields. If a Vehicle object is provided, then all fields should be provided and we will use this data preferentially over our own data sources (this can be useful in cases where you are submitting HINs, non-standard VINs, etc. that may not decode properly on our end).
 vehicleLocation | The full address where the vehicle is located, if different from the titleRemittanceAddress
 vin | The Vehicle Identification Number for the vehicle on the claim
 
